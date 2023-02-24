@@ -1,0 +1,35 @@
+.Side {
+  float: left;
+  display: absolute;
+  border-right: 1px solid #e0e0e0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 240px;
+  height: 1080px;
+  top: 0;
+}
+
+.Profile {
+  width: 240px;
+  height: 80px;
+}
+.Menu {
+  margin-top: 30px;
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.Menu p {
+  padding-left: 20px;
+}
+
+.Menu a:hover {
+  background-color: #8282ff;
+}
+.Menu a:hover p {
+  color: white;
+}

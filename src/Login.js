@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const User = { id: "test@gmail.com", pw: "A!123456789" };
+const User = { id: "1@gmail.com", pw: "A!11111111" };
 
 const Login = ({ setIsLogin }) => {
   const [id, setId] = useState("");
