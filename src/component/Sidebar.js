@@ -6,13 +6,13 @@ import style from "./Sidebar.module.css";
 
 function Sidebar() {
   const menus = [
-    { name: "자유게시판", path: "/board1" },
+    { name: "자유게시판", path: "/" },
     { name: "비밀게시판", path: "/board2" },
   ];
 
   return (
     <div className={style.Side}>
-      <img className={style.Profile} src={Logo} />
+      <img className={style.Logo} src={Logo} />
       <div className={style.Menu}>
         {menus.map((menu, index) => {
           return (
