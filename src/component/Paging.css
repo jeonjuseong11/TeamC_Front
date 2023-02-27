@@ -23,13 +23,13 @@ ul.pagination li {
 }
 ul.pagination li:nth-child(1),
 ul.pagination li:nth-child(2),
-ul.pagination li:nth-child(8),
-ul.pagination li:nth-child(9) {
+ul.pagination li:nth-last-child(2),
+ul.pagination li:nth-last-child(1) {
   background-color: #e3e7ff;
   border-style: none;
 }
 ul.pagination li:nth-child(2),
-ul.pagination li:nth-child(8) {
+ul.pagination li:nth-last-child(2) {
   font-weight: 700;
 }
 

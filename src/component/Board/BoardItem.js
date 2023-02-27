@@ -8,7 +8,7 @@ const BoardItem = ({ userId, title, created_date, no }) => {
       <td style={{ textAlign: "center" }}>{userId}</td>
       <td style={{ textAlign: "left" }}>
         <Link
-          to={`/board/${no}`}
+          to={`/board1/${no}`}
           style={{
             textDecoration: "none",
             color: "black",

@@ -11,11 +11,9 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
-import BoardDetail from "./BoardDetail";
-import Profile from "../../pages/Profile";
-import Login from "../../Login";
-const BoardList = ({ id, pw }) => {
-  const [postList, setPostList] = useState([]);
+
+const BoardList = ({ id, setPostList, postList, getData }) => {
+  // const [postList, setPostList] = useState([]);
   //pagination
   const [count, setCount] = useState(0); // 아이템 총 개수
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지. default 값으로 1
@@ -51,25 +49,6 @@ const BoardList = ({ id, pw }) => {
     //검색시 다시 주소 원상복구
   };
 
-  const getData = async () => {
-    const res = await fetch("https://jsonplaceholder.typicode.com/posts").then(
-      (res) => res.json()
-    );
-    const initData = res.slice(0, 100).map((it) => {
-      return {
-        userId: it.userId,
-        title: it.title,
-        content: it.body,
-        created_date: new Date().getTime(),
-        no: it.id,
-      };
-    });
-    setPostList(initData);
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
   useEffect(() => {
     setCount(postList.length);
     setIndexOfLastPost(currentPage * postPerPage);
@@ -77,18 +56,6 @@ const BoardList = ({ id, pw }) => {
     setCurrentPosts(postList.slice(indexOfFirstPost, indexOfLastPost));
   }, [currentPage, indexOfLastPost, indexOfFirstPost, postList, postPerPage]);
 
-  const onCreate = (userId, title, content, id) => {
-    const created_date = new Date().getTime();
-    const newItem = {
-      userId,
-      title,
-      content,
-      created_date,
-      no: id, //1이라는 값을 가르킴
-    };
-    id.current += 1; //다음 일기 id를 위해 id를 1추가함
-    setPostList([...postList, newItem]); //기존 배열 앞에 새로운 아이템을 추가
-  };
   //제목 변환
   const titlePick = () => {
     if (location.pathname == "/board1") {
