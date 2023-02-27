@@ -4,12 +4,7 @@ import SidebarItem from "./SidebarItem";
 import Logo from "../assets/Logo.png";
 import style from "./Sidebar.module.css";
 
-function Sidebar() {
-  const menus = [
-    { name: "자유게시판", path: "/" },
-    { name: "비밀게시판", path: "/board2" },
-  ];
-
+function Sidebar({ menus }) {
   return (
     <div className={style.Side}>
       <img className={style.Logo} src={Logo} />
