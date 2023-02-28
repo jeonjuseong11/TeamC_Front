@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import BoardDetail from "../component/Board/BoardDetail";
 import BoardList from "../component/Board/BoardList";
 import Sidebar from "../component/Sidebar";
@@ -42,7 +42,7 @@ const Home = ({ id }) => {
     setPostList([...postList, newItem]); //기존 배열 앞에 새로운 아이템을 추가
   };
   return (
-    <div style={{ textAlign: "center", height: "100vh", overflow: "hidden" }}>
+    <div style={{ textAlign: "center", display: "flex", height: "100vh" }}>
       <Sidebar menus={menus} />
       <Routes>
         <Route

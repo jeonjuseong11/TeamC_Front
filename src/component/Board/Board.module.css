@@ -18,8 +18,7 @@
 .searchForm {
   margin-top: 7%;
 }
-.searchForm input,
-button {
+.searchForm input {
   border: 0px;
   border-radius: 5px;
   height: 60px;
@@ -126,7 +125,7 @@ button {
   width: 80%;
   padding: 20px;
   padding-top: 0;
-  display: inline-block;
+  display: flex;
   height: 100%;
   background: linear-gradient(to bottom, #8282ff 30%, #e3e7ff 30%);
 }
@@ -139,7 +138,26 @@ button {
   border-radius: 10px;
   height: 650px;
   margin-left: 10px;
+  display: inline-block;
 }
-.board h2 {
+
+.CommentsWrapper {
+  display: inline-block;
+  width: 24%;
+  border-left: 1px solid #c2c2c2;
+  height: 100%;
+}
+.boardContent {
+  width: 75%;
+  float: left;
+}
+
+.boardTitle {
+  padding-top: 10px;
+  height: 100px;
   border-bottom: 1px solid #c2c2c2;
+}
+.boardText {
+  margin: 0 auto;
+  padding-left: 5%;
 }
