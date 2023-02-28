@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
 
-const User = { id: "1@gmail.com", pw: "A!11111111" };
-
-const Login = ({ setIsLogin }) => {
-  const [id, setId] = useState("");
-  const [pw, setPw] = useState("");
+const Login = ({ setIsLogin, id, pw }) => {
+  const [userId, setUserId] = useState("");
+  const [userPw, setUserPw] = useState("");
 
   const [idValid, setIdValid] = useState(false);
   const [pwValid, setPwValid] = useState(false);
   const [notAllow, setNotAllow] = useState(true);
 
   const handleId = (e) => {
-    setId(e.target.value);
+    setUserId(e.target.value);
     const regex =
       /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
     if (regex.test(id)) {
@@ -22,7 +20,7 @@ const Login = ({ setIsLogin }) => {
   };
 
   const handlePw = (e) => {
-    setPw(e.target.value);
+    setUserPw(e.target.value);
     const regex =
       /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/;
     if (regex.test(pw)) {
@@ -41,12 +39,12 @@ const Login = ({ setIsLogin }) => {
   }, [idValid, pwValid]);
 
   const onClickConfirmButton = () => {
-    if (id === User.id && pw === User.pw) {
+    if (userId === id && pw === pw) {
       alert("로그인 성공");
       setIsLogin(true);
-    } else if (id !== User.id && pw === User.pw) {
+    } else if (userId !== id && userPw === pw) {
       alert("아이디를 확인해주세요");
-    } else if (id === User.id && pw !== User.pw) {
+    } else if (userId === id && userPw !== pw) {
       alert("패스워드를 확인해주세요");
     } else {
       alert("가입자 정보가 없습니다.");
