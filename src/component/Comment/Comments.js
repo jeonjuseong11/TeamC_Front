@@ -8,23 +8,25 @@ function Comments() {
     {
       id: "종섭",
       text: "임시댓글입니다.1",
-      no: 2,
+      no: 1,
       created_date: new Date().getTime(),
       isModify: false,
     },
     {
       id: "지원",
       text: "임시댓글입니다.2",
-      no: 1,
+      no: 2,
       created_date: new Date().getTime(),
       isModify: false,
     },
   ]);
   const [inputValue, setInputValue] = useState("");
-  //수정여부 판단
 
   //댓글추가
   function addComment(e) {
+    if (inputValue == "" || inputValue == null) {
+      return;
+    }
     setComments([
       ...comments,
       {
@@ -60,8 +62,16 @@ function Comments() {
       )
     );
   };
+  //수정 했는지 안했는지 저장
+  const changeIsModify = (targetId, newModify) => {
+    setComments(
+      comments.map((it) =>
+        it.no == targetId ? { ...it, isModify: newModify } : it
+      )
+    );
+  };
   return (
-    <>
+    <div>
       <ul className={style.commentPostList}>
         {comments.map((item, id) => (
           <Comment
@@ -69,6 +79,7 @@ function Comments() {
             comment={item}
             removeComment={removeComment}
             editComment={editComment}
+            changeIsModify={changeIsModify}
           />
         ))}
       </ul>
@@ -81,7 +92,7 @@ function Comments() {
         />
         <button onClick={addComment} />
       </div>
-    </>
+    </div>
   );
 }
 

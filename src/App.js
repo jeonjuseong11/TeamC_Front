@@ -7,9 +7,9 @@ import Home from "./pages/Home";
 function App() {
   const [isLogin, setIsLogin] = useState(false);
 
-  // return 
+  // return
   return (
-    <Login />
+    <Home />
     // isLogin ? <Home /> : <Login setIsLogin={setIsLogin} />
     // <div>
     //   <Routes>

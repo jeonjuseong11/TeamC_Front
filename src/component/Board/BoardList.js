@@ -11,9 +11,9 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
+import { useRef } from "react";
 
 const BoardList = ({ id, setPostList, postList, getData }) => {
-  // const [postList, setPostList] = useState([]);
   //pagination
   const [count, setCount] = useState(0); // 아이템 총 개수
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지. default 값으로 1
@@ -24,18 +24,29 @@ const BoardList = ({ id, setPostList, postList, getData }) => {
   //검색창 state
   const [titleSearch, setTitleSearch] = useState("");
   const [idSearch, setIdSearch] = useState("");
+  const titleInput = useRef();
+  const idInput = useRef();
   // const navigate = useNavigate();
   const location = useLocation();
   //검색창 action 코드
-  const onChangeSearch = (e) => {
+  const onChangeSearchTitle = (e) => {
     e.preventDefault();
     setTitleSearch(e.target.value);
   };
+  const onChangeSearchId = (e) => {
+    e.preventDefault();
+    setIdSearch(e.target.value);
+  };
   //검색 기능 코드
-  const onSearch = (e) => {
+  const initList = (e) => {
+    getData();
+    setTitleSearch("");
+  };
+  const onSearchTitle = (e) => {
     e.preventDefault();
     if (titleSearch === null || titleSearch === "") {
-      getData();
+      titleInput.current.focus();
+      alert("검색란이 비었다");
     } else {
       const filterData = postList.filter((it) =>
         it.title.includes(titleSearch)
@@ -46,7 +57,6 @@ const BoardList = ({ id, setPostList, postList, getData }) => {
       return;
     }
     setTitleSearch("");
-    //검색시 다시 주소 원상복구
   };
 
   useEffect(() => {
@@ -83,21 +93,31 @@ const BoardList = ({ id, setPostList, postList, getData }) => {
         <input
           type="text"
           className={style.tagInput}
+          ref={idInput}
           placeholder="작성자"
-          onChange={onChangeSearch}
+          onChange={onChangeSearchId}
           value={idSearch}
         />
         <input
           type="text"
           className={style.nameInput}
+          ref={titleInput}
           placeholder="제목"
-          onChange={onChangeSearch}
+          onChange={onChangeSearchTitle}
           value={titleSearch}
         />
-        <button className={style.searchBtn} onClick={onSearch}>
+        <button
+          className={style.searchBtn}
+          onClick={onSearchTitle}
+          type="submit"
+        >
           Search
         </button>
+        <button className={style.resetBtn} type="reset" onClick={initList}>
+          초기화
+        </button>
       </form>
+
       <div className={style.info}>
         <h4>{postList.length}개의 글이 있습니다.</h4>
       </div>
@@ -125,9 +145,15 @@ const BoardList = ({ id, setPostList, postList, getData }) => {
             </tr>
           </thead>
           <tbody>
-            {currentPosts && postList.length > 0
-              ? currentPosts.map((it) => <BoardItem key={it.no} {...it} />)
-              : null}
+            {currentPosts && postList.length > 0 ? (
+              currentPosts.map((it) => <BoardItem key={it.no} {...it} />)
+            ) : (
+              <tr>
+                <td colSpan="4" style={{ height: "60vh" }}>
+                  검색 결과가 없습니다
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
         <Paging

@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import BoardDetail from "../component/Board/BoardDetail";
 import BoardList from "../component/Board/BoardList";
 import Sidebar from "../component/Sidebar";
+import Login from "../Login";
 import Profile from "./Profile";
 const Home = ({ id }) => {
   const menus = [
