@@ -74,12 +74,8 @@ const Login = ({ setIsLogin}) => {
               value={id}
               onChange={handleId}
               placeholder="아이디를 입력해주세요"
+              style={!idValid && id.length === 0 ? {border : "solid 1px black"} : idValid ? {border : "solid 1px green"} : {border : "solid 1px red"}}
             ></input>
-            <div className="errMessgeId" onChange={handleId}>
-              {!idValid && id.length > 0 && (
-                <p style={idValid ? {color:"green"} : {color:"red"}}>올바른 아이디를 입력해주세요</p>
-              )}
-            </div>
           </div>
           <div className="password">
           <p>비밀번호</p>
@@ -88,12 +84,8 @@ const Login = ({ setIsLogin}) => {
               value={pw}
               onChange={handlePw}
               placeholder="패스워드를 입력해주세요"
+              style={pw.length === 0 ? {border : "solid 1px black"} : pwValid ? {border : "solid 1px green"} : {border : "solid 1px red"}}
             ></input>
-          </div>
-          <div className="errMessgePassword">
-            {!pwValid && pw.length > 0 && (
-              <p style={pwValid ? {color:"green"} : {color:"red"}}>올바른 패스워드를 입력해주세요</p>
-            )}
           </div>
           <div className="btnWrap">
           <button
