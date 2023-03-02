@@ -61,7 +61,15 @@ const Home = ({ id }) => {
         <Route
           exact
           path="/board2"
-          element={<BoardList id={id} menus={menus.name} />}
+          element={
+            <BoardList
+              id={id}
+              menus={menus.name}
+              postList={postList}
+              setPostList={setPostList}
+              getData={getData}
+            />
+          }
         />
         <Route exact path="/profile" element={<Profile />} />
         <Route

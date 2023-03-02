@@ -29,12 +29,9 @@
 }
 
 .nameInput {
-  width: 40%;
-  margin-left: 10px;
+  width: 60%;
 }
-.tagInput {
-  width: 20%;
-}
+
 .searchBtn {
   display: inline-block;
   position: relative;

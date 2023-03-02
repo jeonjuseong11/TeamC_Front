@@ -4,14 +4,9 @@ import style from "./Board.module.css";
 import BoardItem from "./BoardItem";
 import profile from "../Board/profile.jpg";
 import Paging from "../Paging";
-import {
-  Link,
-  Route,
-  Routes,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useRef } from "react";
+import Select from "react-select"; //라이브러리 import
 
 const BoardList = ({ id, setPostList, postList, getData }) => {
   //pagination
@@ -22,41 +17,35 @@ const BoardList = ({ id, setPostList, postList, getData }) => {
   const [indexOfFirstPost, setIndexOfFirstPost] = useState(0); // 현재 페이지의 첫번째 아이템 인덱스
   const [currentPosts, setCurrentPosts] = useState(0); // 현재 페이지에서 보여지는 아이템들
   //검색창 state
-  const [titleSearch, setTitleSearch] = useState("");
-  const [idSearch, setIdSearch] = useState("");
+  const [search, setSearch] = useState("");
   const titleInput = useRef();
-  const idInput = useRef();
-  // const navigate = useNavigate();
   const location = useLocation();
   //검색창 action 코드
-  const onChangeSearchTitle = (e) => {
+  const onChangeSearch = (e) => {
     e.preventDefault();
-    setTitleSearch(e.target.value);
+    setSearch(e.target.value);
   };
-  const onChangeSearchId = (e) => {
-    e.preventDefault();
-    setIdSearch(e.target.value);
-  };
+
   //검색 기능 코드
   const initList = (e) => {
     getData();
-    setTitleSearch("");
+    setSearch("");
   };
-  const onSearchTitle = (e) => {
+
+  const onSearch = (e) => {
     e.preventDefault();
-    if (titleSearch === null || titleSearch === "") {
+    if (search === null || search === "") {
       titleInput.current.focus();
       alert("검색란이 비었다");
     } else {
       const filterData = postList.filter((it) =>
-        it.title.includes(titleSearch)
+        it.title.toLocaleLowerCase().includes(search.toLocaleLowerCase())
       );
       setPostList(filterData);
       setCurrentPosts(filterData.slice(indexOfFirstPost, indexOfLastPost));
       setCurrentPage(1);
       return;
     }
-    setTitleSearch("");
   };
 
   useEffect(() => {
@@ -92,25 +81,13 @@ const BoardList = ({ id, setPostList, postList, getData }) => {
       <form className={style.searchForm}>
         <input
           type="text"
-          className={style.tagInput}
-          ref={idInput}
-          placeholder="작성자"
-          onChange={onChangeSearchId}
-          value={idSearch}
-        />
-        <input
-          type="text"
           className={style.nameInput}
           ref={titleInput}
           placeholder="제목"
-          onChange={onChangeSearchTitle}
-          value={titleSearch}
+          onChange={onChangeSearch}
+          value={search}
         />
-        <button
-          className={style.searchBtn}
-          onClick={onSearchTitle}
-          type="submit"
-        >
+        <button className={style.searchBtn} onClick={onSearch} type="submit">
           Search
         </button>
         <button className={style.resetBtn} type="reset" onClick={initList}>

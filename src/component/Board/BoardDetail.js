@@ -1,10 +1,4 @@
-import React, {
-  useEffect,
-  useSelector,
-  dispatch,
-  useRef,
-  reviewActions,
-} from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useNavigate, useParams } from "react-router-dom";
 import Comments from "../Comment/Comments";
