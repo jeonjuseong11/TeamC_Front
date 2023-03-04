@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-// import { Link } from "react-router-dom";
 import style from "./Board.module.css";
 import BoardItem from "./BoardItem";
-import profile from "../Board/profile.jpg";
-import Paging from "../Paging";
-import { Link, useLocation } from "react-router-dom";
+import Paging from "../Paging/Paging.js";
+import { useContext } from "react";
+import { PostStateContext } from "../../pages/Home/Home.js";
 import { useRef } from "react";
-import Select from "react-select"; //라이브러리 import
 
-const BoardList = ({ id, setPostList, postList, getData }) => {
+const BoardList = ({ getData, setPostList }) => {
+  //pagination
+  const postList = useContext(PostStateContext);
   //pagination
   const [count, setCount] = useState(0); // 아이템 총 개수
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지. default 값으로 1
@@ -16,10 +16,16 @@ const BoardList = ({ id, setPostList, postList, getData }) => {
   const [indexOfLastPost, setIndexOfLastPost] = useState(0); // 현재 페이지의 마지막 아이템 인덱스
   const [indexOfFirstPost, setIndexOfFirstPost] = useState(0); // 현재 페이지의 첫번째 아이템 인덱스
   const [currentPosts, setCurrentPosts] = useState(0); // 현재 페이지에서 보여지는 아이템들
+
+  useEffect(() => {
+    setCount(postList.length);
+    setIndexOfLastPost(currentPage * postPerPage);
+    setIndexOfFirstPost(indexOfLastPost - postPerPage);
+    setCurrentPosts(postList.slice(indexOfFirstPost, indexOfLastPost));
+  }, [currentPage, indexOfLastPost, indexOfFirstPost, postList, postPerPage]);
   //검색창 state
   const [search, setSearch] = useState("");
   const titleInput = useRef();
-  const location = useLocation();
   //검색창 action 코드
   const onChangeSearch = (e) => {
     e.preventDefault();
@@ -48,36 +54,8 @@ const BoardList = ({ id, setPostList, postList, getData }) => {
     }
   };
 
-  useEffect(() => {
-    setCount(postList.length);
-    setIndexOfLastPost(currentPage * postPerPage);
-    setIndexOfFirstPost(indexOfLastPost - postPerPage);
-    setCurrentPosts(postList.slice(indexOfFirstPost, indexOfLastPost));
-  }, [currentPage, indexOfLastPost, indexOfFirstPost, postList, postPerPage]);
-
-  //제목 변환
-  const titlePick = () => {
-    if (location.pathname == "/board1") {
-      return "자유 게시판";
-    } else if (location.pathname == "/board2") {
-      return "비밀 게시판";
-    }
-  };
-
   return (
     <div className={style.BoardList}>
-      <h2>{titlePick()}</h2>
-      <ul className={style.profile}>
-        <Link to={"/profile"}>
-          <li>
-            <span>{id}</span>
-            <span> 님, 반갑습니다</span>
-          </li>
-          <li>
-            <img src={profile} />
-          </li>
-        </Link>
-      </ul>
       <form className={style.searchForm}>
         <input
           type="text"
@@ -94,7 +72,6 @@ const BoardList = ({ id, setPostList, postList, getData }) => {
           초기화
         </button>
       </form>
-
       <div className={style.info}>
         <h4>{postList.length}개의 글이 있습니다.</h4>
       </div>

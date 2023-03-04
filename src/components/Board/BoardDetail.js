@@ -1,11 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useNavigate, useParams } from "react-router-dom";
 import Comments from "../Comment/Comments";
-import profile from "../Board/profile.jpg";
-
 import style from "./Board.module.css";
-const BoardDetail = ({ post, id }) => {
+import { useContext } from "react";
+import { PostStateContext } from "../../pages/Home/Home.js";
+const BoardDetail = () => {
+  const post = useContext(PostStateContext);
   let { no } = useParams();
   let findItem = post.find(function (it) {
     return it.no == no;
@@ -17,18 +17,6 @@ const BoardDetail = ({ post, id }) => {
 
   return (
     <div className={style.BoardDetail}>
-      <h2>자유 게시판</h2>
-      <ul className={style.profile}>
-        <Link to={"/profile"}>
-          <li>
-            <span>{id}</span>
-            <span> 님, 반갑습니다</span>
-          </li>
-          <li>
-            <img src={profile} />
-          </li>
-        </Link>
-      </ul>
       <div className={style.board}>
         <div className={style.boardContent}>
           <div className={style.boardTitle}>

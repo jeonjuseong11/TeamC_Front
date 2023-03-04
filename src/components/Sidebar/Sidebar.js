@@ -1,9 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import SidebarItem from "./SidebarItem";
-import Logo from "../assets/Logo.png";
 import style from "./Sidebar.module.css";
-
+import Logo from "../../assets/Logo.png";
 function Sidebar({ menus }) {
   return (
     <div className={style.Side}>

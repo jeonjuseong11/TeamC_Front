@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Login.css";
 import Join from "./Join";
 
-const User = { id: "1@gmail.com", pw: "A!11111111" };
-
-const Login = ({ setIsLogin}) => {
+const Login = ({ setIsLogin, User }) => {
   const [isJoin, setIsJoin] = useState(false);
 
   const [id, setId] = useState("");
@@ -59,35 +57,47 @@ const Login = ({ setIsLogin}) => {
 
   const onJoin = () => {
     setIsJoin(true);
-  }
+  };
 
-  return isJoin ? <Join 
-  setIsJoin = {setIsJoin}
-  /> : (
+  return isJoin ? (
+    <Join setIsJoin={setIsJoin} />
+  ) : (
     <div className="Page">
       <div className="title">logo부분</div>
-        <div className="contentWrap">
-          <div className="id">
-            <p>아이디</p>
-            <input
-              type="text"
-              value={id}
-              onChange={handleId}
-              placeholder="아이디를 입력해주세요"
-              style={!idValid && id.length === 0 ? {border : "solid 1px black"} : idValid ? {border : "solid 1px green"} : {border : "solid 1px red"}}
-            ></input>
-          </div>
-          <div className="password">
+      <div className="contentWrap">
+        <div className="id">
+          <p>아이디</p>
+          <input
+            type="text"
+            value={id}
+            onChange={handleId}
+            placeholder="아이디를 입력해주세요"
+            style={
+              !idValid && id.length === 0
+                ? { border: "solid 1px black" }
+                : idValid
+                ? { border: "solid 1px green" }
+                : { border: "solid 1px red" }
+            }
+          ></input>
+        </div>
+        <div className="password">
           <p>비밀번호</p>
-            <input
-              type="password"
-              value={pw}
-              onChange={handlePw}
-              placeholder="패스워드를 입력해주세요"
-              style={pw.length === 0 ? {border : "solid 1px black"} : pwValid ? {border : "solid 1px green"} : {border : "solid 1px red"}}
-            ></input>
-          </div>
-          <div className="btnWrap">
+          <input
+            type="password"
+            value={pw}
+            onChange={handlePw}
+            placeholder="패스워드를 입력해주세요"
+            style={
+              pw.length === 0
+                ? { border: "solid 1px black" }
+                : pwValid
+                ? { border: "solid 1px green" }
+                : { border: "solid 1px red" }
+            }
+          ></input>
+        </div>
+        <div className="btnWrap">
           <button
             className="loginBtn"
             disabled={notAllow}
@@ -95,9 +105,7 @@ const Login = ({ setIsLogin}) => {
           >
             로그인
           </button>
-          <button
-          onClick = {onJoin}
-          >회원가입</button>
+          <button onClick={onJoin}>회원가입</button>
         </div>
       </div>
     </div>
