@@ -3,12 +3,12 @@ import style from "./Board.module.css";
 import BoardItem from "./BoardItem";
 import Paging from "../Paging/Paging.js";
 import { useContext } from "react";
-import { PostStateContext } from "../../pages/Home/Home.js";
+import { PostStateContext } from "../../pages/HomePage/Home.js";
 import { useRef } from "react";
 
 const BoardList = ({ getData, setPostList }) => {
-  //pagination
   const postList = useContext(PostStateContext);
+
   //pagination
   const [count, setCount] = useState(0); // 아이템 총 개수
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지. default 값으로 1

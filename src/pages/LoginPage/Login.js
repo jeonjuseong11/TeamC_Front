@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
-import "./Login.css";
-import Join from "./Join";
+import "../LoginPage/Login.css";
+import Join from "../JoinPage/Join";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ setIsLogin, User }) => {
   const [isJoin, setIsJoin] = useState(false);
-
+  const navigate = useNavigate();
+  const toHome = () => {
+    navigate("/board1");
+  };
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
 
@@ -45,6 +49,7 @@ const Login = ({ setIsLogin, User }) => {
   const onClickConfirmButton = () => {
     if (id === User.id && pw === User.pw) {
       alert("로그인 성공");
+      toHome();
       setIsLogin(true);
     } else if (id !== User.id && pw === User.pw) {
       alert("아이디를 확인해주세요");
@@ -79,7 +84,7 @@ const Login = ({ setIsLogin, User }) => {
                 ? { border: "solid 1px green" }
                 : { border: "solid 1px red" }
             }
-          ></input>
+          />
         </div>
         <div className="password">
           <p>비밀번호</p>

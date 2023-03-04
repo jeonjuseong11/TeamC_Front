@@ -3,10 +3,10 @@ import { Route, Routes } from "react-router-dom";
 import BoardDetail from "../../components/Board/BoardDetail";
 import BoardList from "../../components/Board/BoardList";
 import Sidebar from "../../components/Sidebar/Sidebar";
-import Profile from "../Profile/Profile";
-import Header from "../../components/Header/Header";
+import Profile from "../ProfilePage/Profile";
+import Top from "../../components/Top/Top";
 export const PostStateContext = React.createContext(); //posts 데이터 context
-const Home = ({ User, menus }) => {
+const Home = ({ User, menus, setIsLogin }) => {
   const [postList, setPostList] = useState([]);
   const getData = async () => {
     const res = await fetch("https://jsonplaceholder.typicode.com/posts").then(
@@ -22,7 +22,11 @@ const Home = ({ User, menus }) => {
       };
     });
     setPostList(initData);
+    // setLocalStrage();
   };
+  // const setLocalStrage = () => {
+  //   localStorage.setItem("postsInLocal", JSON.stringify(postList));
+  // };
   useEffect(() => {
     getData();
   }, []);
@@ -49,26 +53,19 @@ const Home = ({ User, menus }) => {
           height: "100vh",
         }}
       >
-        <Header User={User} />
+        <Top User={User} setIsLogin={setIsLogin} />
         <Sidebar menus={menus} />
         <Routes>
           <Route
             exact
-            path="/*"
+            path="/board1"
             element={<BoardList setPostList={setPostList} getData={getData} />}
           />
           <Route exact path="/profile" element={<Profile />} />
-
           <Route
             exact
             path="/board2"
-            element={
-              <BoardList
-                menus={menus.name}
-                setPostList={setPostList}
-                getData={getData}
-              />
-            }
+            element={<BoardList setPostList={setPostList} getData={getData} />}
           />
           <Route exact path="/board1/:no" element={<BoardDetail />} />
         </Routes>

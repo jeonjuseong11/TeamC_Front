@@ -1,4 +1,4 @@
-.Header {
+.Top {
   padding-bottom: 10px;
   width: 80%;
   float: right;
@@ -7,20 +7,20 @@
   margin-top: 0;
   margin-bottom: 0;
 }
-.Header img {
+.Top img {
   border-radius: 100%;
   width: 30px;
   height: 30px;
   filter: invert();
 }
-.Header ul {
+.Top ul {
   margin-right: 20px;
 }
-.Header li {
+.Top li {
   float: right;
   list-style-type: none;
 }
-.Header span {
+.Top span {
   font-weight: 600;
   font-size: 12px;
   margin-top: 0;
@@ -29,7 +29,11 @@
   line-height: 30px;
   color: white;
 }
-.Header span:first-child {
+.Top button {
+  margin-left: 10px;
+  line-height: 25px;
+}
+.Top span:first-child {
   font-weight: 800;
 }
 

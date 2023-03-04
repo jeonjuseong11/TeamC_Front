@@ -1,31 +1,38 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
-import style from "../Header/Header.module.css";
+import style from "../Top/Top.module.css";
 import profileImg from "../../assets/profile.png";
 import { useParams } from "react-router-dom";
-
-const Header = ({ User }) => {
+import { useNavigate } from "react-router-dom";
+const Top = ({ User, setIsLogin }) => {
+  const navigate = useNavigate();
+  const logout = () => {
+    navigate("/login");
+    setIsLogin(false);
+  };
+  const no = useParams();
   //제목 변환
   const location = useLocation();
   const titlePick = () => {
     // console.log(location); 위치 확인용
     if (location.pathname == "/") {
       return "자유 게시판";
-    } else if (location.pathname == "/board1") {
-      return "자유 게시판 ";
-    } else if (location.pathname == "/board1/*") {
-      return "자유 게시판 ";
     } else if (location.pathname == "/board2") {
       return "비밀 게시판";
     } else if (location.pathname == "/profile") {
       return "Profile";
+    } else if (location.pathname == "/board1" || `/board1/${no}`) {
+      return "자유 게시판 ";
     }
   };
 
   return (
-    <div className={style.Header}>
+    <div className={style.Top}>
       <h2>{titlePick()}</h2>
       <ul>
+        <li>
+          <button onClick={logout}>logout</button>
+        </li>
         <Link to={"/profile"}>
           <li>
             <span>{User.id}</span>
@@ -39,4 +46,4 @@ const Header = ({ User }) => {
     </div>
   );
 };
-export default Header;
+export default Top;

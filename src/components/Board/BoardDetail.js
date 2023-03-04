@@ -3,13 +3,16 @@ import { useNavigate, useParams } from "react-router-dom";
 import Comments from "../Comment/Comments";
 import style from "./Board.module.css";
 import { useContext } from "react";
-import { PostStateContext } from "../../pages/Home/Home.js";
+import { PostStateContext } from "../../pages/HomePage/Home.js";
 const BoardDetail = () => {
   const post = useContext(PostStateContext);
+  // const posts = JSON.parse(localStorage.getItem("postsInLocal")); localstorage사용실패
   let { no } = useParams();
   let findItem = post.find(function (it) {
     return it.no == no;
   });
+  // console.log(findItem);
+
   const navigate = useNavigate();
   const backToList = () => {
     navigate(-1);
