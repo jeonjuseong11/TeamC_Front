@@ -1,22 +1,24 @@
 import React, { useState } from "react";
-import { Route, Routes } from "react-router-dom";
-import "./App.css";
+import { Route } from "react-router-dom";
+import { Routes } from "react-router-dom";
 import Login from "./Login";
-import Home from "./pages/Home";
+import Profile from "./pages/Profile/Profile";
+import "./App.css";
+import Home from "./pages/Home/Home.js";
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
-
-  // return 
+  const User = { id: "1@gmail.com", pw: "A!11111111" };
+  const menus = [
+    { name: "자유게시판", path: "/board1" },
+    { name: "비밀게시판", path: "/board2" },
+  ];
+  // return
   return (
-    <Login />
-    // isLogin ? <Home /> : <Login setIsLogin={setIsLogin} />
-    // <div>
-    //   <Routes>
-    //     <Route exact path="*" element={<Home />} />
-    //     <Route exact path="/login" element={<Login/>}
-    //     />
-    //   </Routes>
+    <Routes>
+      <Route exact path="*" element={<Home User={User} menus={menus} />} />
+      <Route exact path="/login" element={<Login User={User} />} />
+    </Routes>
     // </div>
   );
 }

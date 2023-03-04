@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Login.css";
 import Join from "./Join";
 
-const User = { id: "1@gmail.com", pw: "A!11111111" };
-
-const Login = ({ setIsLogin}) => {
+const Login = ({ setIsLogin, User }) => {
   const [isJoin, setIsJoin] = useState(false);
 
   const [id, setId] = useState("");
@@ -59,7 +57,7 @@ const Login = ({ setIsLogin}) => {
 
   const onJoin = () => {
     setIsJoin(true);
-  }
+  };
 
   return isJoin ? <Join 
   setIsJoin = {setIsJoin}
@@ -84,7 +82,7 @@ const Login = ({ setIsLogin}) => {
               value={pw}
               onChange={handlePw}
               placeholder="패스워드를 입력해주세요"
-              style={!pwValid && pw.length === 0 ? {border : "solid 1px black"} : pwValid ? {border : "solid 1px green"} : {border : "solid 1px red"}}
+              style={pw.length === 0 ? {border : "solid 1px black"} : pwValid ? {border : "solid 1px green"} : {border : "solid 1px red"}}
             ></input>
           </div>
           <div className="btnWrap">
