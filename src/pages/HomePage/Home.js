@@ -56,18 +56,19 @@ const Home = ({ User, menus, setIsLogin }) => {
         <Top User={User} setIsLogin={setIsLogin} />
         <Sidebar menus={menus} />
         <Routes>
-          <Route
-            exact
-            path="/board1"
-            element={<BoardList setPostList={setPostList} getData={getData} />}
-          />
           <Route exact path="/profile" element={<Profile />} />
           <Route
             exact
-            path="/board2"
+            path="/home/board1"
             element={<BoardList setPostList={setPostList} getData={getData} />}
           />
-          <Route exact path="/board1/:no" element={<BoardDetail />} />
+
+          <Route
+            exact
+            path="/home/board2"
+            element={<BoardList setPostList={setPostList} getData={getData} />}
+          />
+          <Route exact path="/home/board1/:no" element={<BoardDetail />} />
         </Routes>
       </div>
     </PostStateContext.Provider>

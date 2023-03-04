@@ -1,77 +1,134 @@
-.Page {
-  background: #8282ff;
-  width: 100%;
-  height: 100vh;
+.loginPage {
+  min-height: 100vh;
+  background: linear-gradient(#8282ff, #ffffff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-logo {
+  margin-bottom: 2rem;
 }
 
-.title {
-  width: 100px;
-  height: 30px;
-  margin: 0 auto;
-  padding-top: 15%;
+.login-logo img {
+  width: 60%;
+}
+.login-logo,
+.login-header,
+.login-footer {
   text-align: center;
 }
-
-.contentWrap {
-  margin: 0 auto;
-  background-color: white;
-  border-radius: 15px;
-  width: 350px;
-  height: 300px;
+.login-header {
+  margin-bottom: 2rem;
 }
 
-.id {
+.login-header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.login-header h1 + div {
+  font-size: calc(1rem * 0.8);
+  opacity: 0.8;
+}
+.loginWrap {
+  width: 450px;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 4rem;
+  border-radius: 10px;
+  position: relative;
+}
+
+.lloginWrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.15);
+  transform: rotate(-6deg);
+  border-radius: 10px;
+  z-index: -1;
+}
+.loginWrap a {
+  text-decoration: none;
+  color: #35339a;
+}
+
+.loginWrap a:hover {
+  text-decoration: underline;
+}
+
+.login-form {
   display: flex;
   flex-direction: column;
-  margin-left: 50px;
+  gap: 1.5rem;
 }
-
-.id p {
-  width: 50px;
-  margin-left: 100px;
+.form-id,
+.form-password {
+  position: relative;
 }
-
-.password {
+.form-icon {
+  width: 25px;
+  height: auto;
+  position: absolute;
+  top: 0.82rem;
+  left: 1.4rem;
+  font-size: 1.3rem;
+  opacity: 0.4;
+}
+.checkbox {
   display: flex;
-  flex-direction: column;
-  margin-left: 50px;
+  align-items: center;
+  gap: 7px;
+}
+.form-check {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: calc(1rem * 0.8);
+  margin-bottom: 0.5rem;
 }
 
-.password p {
-  width: 70px;
-  margin-left: 90px;
+.login-footer {
+  margin-top: 1.5rem;
+  font-size: calc(1rem * 0.8);
 }
-
-.Page .id input {
-  width: 250px;
-  height: 30px;
-}
-
-.Page .password input {
-  width: 250px;
-  height: 30px;
-}
-.Page button {
-  width: 120px;
-  height: 30px;
-  margin: 10px;
-}
-
-.btnWrap {
-  margin-top: 30px;
-  margin-left: 40px;
-}
-
-.btnWrap button {
-  background-color: #8282ff;
+/* Login Card Form Elements */
+.loginWrap input[type="text"],
+.loginWrap input[type="password"],
+.loginWrap input[type="email"] {
   border: none;
-  border-radius: 5px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 1rem 1.5rem;
+  padding-left: calc(1rem * 3.5);
+  border-radius: 100px;
+  width: 80%;
+  transition: background 0.5s;
 }
 
-.btnWrap button:hover {
-  background-color: green;
-  transform: scale(1.3);
+.loginWrap input:focus {
+  background: white;
+}
+
+.loginWrap input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: black;
+}
+
+.loginWrap button {
+  background: black;
   color: white;
-  border: none;
-  border-radius: 5px;
+  padding: 1rem;
+  border-radius: 100px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: background 0.5s;
 }
+
+.loginWrap button:hover {
+  background-color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+}
+/* ---------- */

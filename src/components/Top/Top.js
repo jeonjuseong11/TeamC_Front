@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const Top = ({ User, setIsLogin }) => {
   const navigate = useNavigate();
   const logout = () => {
-    navigate("/login");
+    navigate("/");
     setIsLogin(false);
   };
   const no = useParams();
@@ -17,11 +17,11 @@ const Top = ({ User, setIsLogin }) => {
     // console.log(location); 위치 확인용
     if (location.pathname == "/") {
       return "자유 게시판";
-    } else if (location.pathname == "/board2") {
+    } else if (location.pathname == "/home/board2") {
       return "비밀 게시판";
     } else if (location.pathname == "/profile") {
       return "Profile";
-    } else if (location.pathname == "/board1" || `/board1/${no}`) {
+    } else if (location.pathname == "/home/board1" || `/home/board1/${no}`) {
       return "자유 게시판 ";
     }
   };

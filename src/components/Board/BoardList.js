@@ -68,7 +68,7 @@ const BoardList = ({ getData, setPostList }) => {
         <button className={style.searchBtn} onClick={onSearch} type="submit">
           Search
         </button>
-        <button className={style.resetBtn} type="reset" onClick={initList}>
+        <button type="button" className={style.resetBtn} onClick={initList}>
           초기화
         </button>
       </form>

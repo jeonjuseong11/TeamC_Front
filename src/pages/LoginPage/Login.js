@@ -2,12 +2,18 @@ import React, { useEffect, useState } from "react";
 import "../LoginPage/Login.css";
 import Join from "../JoinPage/Join";
 import { useNavigate } from "react-router-dom";
+import emailImg from "../../assets/email.png";
+import passwordImg from "../../assets/password.png";
+import { Link } from "react-router-dom";
+import Logo from "../../assets/Logo.png";
 
 const Login = ({ setIsLogin, User }) => {
-  const [isJoin, setIsJoin] = useState(false);
   const navigate = useNavigate();
   const toHome = () => {
-    navigate("/board1");
+    navigate("/home/board1");
+  };
+  const toJoin = () => {
+    navigate("/join");
   };
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
@@ -60,57 +66,67 @@ const Login = ({ setIsLogin, User }) => {
     }
   };
 
-  const onJoin = () => {
-    setIsJoin(true);
-  };
-
-  return isJoin ? (
-    <Join setIsJoin={setIsJoin} />
-  ) : (
-    <div className="Page">
-      <div className="title">logo부분</div>
-      <div className="contentWrap">
-        <div className="id">
-          <p>아이디</p>
-          <input
-            type="text"
-            value={id}
-            onChange={handleId}
-            placeholder="아이디를 입력해주세요"
-            style={
-              !idValid && id.length === 0
-                ? { border: "solid 1px black" }
-                : idValid
-                ? { border: "solid 1px green" }
-                : { border: "solid 1px red" }
-            }
-          />
+  return (
+    <div className="loginPage">
+      <div className="loginWrap">
+        <div className="login-logo">
+          <img src={Logo} alt="logo" />
         </div>
-        <div className="password">
-          <p>비밀번호</p>
-          <input
-            type="password"
-            value={pw}
-            onChange={handlePw}
-            placeholder="패스워드를 입력해주세요"
-            style={
-              pw.length === 0
-                ? { border: "solid 1px black" }
-                : pwValid
-                ? { border: "solid 1px green" }
-                : { border: "solid 1px red" }
-            }
-          ></input>
+        <div className="login-header">
+          <h1>Sign In</h1>
+          <div>서비스를 이용하려면 로그인이 필요합니다.</div>
         </div>
-        <div className="btnWrap">
+        <form className="login-form">
+          <div className="form-id">
+            <img className="form-icon" src={emailImg} />
+            <input
+              type="email"
+              value={id}
+              onChange={handleId}
+              placeholder="이메일을 입력해주세요"
+              style={
+                !idValid && id.length === 0
+                  ? { border: "solid 1px black" }
+                  : idValid
+                  ? { border: "solid 1px green" }
+                  : { border: "solid 1px red" }
+              }
+            />
+          </div>
+          <div className="form-password">
+            <img className="form-icon" src={passwordImg} />
+            <input
+              type="password"
+              value={pw}
+              onChange={handlePw}
+              placeholder="비밀번호를 입력해주세요"
+              style={
+                pw.length === 0
+                  ? { border: "solid 1px black" }
+                  : pwValid
+                  ? { border: "solid 1px green" }
+                  : { border: "solid 1px red" }
+              }
+            />
+          </div>
+          <div className="form-check">
+            <div className="checkbox">
+              <input type="checkbox" id="rememberMeCheckbox" />
+              <label htmlFor="rememberMeCheckbox">Remember me</label>
+            </div>
+            <a href="#">I forgot my password!</a>
+          </div>
           <button
+            type="submit"
             className="loginBtn"
             disabled={notAllow}
             onClick={onClickConfirmButton}
           >
             로그인
           </button>
-          <button onClick={onJoin}>회원가입</button>
+        </form>
+        <div className="login-footer">
+          Don't have an account? <Link to="/join">Create a free account.</Link>
         </div>
       </div>
     </div>
