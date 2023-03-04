@@ -3,12 +3,13 @@ import style from "./Board.module.css";
 import BoardItem from "./BoardItem";
 import Paging from "../Paging/Paging.js";
 import { useContext } from "react";
-import { PostStateContext } from "../../pages/HomePage/Home.js";
 import { useRef } from "react";
-
+import { useParams } from "react-router-dom";
+import { PostsStateContext } from "../../App";
 const BoardList = ({ getData, setPostList }) => {
-  const postList = useContext(PostStateContext);
-
+  const postList = useContext(PostsStateContext);
+  let { board } = useParams();
+  console.log(postList);
   //pagination
   const [count, setCount] = useState(0); // 아이템 총 개수
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지. default 값으로 1
@@ -100,7 +101,9 @@ const BoardList = ({ getData, setPostList }) => {
           </thead>
           <tbody>
             {currentPosts && postList.length > 0 ? (
-              currentPosts.map((it) => <BoardItem key={it.no} {...it} />)
+              currentPosts.map((it) => (
+                <BoardItem key={it.no} {...it} board={board} />
+              ))
             ) : (
               <tr>
                 <td colSpan="4" style={{ height: "60vh" }}>

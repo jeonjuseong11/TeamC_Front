@@ -10,7 +10,7 @@ import Logo from "../../assets/Logo.png";
 const Login = ({ setIsLogin, User }) => {
   const navigate = useNavigate();
   const toHome = () => {
-    navigate("/home/board1");
+    navigate("/board1");
   };
   const toJoin = () => {
     navigate("/join");

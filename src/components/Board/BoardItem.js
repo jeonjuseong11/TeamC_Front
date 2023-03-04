@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 
-const BoardItem = ({ userId, title, created_date, no }) => {
+const BoardItem = ({ userId, title, created_date, no, board }) => {
   return (
     <tr style={{ borderBottom: "1px solid black" }}>
       <td style={{ textAlign: "center" }}>{no}</td>
       <td style={{ textAlign: "center" }}>{userId}</td>
       <td style={{ textAlign: "left" }}>
         <Link
-          to={`/home/board1/${no}`}
+          to={`/${board}/${no}`}
           style={{
             textDecoration: "none",
             color: "black",
