@@ -9,7 +9,7 @@ import { PostsStateContext } from "../../App";
 const BoardList = ({ getData, setPostList }) => {
   const postList = useContext(PostsStateContext);
   let { board } = useParams();
-  console.log(postList);
+  // console.log(postList);데이터 확인용
   //pagination
   const [count, setCount] = useState(0); // 아이템 총 개수
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지. default 값으로 1
@@ -60,7 +60,7 @@ const BoardList = ({ getData, setPostList }) => {
       <form className={style.searchForm}>
         <input
           type="text"
-          className={style.nameInput}
+          className={style.titleInput}
           ref={titleInput}
           placeholder="제목"
           onChange={onChangeSearch}

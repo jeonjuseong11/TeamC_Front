@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import style from "../Top/Top.module.css";
 import profileImg from "../../assets/profile.png";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+
 const Top = ({ User, setIsLogin }) => {
   const navigate = useNavigate();
   const logout = () => {
@@ -11,17 +12,20 @@ const Top = ({ User, setIsLogin }) => {
     setIsLogin(false);
   };
   const no = useParams();
-  //제목 변환
   const location = useLocation();
+  //제목 변환
+
   const titlePick = () => {
     // console.log(location); 위치 확인용
-    if (location.pathname == "/") {
+    if (location.pathname == `/board1/${no.no}`) {
       return "자유 게시판";
-    } else if (location.pathname == "/board2") {
+    } else if (location.pathname == `/board2/${no.no}`) {
       return "비밀 게시판";
-    } else if (location.pathname == "/profile") {
+    } else if (location.pathname === "/profile") {
       return "Profile";
-    } else if (location.pathname == "/board1" || `/home/board1/${no}`) {
+    } else if (location.pathname === "/board2") {
+      return "비밀 게시판";
+    } else if (location.pathname === "/board1") {
       return "자유 게시판 ";
     }
   };
@@ -46,4 +50,5 @@ const Top = ({ User, setIsLogin }) => {
     </div>
   );
 };
+
 export default Top;

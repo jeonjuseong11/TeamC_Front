@@ -1,5 +1,5 @@
 .commentPostList {
-  height: 70vh;
+  height: 73vh;
   width: 100%;
   padding-left: 10px;
   overflow-y: auto;
@@ -62,9 +62,12 @@
 }
 .commentInput {
   display: block;
+  width: 100%;
+  margin-bottom: 5%;
 }
 .commentInput input {
-  width: 90%;
+  margin-left: 5%;
+  width: 95%;
   height: 40px;
 }
 .commentInput button {
