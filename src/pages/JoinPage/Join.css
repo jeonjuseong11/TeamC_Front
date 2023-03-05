@@ -2,7 +2,6 @@
     width: 1920px;
     height: 1080px;
     background-color: #8282ff;
-    margin-top: -10px;
 }
 
 .container{
@@ -10,7 +9,7 @@
     flex-direction: column;
     width: 500px;
     height: 650px;
-    margin-left: 710px;
+    margin: 0 auto;
     background-color: white;
     transform: translateY(80px);
     box-sizing: border-box;
@@ -42,7 +41,7 @@
 }
 
 .radio-btn{
-    width: 200px;
+    width: 100px;
     margin-left: 90px;
     display: flex;
 }

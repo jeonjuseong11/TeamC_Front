@@ -4,7 +4,7 @@ import Login from "./pages/LoginPage/Login.js";
 import "./App.css";
 import Home from "./pages/HomePage/Home.js";
 import Join from "./pages/JoinPage/Join.js";
-import Profile from "./pages/ProfilePage/ProfilePage.js";
+import ProfilePage from "./pages/ProfilePage/ProfilePage.js";
 import BoardDetail from "./components/Board/BoardDetail.js";
 import DetailPage from "./pages/DetailPage/DetailPage.js";
 import { useEffect } from "react";
@@ -73,7 +73,7 @@ function App() {
             exact
             path="/profile"
             element={
-              <Profile menus={menus} User={User} setIsLogin={setIsLogin} />
+              <ProfilePage menus={menus} User={User} setIsLogin={setIsLogin} />
             }
           />
         </Routes>

@@ -1,0 +1,57 @@
+.Profile {
+  display: flex;
+  flex-direction: column;
+  float: right;
+  width: 80%;
+}
+
+.Profile .USerForm{
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+}
+
+.Profile .UserIcon{
+  display: flex;
+  background-color:#c5c5c5;
+  width: 200px;
+  height: 200px;
+  border-radius: 15px;
+  margin: 15px;
+}
+
+.Profile .UserIcon ul{
+  margin: auto auto;
+}
+
+
+.Profile .Icon{
+  width: 150px;
+  height: 150px;
+}
+
+.Profile .UserImformation{
+  display: flex;
+  background-color: #c5c5c5;
+  width: 600px;
+  height: 200px;
+  margin-top: 15px;
+  border-radius: 15px;
+}
+
+.Profile .UserImformation ul li{
+  display: flex;
+  width: 600px;
+  margin: 15px;
+}
+
+.Profile .MyPostList{
+  width: 785px;
+  
+  background-color: #c5c5c5;
+  border-radius: 15px;
+  margin: 15px;
+}
+.Profile .MyPostList .MyCreatedList{
+  height: 10%;
+}
