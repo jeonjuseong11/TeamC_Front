@@ -19,8 +19,8 @@
 .container input{
     width: 250px;
     height: 30px;
+    margin:0 auto;
     margin-top: 10px;
-    margin-left: 125px;
 }
 
 .container p{
@@ -42,7 +42,7 @@
 
 .radio-btn{
     width: 100px;
-    margin-left: 90px;
+    margin: 0 auto;
     display: flex;
 }
 
@@ -65,4 +65,12 @@
     display: flex;
     flex-direction: row;
     margin-left: -100px;
+}
+.Join .JoinLogo{
+    margin: 0 auto;
+}
+
+.JoinLogo img{
+    
+    width: 150px;
 }

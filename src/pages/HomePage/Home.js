@@ -4,7 +4,7 @@ import BoardDetail from "../../components/Board/BoardDetail";
 import BoardList from "../../components/Board/BoardList";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Profile from "../ProfilePage/ProfilePage";
-import Top from "../../components/Top/Top";
+import Top from "../../components/Top/Top";
 import { useContext } from "react";
 import PostsStateContext from "../../App";
 const Home = ({ User, menus, setIsLogin, getData, setPostList }) => {

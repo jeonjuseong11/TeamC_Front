@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import joinstyle from "./Join.css";
 import { Route, Routes, Link } from "react-router-dom";
 import Login from "../LoginPage/Login";
+import Logo from "../../assets/Logo.png";
 
 const Join = () => {
     // 계정 배열 초기값
@@ -260,9 +262,20 @@ const Join = () => {
       setEmail("");
       setAge("");
     }
+    const navigate = useNavigate();
+  const backToList = () => {
+    navigate(-1);
+  };
+
 
     return(
         <div className="Join">
+          <div className="JoinLogo">
+          <img src={Logo}
+           alt="logo"
+           onClick={backToList}
+           />
+          </div>
             <div className="container">
                   <p>아이디</p>
                 <input 

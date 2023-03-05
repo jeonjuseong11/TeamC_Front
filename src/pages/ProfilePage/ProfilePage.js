@@ -1,6 +1,6 @@
 import React from "react";
 import Sidebar from "../../components/Sidebar/Sidebar";
-import Top from "../../components/Top/\bTop";
+import Top from "../../components/Top/Top";
 import profileImg from "../../assets/profile.png"
 import MyBoardList from "../../components/MyBoard/MyBoardList"
 import style from "./Profile.module.css";
