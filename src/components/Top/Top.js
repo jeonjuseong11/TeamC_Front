@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useLocation, Link } from "react-router-dom";
 import style from "../Top/Top.module.css";
 import profileImg from "../../assets/profile.png";

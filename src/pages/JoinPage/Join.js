@@ -421,12 +421,12 @@ const Join = () => {
         <p>성별</p>
         <div className="radio-btn">
           <div className="male-btn">
-            <input type="radio" id="sex" name="sex" value="male" checked />
-            <label for="male">남성</label>
+            <input type="radio" id="sex" name="sex" value="male" />
+            <label htmlfor="male">남성</label>
           </div>
           <div className="female-btn">
             <input type="radio" id="sex" name="sex" value="female" />
-            <label for="femakle">여성</label>
+            <label htmlfor="female">여성</label>
           </div>
         </div>
         <p>생년월일</p>
