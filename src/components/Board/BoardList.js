@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from "react";
-// import { Link } from "react-router-dom";
 import style from "./Board.module.css";
 import BoardItem from "./BoardItem";
-import profile from "../Board/profile.jpg";
-import Paging from "../Paging";
-import {
-  Link,
-  Route,
-  Routes,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import Paging from "../Paging/Paging.js";
+import { useContext } from "react";
 import { useRef } from "react";
-
-const BoardList = ({ id, setPostList, postList, getData }) => {
+import { useParams } from "react-router-dom";
+import { PostsStateContext } from "../../App";
+const BoardList = ({ getData, setPostList }) => {
+  const postList = useContext(PostsStateContext);
+  let { board } = useParams();
+  // console.log(postList);데이터 확인용
   //pagination
   const [count, setCount] = useState(0); // 아이템 총 개수
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지. default 값으로 1
@@ -21,43 +17,6 @@ const BoardList = ({ id, setPostList, postList, getData }) => {
   const [indexOfLastPost, setIndexOfLastPost] = useState(0); // 현재 페이지의 마지막 아이템 인덱스
   const [indexOfFirstPost, setIndexOfFirstPost] = useState(0); // 현재 페이지의 첫번째 아이템 인덱스
   const [currentPosts, setCurrentPosts] = useState(0); // 현재 페이지에서 보여지는 아이템들
-  //검색창 state
-  const [titleSearch, setTitleSearch] = useState("");
-  const [idSearch, setIdSearch] = useState("");
-  const titleInput = useRef();
-  const idInput = useRef();
-  // const navigate = useNavigate();
-  const location = useLocation();
-  //검색창 action 코드
-  const onChangeSearchTitle = (e) => {
-    e.preventDefault();
-    setTitleSearch(e.target.value);
-  };
-  const onChangeSearchId = (e) => {
-    e.preventDefault();
-    setIdSearch(e.target.value);
-  };
-  //검색 기능 코드
-  const initList = (e) => {
-    getData();
-    setTitleSearch("");
-  };
-  const onSearchTitle = (e) => {
-    e.preventDefault();
-    if (titleSearch === null || titleSearch === "") {
-      titleInput.current.focus();
-      alert("검색란이 비었다");
-    } else {
-      const filterData = postList.filter((it) =>
-        it.title.includes(titleSearch)
-      );
-      setPostList(filterData);
-      setCurrentPosts(filterData.slice(indexOfFirstPost, indexOfLastPost));
-      setCurrentPage(1);
-      return;
-    }
-    setTitleSearch("");
-  };
 
   useEffect(() => {
     setCount(postList.length);
@@ -65,59 +24,55 @@ const BoardList = ({ id, setPostList, postList, getData }) => {
     setIndexOfFirstPost(indexOfLastPost - postPerPage);
     setCurrentPosts(postList.slice(indexOfFirstPost, indexOfLastPost));
   }, [currentPage, indexOfLastPost, indexOfFirstPost, postList, postPerPage]);
+  //검색창 state
+  const [search, setSearch] = useState("");
+  const titleInput = useRef();
+  //검색창 action 코드
+  const onChangeSearch = (e) => {
+    e.preventDefault();
+    setSearch(e.target.value);
+  };
 
-  //제목 변환
-  const titlePick = () => {
-    if (location.pathname == "/board1") {
-      return "자유 게시판";
-    } else if (location.pathname == "/board2") {
-      return "비밀 게시판";
+  //검색 기능 코드
+  const initList = (e) => {
+    getData();
+    setSearch("");
+  };
+
+  const onSearch = (e) => {
+    e.preventDefault();
+    if (search === null || search === "") {
+      titleInput.current.focus();
+      alert("검색란이 비었다");
+    } else {
+      const filterData = postList.filter((it) =>
+        it.title.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+      );
+      setPostList(filterData);
+      setCurrentPosts(filterData.slice(indexOfFirstPost, indexOfLastPost));
+      setCurrentPage(1);
+      return;
     }
   };
 
   return (
     <div className={style.BoardList}>
-      <h2>{titlePick()}</h2>
-      <ul className={style.profile}>
-        <Link to={"/profile"}>
-          <li>
-            <span>{id}</span>
-            <span> 님, 반갑습니다</span>
-          </li>
-          <li>
-            <img src={profile} />
-          </li>
-        </Link>
-      </ul>
       <form className={style.searchForm}>
         <input
           type="text"
-          className={style.tagInput}
-          ref={idInput}
-          placeholder="작성자"
-          onChange={onChangeSearchId}
-          value={idSearch}
-        />
-        <input
-          type="text"
-          className={style.nameInput}
+          className={style.titleInput}
           ref={titleInput}
           placeholder="제목"
-          onChange={onChangeSearchTitle}
-          value={titleSearch}
+          onChange={onChangeSearch}
+          value={search}
         />
-        <button
-          className={style.searchBtn}
-          onClick={onSearchTitle}
-          type="submit"
-        >
+        <button className={style.searchBtn} onClick={onSearch} type="submit">
           Search
         </button>
-        <button className={style.resetBtn} type="reset" onClick={initList}>
+        <button type="button" className={style.resetBtn} onClick={initList}>
           초기화
         </button>
       </form>
-
       <div className={style.info}>
         <h4>{postList.length}개의 글이 있습니다.</h4>
       </div>
@@ -146,7 +101,9 @@ const BoardList = ({ id, setPostList, postList, getData }) => {
           </thead>
           <tbody>
             {currentPosts && postList.length > 0 ? (
-              currentPosts.map((it) => <BoardItem key={it.no} {...it} />)
+              currentPosts.map((it) => (
+                <BoardItem key={it.no} {...it} board={board} />
+              ))
             ) : (
               <tr>
                 <td colSpan="4" style={{ height: "60vh" }}>

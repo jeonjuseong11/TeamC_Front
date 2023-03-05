@@ -1,0 +1,68 @@
+.Join{
+    width: 1920px;
+    height: 1080px;
+    background-color: #8282ff;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 650px;
+    margin: 0 auto;
+    background-color: white;
+    transform: translateY(80px);
+    box-sizing: border-box;
+    border-radius: 15px;
+}
+
+.container input{
+    width: 250px;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 125px;
+}
+
+.container p{
+    margin: 10px auto;
+}
+
+.container .create-btn{
+    width: 120px;
+    height: 30px;
+    margin: 10px;
+    margin-left: 122.5px;
+}
+
+.container .reset-btn{
+    width: 120px;
+    height: 30px;
+    margin: 10px;
+}
+
+.radio-btn{
+    width: 100px;
+    margin-left: 90px;
+    display: flex;
+}
+
+.container .radio-btn input{
+    width: 30px;
+}
+
+.container .radio-btn label{
+    width: 50px;
+    margin-top: 15px;
+}
+
+.male-btn{
+    display: flex;
+    flex-direction: row;
+    margin-left: -50px;
+}
+
+.female-btn{
+    display: flex;
+    flex-direction: row;
+    margin-left: -100px;
+}

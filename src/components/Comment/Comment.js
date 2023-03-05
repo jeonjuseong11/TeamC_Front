@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import style from "./Comment.module.css";
-import src from "../Board/profile.jpg";
-function Comment({ removeComment, editComment, comment, changeIsModify }) {
+import src from "../../assets/profile.png";
+function Comment({ removeComment, editComment, comment }) {
   const [localIsModify, setLocalIsModify] = useState(comment.isModify);
   useEffect(() => {
     setLocalContent(comment.text);
-    console.log(comment);
+    // console.log(comment);
     setLocalIsModify(localIsModify);
-    console.log(comment.isModify);
+    // console.log(comment.isModify); 수정상황 반영되는지 확인
   }, [comment, comment.isModify, localIsModify]);
 
   //삭제기능

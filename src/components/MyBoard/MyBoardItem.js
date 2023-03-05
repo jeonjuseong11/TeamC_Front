@@ -1,7 +1,6 @@
-// import { Link } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-const BoardItem = ({ userId, title, created_date, no }) => {
+const MyBoardItem = ({ userId, title, created_date, no }) => {
   return (
     <tr style={{ borderBottom: "1px solid black" }}>
       <td style={{ textAlign: "center" }}>{no}</td>
@@ -27,4 +26,4 @@ const BoardItem = ({ userId, title, created_date, no }) => {
     </tr>
   );
 };
-export default BoardItem;
+export default MyBoardItem;
