@@ -6,6 +6,7 @@ import Login from "../LoginPage/Login";
 import Logo from "../../assets/Logo.png";
 
 const Join = () => {
+
     // 계정 배열 초기값
     const [account, setAccount] = useState([
       {
@@ -139,11 +140,6 @@ const Join = () => {
         setAccount([{
           name: inputNameValue
         }])
-        // const {name, value} = e.target
-        // setInputs({
-        //   ...inputs,
-        //   [name] : value
-        // })
         if (name==="") {
             setNameValid(false);
         } else {
@@ -216,21 +212,19 @@ const Join = () => {
 
       // 나이(생년월일) 동기 처리
       useEffect(()=>{
-        if(age.length === 0){
-        }else{
-        if(age.length === 8){
+        if(age.length !== null){
           setAgeValid(true);
       }else{
         setAgeValid(false);
         }
-      }
+      
       },[age])
 
       // 나이(생년월일) 제한
       const handleAge = (e) => {
         const inputAgeValue = e.target.value
         setAge(inputAgeValue);
-        if (age.length === 8) {
+        if (age !== null) {
             setAgeValid(true);
         setAge(inputAgeValue);
         setAccount([{
@@ -253,7 +247,8 @@ const Join = () => {
           }
         }
     }
-    
+
+    // 입력란 초기화
     const onReset = () =>{
       setId("");
       setPw("");
@@ -262,6 +257,8 @@ const Join = () => {
       setEmail("");
       setAge("");
     }
+
+    // 이벤트 발생시 이전 페이지로 이동
     const navigate = useNavigate();
   const backToList = () => {
     navigate(-1);
@@ -327,28 +324,32 @@ const Join = () => {
                             style={email.length === 0 ? {border : "solid 1px black"} : emailValid ? {border : "solid 1px green"} : {border : "solid 1px red"}}
                             />
                           <p>성별</p>
+                          <div>
                           <div className = "radio-btn">
-                          <input type='radio'
-                            name='sex'
-                            id = "sex" 
-                            value='female' 
-                            onClick={onSexClick}/>
-                            <label>여성</label>
-                      <input type='radio' 
-                            name='sex'
-                            id = "sex" 
-                            value='male' 
-                            onClick={onSexClick}/>
-                            <label>남성</label>
-                      <div id='result'></div>
+                            <div className="female-radio">
+                              <input type='radio'
+                                name='sex'
+                                id = "sex" 
+                                value='female' 
+                                onClick={onSexClick}/>
+                                <label>여성</label>
+                                </div>
+                                <div className="male-radio">
+                                <input type='radio' 
+                                name='sex'
+                                id = "sex" 
+                                value='male' 
+                                onClick={onSexClick}/>
+                                <label>남성</label>
+                                </div>
+                            </div>
               </div>
             <p>생년월일</p>
                 <input
                             id = "age"
                             name = "age"
-                            type="number"
+                            type="date"
                             value={age}
-                            placeholder="ex)20080101"
                             onChange={handleAge}
                             style={age.length === 0 ? {border : "solid 1px black"} : ageValid ? {border : "solid 1px green"} : {border : "solid 1px red"}}
                             />

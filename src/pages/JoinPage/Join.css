@@ -9,7 +9,7 @@
     flex-direction: column;
     width: 500px;
     height: 650px;
-    margin: 0 auto;
+    margin: -70px 610px;
     background-color: white;
     transform: translateY(80px);
     box-sizing: border-box;
@@ -55,22 +55,28 @@
     margin-top: 15px;
 }
 
-.male-btn{
+.male-radio{
     display: flex;
     flex-direction: row;
-    margin-left: -50px;
 }
 
-.female-btn{
+.female-radio{
     display: flex;
     flex-direction: row;
-    margin-left: -100px;
 }
 .Join .JoinLogo{
-    margin: 0 auto;
+    margin-left: 715px;
+}
+
+.radio-btn label{
+    margin-left: 10px;
+}
+
+.radio-btn{
+   margin-left: 180px;
 }
 
 .JoinLogo img{
-    
-    width: 150px;
+    margin-top: 60px;
+    width: 300px;
 }
