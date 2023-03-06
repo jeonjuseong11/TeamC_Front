@@ -14,8 +14,8 @@ import Board from "../../components/Board/Board";
 const Profile = ({ menus, User, setIsLogin }) => {
   return (
     <div>
-      <Sidebar menus={menus} />
-      <Top User={User} setIsLogin={setIsLogin} />
+      <Sidebar menus={menus} setIsLogin={setIsLogin} />
+      <Top User={User} />
       <div className={style.Profile}>
         <Board>
           <div className={style.UserIcon}>
