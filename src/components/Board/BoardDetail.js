@@ -4,6 +4,8 @@ import Comments from "../Comment/Comments";
 import style from "./Board.module.css";
 import { useContext } from "react";
 import { PostsStateContext } from "../../App";
+import CommentsWrapper from "../Comment/CommentsWrapper";
+import Board from "./Board";
 
 const BoardDetail = () => {
   const post = useContext(PostsStateContext);
@@ -22,7 +24,7 @@ const BoardDetail = () => {
   return (
     <div>
       <div className={style.BoardDetail}>
-        <div className={style.board}>
+        <Board>
           <div className={style.boardContent}>
             <div className={style.boardTitle}>
               <button onClick={backToList}>&lt;</button>
@@ -39,10 +41,10 @@ const BoardDetail = () => {
               </p>
             </div>
           </div>
-          <div className={style.CommentsWrapper}>
+          <CommentsWrapper>
             <Comments />
-          </div>
-        </div>
+          </CommentsWrapper>
+        </Board>
       </div>
     </div>
   );

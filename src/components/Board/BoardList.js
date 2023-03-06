@@ -6,6 +6,8 @@ import { useContext } from "react";
 import { useRef } from "react";
 import { useParams } from "react-router-dom";
 import { PostsStateContext } from "../../App";
+import searchIcon from "../../assets/searchicon.png";
+
 const BoardList = ({ getData, setPostList }) => {
   const postList = useContext(PostsStateContext);
   let { board } = useParams();
@@ -58,6 +60,7 @@ const BoardList = ({ getData, setPostList }) => {
   return (
     <div className={style.BoardList}>
       <form className={style.searchForm}>
+        <img src={searchIcon} className={style.searchIcon} />
         <input
           type="text"
           className={style.titleInput}
