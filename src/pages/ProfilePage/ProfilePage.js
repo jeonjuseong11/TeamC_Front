@@ -12,6 +12,7 @@ import calendarImg from "../../assets/calendar.png";
 import style from "./Profile.module.css";
 import Board from "../../components/Board/Board";
 const Profile = ({ menus, User, setIsLogin }) => {
+
   return (
     <div>
       <Sidebar menus={menus} setIsLogin={setIsLogin} />
@@ -19,29 +20,16 @@ const Profile = ({ menus, User, setIsLogin }) => {
       <div className={style.Profile}>
         <Board>
           <div className={style.UserIcon}>
-            <ul>
+            <ul className={style.ProfileIcon}>
               <li>
                 <img className={style.Icon} src={profileImg} />
               </li>
               <li>{User.name}</li>
-            </ul>
-            <ul className={style.AboutMe}>
-              <li className={style.UserImformationTitle}>
-                <h2>About Me</h2>
-              </li>
               <li>
-                <p>
-                  자신에 대해 설명해주세요 자신에 대해 설명해주세요 자신에 대해
-                  설명해주세요
-                </p>
+                <button>수정</button>
               </li>
             </ul>
-          </div>
-          <div className={style.UserImformation}>
-            <ul>
-              <li className={style.UserImformationTitle}>
-                <h2>Imformation</h2>
-              </li>
+            <ul className={style.Imformation}>
               <li>
                 <img className={style.IdIcon} src={idImg} />
                 Id : {User.id}
@@ -63,19 +51,43 @@ const Profile = ({ menus, User, setIsLogin }) => {
               <li>
                 <a href="#">
                   <img className={style.SnsIcon} src={facebookImg} />
-                </a>
+                </a> &nbsp;facebook.com
               </li>
               <li>
                 <a href="#">
                   <img className={style.SnsIcon} src={instagramImg} />
-                </a>
+                </a> &nbsp;instagram.com
               </li>
               <li>
                 <a href="#">
                   <img className={style.SnsIcon} src={githubImg} />
-                </a>
+                </a> &nbsp;github.com
               </li>
             </ul>
+          </div>
+          <div className={style.UserImformation}>
+          <ul className={style.AboutMe}>
+              <li className={style.UserImformationTitle}>
+                <h2>About Me</h2>
+                <button>수정</button>
+              </li>
+              <li>
+                <p>
+                  취미
+                </p>
+              </li>
+              <li>
+                <p>
+                  특기
+                </p>
+              </li>
+              <li>
+                <p>
+                  자격증
+                </p>
+              </li>
+            </ul>
+            
           </div>
         </Board>
         {/* <div className={style.MyPostList}>
