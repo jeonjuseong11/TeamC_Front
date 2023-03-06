@@ -45,11 +45,14 @@ const Join = () => {
       }else{
         if (regex.test(id)) {
           setIdValid(true);
+          if(idValid && pwValid && pwRewindValid && nameValid && emailValid && ageValid){
+            setIsJoin(true)
+           }
         } else {
           setIdValid(false);
         }
       }
-    },[id])
+    },[id, isJoin])
 
     // 아이디 제한
     const handleId = (e) => {
@@ -74,11 +77,14 @@ const Join = () => {
       }else{
         if (regex.test(pw)) {
           setPwValid(true);
+          if(idValid && pwValid && pwRewindValid && nameValid && emailValid && ageValid){
+            setIsJoin(true)
+           }
         } else {
           setPwValid(false);
         }
       }
-      },[pw])
+      },[pw, isJoin])
 
 
       // 비밀번호 제한
@@ -104,11 +110,14 @@ const Join = () => {
       }else{
         if (regex.test(pwRewind) && pwRewind === pw) {
           setPwRewindValid(true);
+          if(idValid && pwValid && pwRewindValid && nameValid && emailValid && ageValid){
+            setIsJoin(true)
+           }
         } else {
           setPwRewindValid(false);
         }
       }
-      },[pwRewind])
+      },[pwRewind, isJoin])
 
       // 비밀번호 확인 제한
       const handlePwRewind = (e) => {
@@ -127,11 +136,14 @@ const Join = () => {
       }else{
         if (regex.test(pw)) {
           setNameValid(true);
+          if(idValid && pwValid && pwRewindValid && nameValid && emailValid && ageValid){
+            setIsJoin(true)
+           }
         } else {
           setNameValid(false);
         }
       }
-      },[name])
+      },[name, isJoin])
     
       // 이름 제한
       const handleName = (e) => {
@@ -154,11 +166,14 @@ const Join = () => {
       }else{
         if (regex.test(email)) {
           setEmailValid(true);
+          if(idValid && pwValid && pwRewindValid && nameValid && emailValid && ageValid){
+            setIsJoin(true)
+           }
         } else {
           setEmailValid(false);
         }
       }
-      },[email])
+      },[email, isJoin])
 
       // 이메일 제한
       const handleEmail = (e) => {
@@ -175,19 +190,6 @@ const Join = () => {
         }
       };
 
-// 이메일 동기 처리
-      useEffect(()=>{
-        const regex = /^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/;
-        if(email.length === 0){
-      }else{
-        if (regex.test(email)) {
-          setEmailValid(true);
-        } else {
-          setEmailValid(false);
-        }
-      }
-      },[email])
-
       // 성별 동기 처리
       useEffect(()=>{
         const regex = /^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/;
@@ -195,11 +197,14 @@ const Join = () => {
       }else{
         if (regex.test(email)) {
           setEmailValid(true);
+          if(idValid && pwValid && pwRewindValid && nameValid && emailValid && ageValid){
+            setIsJoin(true)
+           }
         } else {
           setEmailValid(false);
         }
       }
-      },[sex])
+      },[sex, isJoin])
 
       // 성별 설정
       const onSexClick = (e) =>{
@@ -214,11 +219,14 @@ const Join = () => {
       useEffect(()=>{
         if(age.length !== null){
           setAgeValid(true);
+          if(idValid && pwValid && pwRewindValid && nameValid && emailValid && ageValid){
+            setIsJoin(true)
+           }
       }else{
         setAgeValid(false);
         }
       
-      },[age])
+      },[age, isJoin])
 
       // 나이(생년월일) 제한
       const handleAge = (e) => {
@@ -236,35 +244,26 @@ const Join = () => {
       };
 
       // 계정 배열에 값 insert
-    const onCreate = () => {
+    const onCreate = (e) => {
         if(id === "" || pw ==="" || pwRewind === "" || name === "" || email === "" || age ===""){
             alert("공란을 확인해주세요");
         }else{if(!idValid || !pwValid || !pwRewindValid || !nameValid || !emailValid || !ageValid){
           alert("정확한 정보를 기입해주세요")
-         }else{
-            alert("회원가입이 완료되었습니다.");
-            setIsJoin(false)
+         }else{if(idValid && pwValid && pwRewindValid && nameValid && emailValid && ageValid){
+          alert("회원가입 되셨습니다.")
+          setIsJoin(true)
+         }
           }
         }
     }
-
-    // 입력란 초기화
-    const onReset = () =>{
-      setId("");
-      setPw("");
-      setPwRewind("");
-      setName("");
-      setEmail("");
-      setAge("");
-    }
-
+    
     // 이벤트 발생시 이전 페이지로 이동
     const navigate = useNavigate();
   const backToList = () => {
     navigate(-1);
   };
 
-
+if(!isJoin){
     return(
         <div className="Join">
             <div className="container">
@@ -361,6 +360,106 @@ const Join = () => {
             </div>
         </div>
     )
+}else{
+  return(
+    <div className="Join">
+        <div className="container">
+              <p>아이디</p>
+            <input 
+                    id = "id"
+                    name = "id"
+                    type="text"
+                    value={id}
+                    placeholder="아이디를 적어주세요"
+                    onChange={handleId}
+                    style={id.length === 0 ? {border : "solid 1px black"} : idValid ? {border : "solid 1px green"} : {border : "solid 1px red"}}
+                    />
+              <p>패스워드</p>
+              <input
+                        id = "pw"
+                        name = "pw"
+                        type="password"
+                        value={pw}
+                        placeholder="영대소문자, 특수기함 포함 8자 이상"
+                        onChange={handlePw}
+                        style={pw.length === 0 ? {border : "solid 1px black"} : pwValid ? {border : "solid 1px green"} : {border : "solid 1px red"}}
+                        />
+            <p>패스워드 재확인</p>
+            <input
+                            id = "pwRewind"
+                            name = "pwRewind"
+                            type="password"
+                            value={pwRewind}
+                            onChange={handlePwRewind}
+                            style={pwRewind.length === 0 ? {border : "solid 1px black"} : pwRewindValid ? {border : "solid 1px green"} : {border : "solid 1px red"}}
+                            />
+            <p>이름</p>
+            <input
+                    id = "userName"
+                    name = "userName"
+                    type="text"
+                    value={name}
+                    placeholder="이름을 적어주세요"
+                    onChange={handleName}
+                    style={name.length === 0 ? {border : "solid 1px black"} : nameValid ? {border : "solid 1px green"} : {border : "solid 1px red"}}
+                    />
+            <p>이메일</p>
+            <input
+                        id = "email"
+                        name = "email"
+                        type="text"
+                        value={email}
+                        placeholder="이메일을 적어주세요"
+                        onChange={handleEmail}
+                        style={email.length === 0 ? {border : "solid 1px black"} : emailValid ? {border : "solid 1px green"} : {border : "solid 1px red"}}
+                        />
+                      <p>성별</p>
+                      <div>
+                      <div className = "radio-btn">
+                        <div className="female-radio">
+                          <input type='radio'
+                            name='sex'
+                            id = "sex" 
+                            value='female' 
+                            onClick={onSexClick}/>
+                            <label>여성</label>
+                            </div>
+                            <div className="male-radio">
+                            <input type='radio' 
+                            name='sex'
+                            id = "sex" 
+                            value='male' 
+                            onClick={onSexClick}/>
+                            <label>남성</label>
+                            </div>
+                        </div>
+          </div>
+        <p>생년월일</p>
+            <input
+                        id = "age"
+                        name = "age"
+                        type="date"
+                        value={age}
+                        onChange={handleAge}
+                        style={age.length === 0 ? {border : "solid 1px black"} : ageValid ? {border : "solid 1px green"} : {border : "solid 1px red"}}
+                        />
+                        <div className="form-btn">
+                          <Link to ="/">
+                            <button
+                            className="create-btn"
+                            type = "submit"
+                            onClick={onCreate}
+                            >생성</button>
+                            </Link>
+                            <button
+                            className="back-btn"
+                            onClick={backToList}
+                            >취소</button>
+            </div>
+        </div>
+    </div>
+)
+}
 }
 
 export default Join;
