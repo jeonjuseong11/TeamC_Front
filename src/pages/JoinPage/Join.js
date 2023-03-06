@@ -267,12 +267,6 @@ const Join = () => {
 
     return(
         <div className="Join">
-          <div className="JoinLogo">
-          <img src={Logo}
-           alt="logo"
-           onClick={backToList}
-           />
-          </div>
             <div className="container">
                   <p>아이디</p>
                 <input 
@@ -354,18 +348,15 @@ const Join = () => {
                             style={age.length === 0 ? {border : "solid 1px black"} : ageValid ? {border : "solid 1px green"} : {border : "solid 1px red"}}
                             />
                             <div className="form-btn">
-                              <Link to = "/login">
-                <button
-                className="create-btn"
-                type = "submit"
-                onClick={onCreate}
-                >생성</button>
-                </Link>
-                <button
-                className="reset-btn"
-                type= "reset"
-                onClick={onReset}
-                >초기화</button>
+                                <button
+                                className="create-btn"
+                                type = "submit"
+                                onClick={onCreate}
+                                >생성</button>
+                                <button
+                                className="back-btn"
+                                onClick={backToList}
+                                >취소</button>
                 </div>
             </div>
         </div>
