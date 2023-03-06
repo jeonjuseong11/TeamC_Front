@@ -1,124 +1,190 @@
 .Profile {
-  display: flex;
-  flex-direction: column;
   float: right;
   width: 80%;
+  padding-top: 0;
   height: 95vh;
   background: linear-gradient(to bottom, #8282ff 30%, #e3e7ff 30%);
 }
 
-/* .Profile .USerForm {
+.Profile .USerForm{
   width: 80%;
+  height: 35%;
   display: flex;
   flex-direction: column;
-} */
+}
 
-.Profile .UserIcon {
+.Profile .UserIcon{
   display: flex;
-  background-color: white;
+  background-color:white;
   width: 100%;
-  height: 250px;
-  border-radius: 15px 15px 0 0;
-  border-bottom: 2px solid rgba(107, 107, 107, 0.6);
-  border-left: 2px solid rgba(107, 107, 107, 0.6);
-  border-top: 2px solid rgba(107, 107, 107, 0.6);
-  box-shadow: 5px 5px 5px gray;
+  height: 50%;
+  border-radius: 15px;
+  border: solid 1px gray;
 }
 
-.Profile .UserIcon ul {
+.Profile .UserIcon ul{
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+ul.Imformation{
+  margin-left: 30px;
+  margin-top: 82px;
 }
 
-.Profile .UserIcon .AboutMe {
+.Profile .UserIcon .AboutMe{
+  width: 60%;
 }
 
-.Profile .UserIcon .AboutMe li h2 {
+.AboutMe li h2{
   color: #8282ff;
   margin: 0 0;
 }
 
-.Profile .UserIcon ul li {
+.AboutMe li{
+  float: left;
+  width: 20%;
+  height: 250%;
+  background-color: rgba(130, 130, 255, 0.65);
+  margin-left: 20px;
+  border-radius: 15px;
+  margin-top: 30px;
+}
+
+.UserIcon ul li{
   margin: 0 auto;
 }
 
-.Profile .Icon {
+.Icon{
   width: 150px;
   height: 150px;
   margin: 30px;
 }
 
-.Profile .UserImformation {
+.UserImformation{
   display: flex;
   flex-direction: column;
   background-color: white;
   width: 100%;
-  height: 450px;
-  border-radius: 0 0 15px 15px;
-  margin-top: -20px;
-  border-left: 2px solid rgba(107, 107, 107, 0.6);
-  box-shadow: 5px 5px 5px gray;
+  height: 49%;
+  border-radius: 15px;
+  border: solid 1px gray;
 }
 
-.Profile .UserImformation ul li {
+.UserIcon ul li{
   display: flex;
-  width: 100%;
-  background-color: #8282ff;
+  width: 95%;
   padding: 15px;
   margin: 5px;
   border-radius: 10px;
 }
 
-.Profile .UserImformation ul .UserImformationTitle {
-  background-color: white;
-}
 
-.Profile .UserImformation ul .UserImformationTitle h2 {
-  color: #8282ff;
-}
-
-.Profile .UserImformation ul img.IdIcon {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-}
-
-.Profile .UserImformation ul img.EmailIcon {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-}
-
-.Profile .UserImformation ul img.GenderIcon {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-}
-
-.Profile .UserImformation ul img.CalendarIcon {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-}
-
-.Profile .UserImformation ul.Sns {
-  margin: 15px 525px;
+.ProfileIcon{
   display: flex;
-  width: 100px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.Profile .UserImformation ul.Sns img {
+.ProfileIcon button{
+  width: 80px;
+  height: 30px;
+  background:  rgba(130, 130, 255, 0.65);
+  border: none;
+  color: black;
+  border-radius: 3px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: background 0.5s;
+}
+
+.ProfileIcon button:hover{
+  background-color:rgba(130, 130, 255, 0.25);
+  cursor: pointer;
+}
+
+.Profile .UserIcon ul.ProfileIcon li{
+  background-color: white;
+  width: auto;
+  padding: 0;
+}
+
+.UserImformationTitle{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.AboutMe li.UserImformationTitle button{
+  width: 80px;
+  height: 50px;
+  background:  rgba(130, 130, 255, 0.65);
+  border: none;
+  color: black;
+  border-radius: 3px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: background 0.5s;
+}
+
+.AboutMe li.UserImformationTitle button:hover{
+  background-color:rgba(130, 130, 255, 0.25);
+  cursor: pointer;
+}
+
+.AboutMe .UserImformationTitle{
+  background-color: white;
+  height: 50%;
+}
+
+.UserImformationTitle h2{
+ color: #8282ff;
+}
+
+img.IdIcon{
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+img.EmailIcon{
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+img.GenderIcon{
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+img.CalendarIcon{
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.UserIcon ul li{
+  background-color: rgba(130, 130, 255, 0.65);
+}
+
+
+ul.Sns{
+  margin: 82px auto;
+  display: flex;
+  width: 20%;
+  height: 8%;
+}
+
+.UserIcon .Sns li{
+  display: flex;
+  width: 90%;
+}
+
+.Sns img{
   width: 25px;
   height: 25px;
 }
-
-/* .Profile .MyPostList{
-  width: 785px;
-  
-  background-color: #c5c5c5;
-  border-radius: 15px;
-  margin: 15px;
-}
-.Profile .MyPostList .MyCreatedList{
-  height: 10%;
-} */
