@@ -6,6 +6,7 @@ import emailImg from "../../assets/email.png";
 import passwordImg from "../../assets/password.png";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/Logo.png";
+import axios from "axios";
 
 const Login = ({ setIsLogin, User }) => {
   const navigate = useNavigate();
@@ -52,18 +53,37 @@ const Login = ({ setIsLogin, User }) => {
     setNotAllow(true);
   }, [idValid, pwValid]);
 
-  const onClickConfirmButton = () => {
-    if (id === User.id && pw === User.pw) {
-      alert("로그인 성공");
-      toHome();
-      setIsLogin(true);
-    } else if (id !== User.id && pw === User.pw) {
-      alert("아이디를 확인해주세요");
-    } else if (id === User.id && pw !== User.pw) {
-      alert("패스워드를 확인해주세요");
-    } else {
-      alert("가입자 정보가 없습니다.");
+  const loginFunc = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/api-login', {params : {user_id: id}});
+      console.log(response.data);
+      const logindata = response.data;
+      if(logindata != null){
+        if(logindata.user_pw == pw){
+          alert("로그인 성공");
+          toHome();
+          setIsLogin(true);
+        }
+      }else{
+        alert("가입자 정보가 없습니다.");
+      }
+    } catch (error) {
+      console.log(error);
     }
+  }
+
+  const onClickConfirmButton = () => {
+     if (id === User.id && pw === User.pw) {
+       alert("로그인 성공");
+       toHome();
+       setIsLogin(true);
+     } else if (id !== User.id && pw === User.pw) {
+       alert("아이디를 확인해주세요");
+     } else if (id === User.id && pw !== User.pw) {
+       alert("패스워드를 확인해주세요");
+     } else {
+       alert("가입자 정보가 없습니다.");
+     }
   };
 
   return (
@@ -117,7 +137,6 @@ const Login = ({ setIsLogin, User }) => {
             <a href="#">I forgot my password!</a>
           </div>
           <button
-            type="submit"
             className="loginBtn"
             disabled={notAllow}
             onClick={onClickConfirmButton}
