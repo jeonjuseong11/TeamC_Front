@@ -3,12 +3,15 @@ import style from "./Board.module.css";
 import BoardItem from "./BoardItem";
 import Paging from "../Paging/Paging.js";
 import { useContext } from "react";
-import { PostStateContext } from "../../pages/Home/Home.js";
 import { useRef } from "react";
-
+import { useParams } from "react-router-dom";
+import { PostsStateContext } from "../../App";
+import searchIcon from "../../assets/searchicon.png";
+import resetIcon from "../../assets/reseticon.png";
 const BoardList = ({ getData, setPostList }) => {
-  //pagination
-  const postList = useContext(PostStateContext);
+  const postList = useContext(PostsStateContext);
+  let { board } = useParams();
+  // console.log(postList);데이터 확인용
   //pagination
   const [count, setCount] = useState(0); // 아이템 총 개수
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지. default 값으로 1
@@ -57,9 +60,10 @@ const BoardList = ({ getData, setPostList }) => {
   return (
     <div className={style.BoardList}>
       <form className={style.searchForm}>
+        <img src={searchIcon} className={style.searchIcon} />
         <input
           type="text"
-          className={style.nameInput}
+          className={style.titleInput}
           ref={titleInput}
           placeholder="제목"
           onChange={onChangeSearch}
@@ -68,8 +72,8 @@ const BoardList = ({ getData, setPostList }) => {
         <button className={style.searchBtn} onClick={onSearch} type="submit">
           Search
         </button>
-        <button className={style.resetBtn} type="reset" onClick={initList}>
-          초기화
+        <button type="button" className={style.resetBtn} onClick={initList}>
+          <img src={resetIcon} />
         </button>
       </form>
       <div className={style.info}>
@@ -100,7 +104,9 @@ const BoardList = ({ getData, setPostList }) => {
           </thead>
           <tbody>
             {currentPosts && postList.length > 0 ? (
-              currentPosts.map((it) => <BoardItem key={it.no} {...it} />)
+              currentPosts.map((it) => (
+                <BoardItem key={it.no} {...it} board={board} />
+              ))
             ) : (
               <tr>
                 <td colSpan="4" style={{ height: "60vh" }}>

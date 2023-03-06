@@ -1,26 +1,26 @@
-.Header {
+.Top {
   padding-bottom: 10px;
   width: 80%;
   float: right;
-  height: 5%;
+  height: 5vh;
   background-color: #8282ff;
   margin-top: 0;
   margin-bottom: 0;
 }
-.Header img {
+.Top img {
   border-radius: 100%;
   width: 30px;
   height: 30px;
   filter: invert();
 }
-.Header ul {
+.Top ul {
   margin-right: 20px;
 }
-.Header li {
+.Top li {
   float: right;
   list-style-type: none;
 }
-.Header span {
+.Top span {
   font-weight: 600;
   font-size: 12px;
   margin-top: 0;
@@ -29,7 +29,15 @@
   line-height: 30px;
   color: white;
 }
-.Header span:first-child {
+.Top button {
+  margin-left: 10px;
+  line-height: 25px;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: #8282ff;
+  color: white;
+}
+.Top span:first-child {
   font-weight: 800;
 }
 
