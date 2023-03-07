@@ -7,7 +7,7 @@ import Profile from "../ProfilePage/ProfilePage";
 import Top from "../../components/Top/Top";
 import { useContext } from "react";
 import PostsStateContext from "../../App";
-const Home = ({ User, menus, setIsLogin, getData, setPostList }) => {
+const Home = ({ userInfo, menus, setIsLogin, getData, setPostList }) => {
   const postList = useContext(PostsStateContext);
 
   // const setLocalStrage = () => {
@@ -35,7 +35,7 @@ const Home = ({ User, menus, setIsLogin, getData, setPostList }) => {
         height: "100vh",
       }}
     >
-      <Top User={User} />
+      <Top userInfo={userInfo} />
       <Sidebar menus={menus} setIsLogin={setIsLogin} />
       <BoardList setPostList={setPostList} getData={getData} />
     </div>

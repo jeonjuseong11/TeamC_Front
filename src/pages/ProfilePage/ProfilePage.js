@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Top from "../../components/Top/Top";
 import profileImg from "../../assets/profile.png";
@@ -11,12 +11,37 @@ import emailImg from "../../assets/email.png";
 import calendarImg from "../../assets/calendar.png";
 import style from "./Profile.module.css";
 import Board from "../../components/Board/Board";
-const Profile = ({ menus, User, setIsLogin }) => {
-
+import axios from "axios";
+const Profile = ({ menus, userInfo, setIsLogin }) => {
+  const [profileUserInfo, setProfileUserInfo] = useState({
+    id: "",
+    email: "",
+    sex: "",
+    age: "",
+  });
+  async function getUserInfo() {
+    try {
+      const response = await axios.get("http://localhost:8080/api-user", {
+        params: { user_no: userInfo[0] },
+      });
+      const profileData = response.data;
+      setProfileUserInfo({
+        id: profileData.user_id,
+        email: profileData.user_email,
+        sex: profileData.user_sex,
+        age: profileData.user_age,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    getUserInfo();
+  }, []);
   return (
     <div>
       <Sidebar menus={menus} setIsLogin={setIsLogin} />
-      <Top User={User} />
+      <Top userInfo={userInfo} />
       <div className={style.Profile}>
         <Board>
           <div className={style.UserIcon}>
@@ -24,7 +49,7 @@ const Profile = ({ menus, User, setIsLogin }) => {
               <li>
                 <img className={style.Icon} src={profileImg} />
               </li>
-              <li>{User.name}</li>
+              <li>{userInfo[1]}</li>
               <li>
                 <button>수정</button>
               </li>
@@ -32,62 +57,58 @@ const Profile = ({ menus, User, setIsLogin }) => {
             <ul className={style.Imformation}>
               <li>
                 <img className={style.IdIcon} src={idImg} />
-                Id : {User.id}
+                Id : {profileUserInfo.id}
               </li>
               <li>
                 <img className={style.EmailIcon} src={emailImg} />
-                Email : {User.email}
+                Email : {profileUserInfo.email}
               </li>
               <li>
                 <img className={style.GenderIcon} src={genderImg} />
-                Gender : {User.sex}
+                Gender : {profileUserInfo.sex}
               </li>
               <li>
                 <img className={style.CalendarIcon} src={calendarImg} />
-                Birth : {User.age}
+                Birth : {profileUserInfo.age}
               </li>
             </ul>
             <ul className={style.Sns}>
               <li>
                 <a href="#">
                   <img className={style.SnsIcon} src={facebookImg} />
-                </a> &nbsp;facebook.com
+                </a>{" "}
+                &nbsp;facebook.com
               </li>
               <li>
                 <a href="#">
                   <img className={style.SnsIcon} src={instagramImg} />
-                </a> &nbsp;instagram.com
+                </a>{" "}
+                &nbsp;instagram.com
               </li>
               <li>
                 <a href="#">
                   <img className={style.SnsIcon} src={githubImg} />
-                </a> &nbsp;github.com
+                </a>{" "}
+                &nbsp;github.com
               </li>
             </ul>
           </div>
           <div className={style.UserImformation}>
-          <ul className={style.AboutMe}>
+            <ul className={style.AboutMe}>
               <li className={style.UserImformationTitle}>
                 <h2>About Me</h2>
                 <button>수정</button>
               </li>
               <li>
-                <p>
-                  취미
-                </p>
+                <p>취미</p>
               </li>
               <li>
-                <p>
-                  특기
-                </p>
+                <p>특기</p>
               </li>
               <li>
-                <p>
-                  자격증
-                </p>
+                <p>자격증</p>
               </li>
             </ul>
-            
           </div>
         </Board>
         {/* <div className={style.MyPostList}>

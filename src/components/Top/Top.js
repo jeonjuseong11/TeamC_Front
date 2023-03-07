@@ -5,7 +5,7 @@ import profileImg from "../../assets/profile.png";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-const Top = ({ User, setIsLogin }) => {
+const Top = ({ userInfo, setIsLogin }) => {
   const no = useParams();
   const location = useLocation();
   //제목 변환
@@ -31,7 +31,7 @@ const Top = ({ User, setIsLogin }) => {
       <ul>
         <Link to={"/profile"}>
           <li>
-            <span>{User.id}</span>
+            <span>{userInfo[1]}</span>
             <span> 님, 반갑습니다</span>
           </li>
           <li>
