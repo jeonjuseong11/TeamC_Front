@@ -1,3 +1,9 @@
+.CommentsWrapper {
+  display: inline-block;
+  width: 24%;
+  border-left: 1px solid #c2c2c2;
+  height: 100%;
+}
 .commentPostList {
   height: 73vh;
   width: 100%;

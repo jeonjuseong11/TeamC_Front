@@ -1,57 +1,190 @@
 .Profile {
-  display: flex;
-  flex-direction: column;
   float: right;
   width: 80%;
+  padding-top: 0;
+  height: 95vh;
+  background: linear-gradient(to bottom, #8282ff 30%, #e3e7ff 30%);
 }
 
 .Profile .USerForm{
   width: 80%;
+  height: 35%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .Profile .UserIcon{
   display: flex;
-  background-color:#c5c5c5;
-  width: 200px;
-  height: 200px;
+  background-color:white;
+  width: 100%;
+  height: 50%;
   border-radius: 15px;
-  margin: 15px;
+  border: solid 1px gray;
 }
 
 .Profile .UserIcon ul{
-  margin: auto auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+ul.Imformation{
+  margin-left: 30px;
+  margin-top: 82px;
 }
 
+.Profile .UserIcon .AboutMe{
+  width: 60%;
+}
 
-.Profile .Icon{
+.AboutMe li h2{
+  color: #8282ff;
+  margin: 0 0;
+}
+
+.AboutMe li{
+  float: left;
+  width: 20%;
+  height: 250%;
+  background-color: rgba(130, 130, 255, 0.65);
+  margin-left: 20px;
+  border-radius: 15px;
+  margin-top: 30px;
+}
+
+.UserIcon ul li{
+  margin: 0 auto;
+}
+
+.Icon{
   width: 150px;
   height: 150px;
+  margin: 30px;
 }
 
-.Profile .UserImformation{
+.UserImformation{
   display: flex;
-  background-color: #c5c5c5;
-  width: 600px;
-  height: 200px;
-  margin-top: 15px;
+  flex-direction: column;
+  background-color: white;
+  width: 100%;
+  height: 49%;
   border-radius: 15px;
+  border: solid 1px gray;
 }
 
-.Profile .UserImformation ul li{
+.UserIcon ul li{
   display: flex;
-  width: 600px;
-  margin: 15px;
+  width: 95%;
+  padding: 15px;
+  margin: 5px;
+  border-radius: 10px;
 }
 
-.Profile .MyPostList{
-  width: 785px;
-  
-  background-color: #c5c5c5;
-  border-radius: 15px;
-  margin: 15px;
+
+.ProfileIcon{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.Profile .MyPostList .MyCreatedList{
-  height: 10%;
+
+.ProfileIcon button{
+  width: 80px;
+  height: 30px;
+  background:  rgba(130, 130, 255, 0.65);
+  border: none;
+  color: black;
+  border-radius: 3px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: background 0.5s;
+}
+
+.ProfileIcon button:hover{
+  background-color:rgba(130, 130, 255, 0.25);
+  cursor: pointer;
+}
+
+.Profile .UserIcon ul.ProfileIcon li{
+  background-color: white;
+  width: auto;
+  padding: 0;
+}
+
+.UserImformationTitle{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.AboutMe li.UserImformationTitle button{
+  width: 80px;
+  height: 50px;
+  background:  rgba(130, 130, 255, 0.65);
+  border: none;
+  color: black;
+  border-radius: 3px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: background 0.5s;
+}
+
+.AboutMe li.UserImformationTitle button:hover{
+  background-color:rgba(130, 130, 255, 0.25);
+  cursor: pointer;
+}
+
+.AboutMe .UserImformationTitle{
+  background-color: white;
+  height: 50%;
+}
+
+.UserImformationTitle h2{
+ color: #8282ff;
+}
+
+img.IdIcon{
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+img.EmailIcon{
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+img.GenderIcon{
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+img.CalendarIcon{
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.UserIcon ul li{
+  background-color: rgba(130, 130, 255, 0.65);
+}
+
+
+ul.Sns{
+  margin: 82px auto;
+  display: flex;
+  width: 20%;
+  height: 8%;
+}
+
+.UserIcon .Sns li{
+  display: flex;
+  width: 90%;
+}
+
+.Sns img{
+  width: 25px;
+  height: 25px;
 }

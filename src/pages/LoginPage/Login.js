@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "../LoginPage/Login.css";
-import Join from "../JoinPage/Join";
 import { useNavigate } from "react-router-dom";
 import emailImg from "../../assets/email.png";
 import passwordImg from "../../assets/password.png";

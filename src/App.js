@@ -12,7 +12,15 @@ export const PostsStateContext = React.createContext(); //posts 데이터 contex
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
-  const User = { id: "1@gmail.com", pw: "A!11111111" };
+  const User = {
+    userId: 1,
+    id: "1@gmail.com",
+    pw: "A!11111111",
+    name: "홍길동",
+    email: "1@gmail.com",
+    sex: "male",
+    age: "2000-01-01",
+  };
   const menus = [
     { name: "자유게시판", path: "/board1" },
     { name: "비밀게시판", path: "/board2" },

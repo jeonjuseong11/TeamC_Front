@@ -32,6 +32,10 @@
 .Top button {
   margin-left: 10px;
   line-height: 25px;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: #8282ff;
+  color: white;
 }
 .Top span:first-child {
   font-weight: 800;
