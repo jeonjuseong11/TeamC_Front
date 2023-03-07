@@ -7,14 +7,11 @@ import { Link } from "react-router-dom";
 import Logo from "../../assets/Logo.png";
 import axios from "axios";
 
-const Login = ({ setIsLogin, User }) => {
+const Login = ({ setIsLogin, setuserInfo }) => {
   const navigate = useNavigate();
   const toHome = () => {
     navigate("/board1");
     setIsLogin(true);
-  };
-  const toJoin = () => {
-    navigate("/join");
   };
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
@@ -57,10 +54,11 @@ const Login = ({ setIsLogin, User }) => {
     try {
       setIsLogin(true);
       const response = await axios.get('http://localhost:8080/api-login', {params : {user_id: id}});
-      console.log(response.data);
+      // console.log(response.data);
       const logindata = response.data;
       if(logindata != null){
-        if(logindata.user_pw == pw){
+        if(logindata.user_pw === pw){
+          setuserInfo([logindata.user_no, logindata.user_name]);
           setIsLogin(true);
           toHome();
           alert("로그인 성공");
@@ -72,20 +70,6 @@ const Login = ({ setIsLogin, User }) => {
       console.log(error);
     }
   }
-
-  const onClickConfirmButton = () => {
-     if (id === User.id && pw === User.pw) {
-       alert("로그인 성공");
-       toHome();
-       setIsLogin(true);
-     } else if (id !== User.id && pw === User.pw) {
-       alert("아이디를 확인해주세요");
-     } else if (id === User.id && pw !== User.pw) {
-       alert("패스워드를 확인해주세요");
-     } else {
-       alert("가입자 정보가 없습니다.");
-     }
-  };
 
   return (
     <div className="loginPage">
