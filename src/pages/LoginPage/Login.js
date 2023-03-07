@@ -12,6 +12,7 @@ const Login = ({ setIsLogin, User }) => {
   const navigate = useNavigate();
   const toHome = () => {
     navigate("/board1");
+    setIsLogin(true);
   };
   const toJoin = () => {
     navigate("/join");
@@ -53,16 +54,17 @@ const Login = ({ setIsLogin, User }) => {
     setNotAllow(true);
   }, [idValid, pwValid]);
 
-  const loginFunc = async () => {
+  async function loginFunc () {
     try {
+      setIsLogin(true);
       const response = await axios.get('http://localhost:8080/api-login', {params : {user_id: id}});
       console.log(response.data);
       const logindata = response.data;
       if(logindata != null){
         if(logindata.user_pw == pw){
-          alert("로그인 성공");
-          toHome();
           setIsLogin(true);
+          toHome();
+          alert("로그인 성공");
         }
       }else{
         alert("가입자 정보가 없습니다.");
@@ -137,9 +139,10 @@ const Login = ({ setIsLogin, User }) => {
             <a href="#">I forgot my password!</a>
           </div>
           <button
+            type="button"
             className="loginBtn"
             disabled={notAllow}
-            onClick={onClickConfirmButton}
+            onClick={loginFunc}
           >
             로그인
           </button>
