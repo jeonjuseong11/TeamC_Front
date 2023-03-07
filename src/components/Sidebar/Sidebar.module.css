@@ -26,15 +26,45 @@
   background-color: rgba(80, 62, 157, 0.5);
 }
 .Menu p {
+  text-decoration: none;
   padding-left: 10%;
+  font-weight: 700;
+  color: gray;
 }
 
+.Menu a {
+  text-decoration: none;
+}
 .Menu a:hover {
   background-color: #8282ff;
 }
 .Menu a:hover p {
   color: white;
 }
-.sidebar-item p {
-  font-weight: 600;
+/* logout button */
+.Menu a:last-child {
+  border-top: 1px solid #e0e0e0;
+  width: 100%;
+  height: 10%;
+  position: absolute;
+  bottom: 0;
+}
+.Menu a:last-child p {
+  margin-top: 13%;
+}
+
+.Menu a:last-child img {
+  width: 20px;
+  filter: invert(52%) sepia(2%) saturate(13%) hue-rotate(51deg) brightness(96%)
+    contrast(90%);
+}
+.Menu a:last-child:hover img {
+  filter: invert();
+}
+.logoutIcon {
+  width: 20px;
+  height: auto;
+  position: absolute;
+  font-size: 1.3rem;
+  left: 0.4rem;
 }

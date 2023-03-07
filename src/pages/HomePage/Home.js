@@ -35,8 +35,8 @@ const Home = ({ User, menus, setIsLogin, getData, setPostList }) => {
         height: "100vh",
       }}
     >
-      <Top User={User} setIsLogin={setIsLogin} />
-      <Sidebar menus={menus} />
+      <Top User={User} />
+      <Sidebar menus={menus} setIsLogin={setIsLogin} />
       <BoardList setPostList={setPostList} getData={getData} />
     </div>
   );

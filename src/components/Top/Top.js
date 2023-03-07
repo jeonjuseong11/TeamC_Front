@@ -6,11 +6,6 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const Top = ({ User, setIsLogin }) => {
-  const navigate = useNavigate();
-  const logout = () => {
-    navigate("/");
-    setIsLogin(false);
-  };
   const no = useParams();
   const location = useLocation();
   //제목 변환
@@ -34,9 +29,6 @@ const Top = ({ User, setIsLogin }) => {
     <div className={style.Top}>
       <h2>{titlePick()}</h2>
       <ul>
-        <li>
-          <button onClick={logout}>logout</button>
-        </li>
         <Link to={"/profile"}>
           <li>
             <span>{User.id}</span>
