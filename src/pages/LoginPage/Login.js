@@ -11,7 +11,6 @@ const Login = ({ setIsLogin, setuserInfo }) => {
   const navigate = useNavigate();
   const toHome = () => {
     navigate("/board1");
-    setIsLogin(true);
   };
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");

@@ -8,9 +8,11 @@ import ProfilePage from './pages/ProfilePage/ProfilePage.js';
 import BoardDetail from './components/Board/BoardDetail.js';
 import DetailPage from './pages/DetailPage/DetailPage.js';
 import { useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 export const PostsStateContext = React.createContext(); //posts 데이터 context
 
 function App() {
+  const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(false);
   const [userInfo, setuserInfo] = useState([]);
   const User = {
@@ -48,14 +50,12 @@ function App() {
     getData();
   }, []);
   useEffect(() => {
-    console.log(isLogin);
     if(isLogin===false){
+      console.log(isLogin);
       setuserInfo([]);
+      navigate("/");
     }
   }, [isLogin]);
-  useEffect(() => {
-    console.log(userInfo);
-  }, [userInfo]);
   // return
   return (
     <>
