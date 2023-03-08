@@ -5,10 +5,10 @@ import "./App.css";
 import Home from "./pages/HomePage/Home.js";
 import Join from "./pages/JoinPage/Join.js";
 import ProfilePage from "./pages/ProfilePage/ProfilePage.js";
-import BoardDetail from "./components/Board/BoardDetail.js";
 import DetailPage from "./pages/DetailPage/DetailPage.js";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import PostPage from "./pages/PostPage/PostPage.js";
 export const PostsStateContext = React.createContext(); //posts 데이터 context
 
 function App() {
@@ -98,6 +98,17 @@ function App() {
             path="/profile"
             element={
               <ProfilePage
+                menus={menus}
+                userInfo={userInfo}
+                setIsLogin={setIsLogin}
+              />
+            }
+          />
+          <Route
+            exact
+            path="/post"
+            element={
+              <PostPage
                 menus={menus}
                 userInfo={userInfo}
                 setIsLogin={setIsLogin}
