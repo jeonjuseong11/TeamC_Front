@@ -33,7 +33,6 @@ function Sidebar({ menus, setIsLogin }) {
             로그아웃
           </p>
         </NavLink>
-        <NavLink to="/post">글쓰기페이지</NavLink>
       </div>
     </div>
   );

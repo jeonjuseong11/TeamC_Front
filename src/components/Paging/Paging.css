@@ -58,3 +58,9 @@ ul.pagination li a.active {
   color: #8282ff;
   border-radius: 100%;
 }
+.Paging button {
+  clear: both;
+  position: absolute;
+  right: 10px;
+  float: right;
+}

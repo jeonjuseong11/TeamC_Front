@@ -1,113 +1,109 @@
-.Join{
-    min-height: 100vh;
-    background: linear-gradient(#8282ff, #ffffff);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.Join {
+  min-height: 100vh;
+  background: linear-gradient(#8282ff, #ffffff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.container{
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    height: 60%;
-    /* margin: -70px 610px; */
-    background: rgba(255, 255, 255, 0.5);
-    box-sizing: border-box;
-    border-radius: 15px;
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  height: 60%;
+  /* margin: -70px 610px; */
+  background: rgba(255, 255, 255, 0.5);
+  box-sizing: border-box;
+  border-radius: 15px;
 }
 
-
-
-.container input{
-    width: 250px;
-    height: 30px;
-    margin:0 auto;
-    margin-top: 10px;
-    border: none;
-    outline: none;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 3px;
-    padding: 0.5rem 1.5rem;
-    padding-left: calc(1rem * 3.5);
-    transition: background 0.5s;
-
+.container input {
+  width: 250px;
+  height: 30px;
+  margin: 0 auto;
+  margin-top: 10px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+  padding: 0.5rem 1.5rem;
+  padding-left: calc(1rem * 3.5);
+  transition: background 0.5s;
 }
 
-.container p{
-    margin: 10px auto;
+.container p {
+  margin: 10px auto;
 }
 
-.container .create-btn{
-    width: 120px;
-    height: 50px;
-    margin: 10px;
-    padding: 1rem;
-    background: #8282ff;
-    color: white;
-    border-radius: 3px;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: background 0.5s;
+.container .create-btn {
+  width: 120px;
+  height: 50px;
+  margin: 10px;
+  padding: 1rem;
+  background: #8282ff;
+  color: white;
+  border-radius: 3px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: background 0.5s;
 }
-.container .create-btn:hover{
-    background-color: rgba(130, 130, 255, 0.85);
-    cursor: pointer;
-}
-
-.container .back-btn{
-    width: 120px;
-    height: 50px;
-    background: black;
-    color: white;
-    padding: 1rem;
-    border-radius: 3px;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: background 0.5s;
+.container .create-btn:hover {
+  background-color: rgba(130, 130, 255, 0.85);
+  cursor: pointer;
 }
 
-.container .back-btn:hover{
-    background-color: rgba(0, 0, 0, 0.85);
-    cursor: pointer;
+.container .back-btn {
+  width: 120px;
+  height: 50px;
+  background: black;
+  color: white;
+  padding: 1rem;
+  border-radius: 3px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: background 0.5s;
 }
 
-.radio-btn{
-    width: 100px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.container .back-btn:hover {
+  background-color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
 }
 
-.container .radio-btn input{
-    width: 30px;
-    margin-left: 30px;
+.radio-btn {
+  width: 100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.container .radio-btn label{
-    width: 50px;
-    margin-top: 15px;
-    margin-left: 10px;
+.container .radio-btn input {
+  width: 30px;
+  margin-left: 30px;
 }
 
-.male-radio{
-    display: flex;
-    flex-direction: row;
-
+.container .radio-btn label {
+  width: 50px;
+  margin-top: 15px;
+  margin-left: 10px;
 }
 
-.female-radio{
-    display: flex;
-    flex-direction: row;
+.male-radio {
+  display: flex;
+  flex-direction: row;
 }
 
-.form-btn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: 15px 0;
+.female-radio {
+  display: flex;
+  flex-direction: row;
+}
+
+.form-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 15px 0;
 }

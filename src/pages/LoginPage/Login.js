@@ -15,54 +15,30 @@ const Login = ({ setIsLogin, setuserInfo }) => {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
 
-  const [idValid, setIdValid] = useState(false);
-  const [pwValid, setPwValid] = useState(false);
-  const [notAllow, setNotAllow] = useState(true);
-
   const handleId = (e) => {
     setId(e.target.value);
-    const regex =
-      /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
-    if (regex.test(id)) {
-      setIdValid(true);
-    } else {
-      setIdValid(false);
-    }
   };
 
   const handlePw = (e) => {
     setPw(e.target.value);
-    const regex =
-      /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/;
-    if (regex.test(pw)) {
-      setPwValid(true);
-    } else {
-      setPwValid(false);
-    }
   };
 
-  useEffect(() => {
-    if (idValid && pwValid) {
-      setNotAllow(false);
-      return;
-    }
-    setNotAllow(true);
-  }, [idValid, pwValid]);
-
-  async function loginFunc () {
+  async function loginFunc() {
     try {
       setIsLogin(true);
-      const response = await axios.get('http://localhost:8080/api-login', {params : {user_id: id}});
+      const response = await axios.get("http://localhost:8080/api-login", {
+        params: { user_id: id },
+      });
       // console.log(response.data);
       const logindata = response.data;
-      if(logindata != null){
-        if(logindata.user_pw === pw){
+      if (logindata != null) {
+        if (logindata.user_pw === pw) {
           setuserInfo([logindata.user_no, logindata.user_name]);
           setIsLogin(true);
           toHome();
           alert("로그인 성공");
         }
-      }else{
+      } else {
         alert("가입자 정보가 없습니다.");
       }
     } catch (error) {
@@ -84,17 +60,11 @@ const Login = ({ setIsLogin, setuserInfo }) => {
           <div className="form-id">
             <img className="form-icon" src={emailImg} />
             <input
-              type="email"
+              type="text"
               value={id}
               onChange={handleId}
               placeholder="이메일을 입력해주세요"
-              style={
-                !idValid && id.length === 0
-                  ? { border: "solid 1px black" }
-                  : idValid
-                  ? { border: "solid 1px green" }
-                  : { border: "solid 1px red" }
-              }
+              maxLength="12"
             />
           </div>
           <div className="form-password">
@@ -104,13 +74,6 @@ const Login = ({ setIsLogin, setuserInfo }) => {
               value={pw}
               onChange={handlePw}
               placeholder="비밀번호를 입력해주세요"
-              style={
-                pw.length === 0
-                  ? { border: "solid 1px black" }
-                  : pwValid
-                  ? { border: "solid 1px green" }
-                  : { border: "solid 1px red" }
-              }
             />
           </div>
           <div className="form-check">
@@ -120,12 +83,7 @@ const Login = ({ setIsLogin, setuserInfo }) => {
             </div>
             <a href="#">I forgot my password!</a>
           </div>
-          <button
-            type="button"
-            className="loginBtn"
-            disabled={notAllow}
-            onClick={loginFunc}
-          >
+          <button type="button" className="loginBtn" onClick={loginFunc}>
             로그인
           </button>
         </form>

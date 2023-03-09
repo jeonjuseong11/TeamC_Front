@@ -1,8 +1,11 @@
 import React from "react";
 import Pagination from "react-js-pagination";
+import { useNavigate } from "react-router-dom";
 import "./Paging.css";
 
 const Paging = ({ page, count, setPage }) => {
+  const navigate = useNavigate(); //글쓰기 버튼에 쓸 navigate
+
   return (
     <div>
       <Pagination
@@ -14,6 +17,13 @@ const Paging = ({ page, count, setPage }) => {
         nextPageText={">"}
         onChange={setPage}
       />
+      <button
+        onClick={() => {
+          navigate("/post");
+        }}
+      >
+        글쓰기
+      </button>
     </div>
   );
 };
