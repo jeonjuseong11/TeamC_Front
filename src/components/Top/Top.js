@@ -1,8 +1,8 @@
-import React from "react";
-import { useLocation, Link } from "react-router-dom";
-import style from "../Top/Top.module.css";
-import profileImg from "../../assets/profile.png";
-import { useParams } from "react-router-dom";
+import React from 'react';
+import { useLocation, Link } from 'react-router-dom';
+import style from '../Top/Top.module.css';
+import profileImg from '../../assets/profile.png';
+import { useParams } from 'react-router-dom';
 
 const Top = ({ userInfo, setIsLogin }) => {
   const no = useParams();
@@ -12,15 +12,17 @@ const Top = ({ userInfo, setIsLogin }) => {
   const titlePick = () => {
     // console.log(location); 위치 확인용
     if (location.pathname == `/board1/${no.no}`) {
-      return "자유 게시판";
+      return '자유 게시판';
     } else if (location.pathname == `/board2/${no.no}`) {
-      return "비밀 게시판";
-    } else if (location.pathname === "/profile") {
-      return "Profile";
-    } else if (location.pathname === "/board2") {
-      return "비밀 게시판";
-    } else if (location.pathname === "/board1") {
-      return "자유 게시판 ";
+      return '비밀 게시판';
+    } else if (location.pathname === '/profile') {
+      return 'Profile';
+    } else if (location.pathname === '/board2') {
+      return '비밀 게시판';
+    } else if (location.pathname === '/board1') {
+      return '자유 게시판 ';
+    } else if (location.pathname === '/post') {
+      return '글 작성 ';
     }
   };
 
@@ -28,7 +30,7 @@ const Top = ({ userInfo, setIsLogin }) => {
     <div className={style.Top}>
       <h2>{titlePick()}</h2>
       <ul>
-        <Link to={"/profile"}>
+        <Link to={'/profile'}>
           <li>
             <span>{userInfo[1]}</span>
             <span> 님, 반갑습니다</span>

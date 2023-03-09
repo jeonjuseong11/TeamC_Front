@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./Join.css";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Join.css';
+import axios from 'axios';
 
 const Join = () => {
   // 계정 배열 초기값
   const [account, setAccount] = useState({
-    id: "",
-    pw: "",
-    pwRewind: "",
-    name: "",
-    email: "",
-    sex: "",
+    id: '',
+    pw: '',
+    pwRewind: '',
+    name: '',
+    email: '',
+    sex: '',
     age: 0,
   });
 
@@ -69,7 +69,7 @@ const Join = () => {
   const handleName = (e) => {
     const inputNameValue = e.target.value;
     setAccount({ ...account, name: inputNameValue });
-    if (account.name === "") {
+    if (account.name === '') {
       setNameValid(false);
     } else {
       setNameValid(true);
@@ -107,28 +107,26 @@ const Join = () => {
   };
 
   async function joinFunc() {
-    const data = {
-      user_id: account.id,
-      user_pw: account.pw,
-      user_name: account.name,
-      user_email: account.email,
-      user_sex: account.sex,
-      user_age: account.age,
-    }
     try {
-      const response = await axios.post("http://localhost:8080/api-user/new", null, {params:{
-        user_id: account.id,
-        user_pw: account.pw,
-        user_name: account.name,
-        user_email: account.email,
-        user_sex: account.sex,
-        user_age: account.age,}});
-      console.log(response);
-      console.log(response.data);
-      navigate("/");
+      const response = await axios.post(
+        'http://localhost:8080/api-user/new',
+        null,
+        {
+          params: {
+            user_id: account.id,
+            user_pw: account.pw,
+            user_name: account.name,
+            user_email: account.email,
+            user_sex: account.sex,
+            user_age: account.age,
+          },
+        },
+      );
+      // console.log(response);
+      // console.log(response.data);
+      navigate('/');
     } catch (error) {
       console.log(error);
-      console.log(data);
     }
   }
 

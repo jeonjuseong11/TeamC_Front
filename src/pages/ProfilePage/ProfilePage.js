@@ -1,27 +1,29 @@
-import React, { useEffect, useState } from "react";
-import Sidebar from "../../components/Sidebar/Sidebar";
-import Top from "../../components/Top/Top";
-import profileImg from "../../assets/profile.png";
-import facebookImg from "../../assets/facebook.png";
-import instagramImg from "../../assets/instagram.png";
-import githubImg from "../../assets/github.png";
-import idImg from "../../assets/id.png";
-import genderImg from "../../assets/gender.png";
-import emailImg from "../../assets/email.png";
-import calendarImg from "../../assets/calendar.png";
-import style from "./Profile.module.css";
-import Board from "../../components/Board/Board";
-import axios from "axios";
-const Profile = ({ menus, userInfo, setIsLogin }) => {
+import React, { useContext, useEffect, useState } from 'react';
+import Sidebar from '../../components/Sidebar/Sidebar';
+import Top from '../../components/Top/Top';
+import profileImg from '../../assets/profile.png';
+import facebookImg from '../../assets/facebook.png';
+import instagramImg from '../../assets/instagram.png';
+import githubImg from '../../assets/github.png';
+import idImg from '../../assets/id.png';
+import genderImg from '../../assets/gender.png';
+import emailImg from '../../assets/email.png';
+import calendarImg from '../../assets/calendar.png';
+import style from './Profile.module.css';
+import Board from '../../components/Board/Board';
+import axios from 'axios';
+import { UserDataContext } from '../../App';
+const Profile = ({ menus, setIsLogin }) => {
+  const userInfo = useContext(UserDataContext);
   const [profileUserInfo, setProfileUserInfo] = useState({
-    id: "",
-    email: "",
-    sex: "",
-    age: "",
+    id: '',
+    email: '',
+    sex: '',
+    age: '',
   });
   async function getUserInfo() {
     try {
-      const response = await axios.get("http://localhost:8080/api-user", {
+      const response = await axios.get('http://localhost:8080/api-user', {
         params: { user_no: userInfo[0] },
       });
       const profileData = response.data;
@@ -76,19 +78,19 @@ const Profile = ({ menus, userInfo, setIsLogin }) => {
               <li>
                 <a href="#">
                   <img className={style.SnsIcon} src={facebookImg} />
-                </a>{" "}
+                </a>
                 &nbsp;facebook.com
               </li>
               <li>
                 <a href="#">
                   <img className={style.SnsIcon} src={instagramImg} />
-                </a>{" "}
+                </a>
                 &nbsp;instagram.com
               </li>
               <li>
                 <a href="#">
                   <img className={style.SnsIcon} src={githubImg} />
-                </a>{" "}
+                </a>
                 &nbsp;github.com
               </li>
             </ul>

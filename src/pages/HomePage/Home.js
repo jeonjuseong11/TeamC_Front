@@ -1,11 +1,12 @@
-import React from "react";
-import BoardList from "../../components/Board/BoardList";
-import Sidebar from "../../components/Sidebar/Sidebar";
-import Top from "../../components/Top/Top";
-import { useContext } from "react";
-import PostsStateContext from "../../App";
-const Home = ({ userInfo, menus, setIsLogin, getData, setPostList }) => {
+import React from 'react';
+import BoardList from '../../components/Board/BoardList';
+import Sidebar from '../../components/Sidebar/Sidebar';
+import Top from '../../components/Top/Top';
+import { useContext } from 'react';
+import PostsStateContext, { UserDataContext } from '../../App';
+const Home = ({ menus, setIsLogin, getData, setPostList }) => {
   const postList = useContext(PostsStateContext);
+  const userInfo = useContext(UserDataContext);
 
   // const setLocalStrage = () => {
   //   localStorage.setItem("postsInLocal", JSON.stringify(postList));
@@ -28,8 +29,8 @@ const Home = ({ userInfo, menus, setIsLogin, getData, setPostList }) => {
   return (
     <div
       style={{
-        textAlign: "center",
-        height: "100vh",
+        textAlign: 'center',
+        height: '100vh',
       }}
     >
       <Top userInfo={userInfo} />

@@ -1,11 +1,11 @@
-import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import Comments from "../Comment/Comments";
-import style from "./Board.module.css";
-import { useContext } from "react";
-import { PostsStateContext } from "../../App";
-import CommentsWrapper from "../Comment/CommentsWrapper";
-import Board from "./Board";
+import React from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import Comments from '../Comment/Comments';
+import style from './Board.module.css';
+import { useContext } from 'react';
+import { PostsStateContext } from '../../App';
+import CommentsWrapper from '../Comment/CommentsWrapper';
+import Board from './Board';
 
 const BoardDetail = () => {
   const post = useContext(PostsStateContext);
@@ -32,9 +32,7 @@ const BoardDetail = () => {
             </div>
             <div className={style.boardText}>
               <span>작성자 {findItem.userId}</span>
-              <span>
-                작성 시간 {new Date(findItem.created_date).toLocaleString()}
-              </span>
+              <span>작성 시간 {findItem.created_date}</span>
 
               <p>
                 <b>{findItem.content}</b>
