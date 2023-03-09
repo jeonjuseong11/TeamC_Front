@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
-import BoardDetail from "../../components/Board/BoardDetail";
+import React from "react";
 import BoardList from "../../components/Board/BoardList";
 import Sidebar from "../../components/Sidebar/Sidebar";
-import Profile from "../ProfilePage/ProfilePage";
 import Top from "../../components/Top/Top";
 import { useContext } from "react";
 import PostsStateContext from "../../App";
