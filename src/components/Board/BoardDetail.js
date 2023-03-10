@@ -20,7 +20,6 @@ const BoardDetail = () => {
   const backToList = () => {
     navigate(-1);
   };
-
   return (
     <div>
       <div className={style.BoardDetail}>
@@ -33,10 +32,8 @@ const BoardDetail = () => {
             <div className={style.boardText}>
               <span>작성자 {findItem.userId}</span>
               <span>작성 시간 {findItem.created_date}</span>
-
-              <p>
-                <b>{findItem.content}</b>
-              </p>
+              <div dangerouslySetInnerHTML={{ __html: findItem.content }} />
+              {/* 스타일을 읽을 라면 이거 써야된다고 함 */}
             </div>
           </div>
           <CommentsWrapper>

@@ -11,9 +11,9 @@ const Top = ({ userInfo, setIsLogin }) => {
 
   const titlePick = () => {
     // console.log(location); 위치 확인용
-    if (location.pathname == `/board1/${no.no}`) {
+    if (location.pathname === `/board1/${no.no}`) {
       return '자유 게시판';
-    } else if (location.pathname == `/board2/${no.no}`) {
+    } else if (location.pathname === `/board2/${no.no}`) {
       return '비밀 게시판';
     } else if (location.pathname === '/profile') {
       return 'Profile';

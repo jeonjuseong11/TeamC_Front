@@ -39,10 +39,10 @@ function App() {
       console.log(error);
     }
   }
-  console.log(postList);
-
   useEffect(() => {
     getData();
+    const intervalId = setInterval(getData, 5000); // 새로운 글을 알아보기 위해 5초마다 데이터 가져오기
+    return () => clearInterval(intervalId);
   }, []);
   useEffect(() => {
     if (isLogin === false) {
@@ -50,6 +50,7 @@ function App() {
       setuserInfo([]);
       navigate('/');
     }
+    getData();
   }, [isLogin]);
   // return
   return (

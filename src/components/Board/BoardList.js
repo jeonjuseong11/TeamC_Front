@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import style from "./Board.module.css";
-import BoardItem from "./BoardItem";
-import Paging from "../Paging/Paging.js";
-import { useContext } from "react";
-import { useRef } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { PostsStateContext } from "../../App";
-import searchIcon from "../../assets/searchicon.png";
-import resetIcon from "../../assets/reseticon.png";
+import React, { useEffect, useState } from 'react';
+import style from './Board.module.css';
+import BoardItem from './BoardItem';
+import Paging from '../Paging/Paging.js';
+import { useContext } from 'react';
+import { useRef } from 'react';
+import { useParams } from 'react-router-dom';
+import { PostsStateContext } from '../../App';
+import searchIcon from '../../assets/searchicon.png';
+import resetIcon from '../../assets/reseticon.png';
 const BoardList = ({ getData, setPostList }) => {
   const postList = useContext(PostsStateContext);
   let { board } = useParams();
@@ -26,7 +26,7 @@ const BoardList = ({ getData, setPostList }) => {
     setCurrentPosts(postList.slice(indexOfFirstPost, indexOfLastPost));
   }, [currentPage, indexOfLastPost, indexOfFirstPost, postList, postPerPage]);
   //검색창 state
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
   const titleInput = useRef();
   //검색창 action 코드
   const onChangeSearch = (e) => {
@@ -37,17 +37,17 @@ const BoardList = ({ getData, setPostList }) => {
   //검색 기능 코드
   const initList = (e) => {
     getData();
-    setSearch("");
+    setSearch('');
   };
 
   const onSearch = (e) => {
     e.preventDefault();
-    if (search === null || search === "") {
+    if (search === null || search === '') {
       titleInput.current.focus();
-      alert("검색란이 비었다");
+      alert('검색란이 비었다');
     } else {
       const filterData = postList.filter((it) =>
-        it.title.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+        it.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()),
       );
       setPostList(filterData);
       setCurrentPosts(filterData.slice(indexOfFirstPost, indexOfLastPost));
@@ -81,9 +81,9 @@ const BoardList = ({ getData, setPostList }) => {
 
       <div
         style={{
-          margin: "0 auto",
-          marginLeft: "10px",
-          borderRadius: "10px",
+          margin: '0 auto',
+          marginLeft: '10px',
+          borderRadius: '10px',
         }}
       >
         <table className={style.table}>
@@ -108,7 +108,7 @@ const BoardList = ({ getData, setPostList }) => {
               ))
             ) : (
               <tr>
-                <td colSpan="4" style={{ height: "60vh" }}>
+                <td colSpan="4" style={{ height: '60vh' }}>
                   검색 결과가 없습니다
                 </td>
               </tr>

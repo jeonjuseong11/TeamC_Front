@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
-import "../LoginPage/Login.css";
-import { useNavigate } from "react-router-dom";
-import emailImg from "../../assets/email.png";
-import passwordImg from "../../assets/password.png";
-import { Link } from "react-router-dom";
-import Logo from "../../assets/Logo.png";
-import axios from "axios";
+import React, { useState } from 'react';
+import '../LoginPage/Login.css';
+import { useNavigate } from 'react-router-dom';
+import emailImg from '../../assets/email.png';
+import passwordImg from '../../assets/password.png';
+import { Link } from 'react-router-dom';
+import Logo from '../../assets/Logo.png';
+import axios from 'axios';
 
 const Login = ({ setIsLogin, setuserInfo }) => {
   const navigate = useNavigate();
   const toHome = () => {
-    navigate("/board1");
+    navigate('/board1');
   };
-  const [id, setId] = useState("");
-  const [pw, setPw] = useState("");
+  const [id, setId] = useState('');
+  const [pw, setPw] = useState('');
 
   const handleId = (e) => {
     setId(e.target.value);
@@ -26,7 +26,7 @@ const Login = ({ setIsLogin, setuserInfo }) => {
   async function loginFunc() {
     try {
       setIsLogin(true);
-      const response = await axios.get("http://localhost:8080/api-login", {
+      const response = await axios.get('http://localhost:8080/api-login', {
         params: { user_id: id },
       });
       // console.log(response.data);
@@ -36,10 +36,10 @@ const Login = ({ setIsLogin, setuserInfo }) => {
           setuserInfo([logindata.user_no, logindata.user_name]);
           setIsLogin(true);
           toHome();
-          alert("로그인 성공");
+          alert('로그인 성공');
         }
       } else {
-        alert("가입자 정보가 없습니다.");
+        alert('가입자 정보가 없습니다.');
       }
     } catch (error) {
       console.log(error);
