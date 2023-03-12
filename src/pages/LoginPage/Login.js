@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import '../LoginPage/Login.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import emailImg from '../../assets/email.png';
 import passwordImg from '../../assets/password.png';
-import { Link } from 'react-router-dom';
 import Logo from '../../assets/Logo.png';
 import axios from 'axios';
 
@@ -35,8 +34,8 @@ const Login = ({ setIsLogin, setuserInfo }) => {
         if (logindata.user_pw === pw) {
           setuserInfo([logindata.user_no, logindata.user_name]);
           setIsLogin(true);
-          toHome();
           alert('로그인 성공');
+          toHome();
         }
       } else {
         alert('가입자 정보가 없습니다.');

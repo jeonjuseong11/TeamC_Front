@@ -1,8 +1,7 @@
 import React from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useParams } from 'react-router-dom';
 import style from '../Top/Top.module.css';
 import profileImg from '../../assets/profile.png';
-import { useParams } from 'react-router-dom';
 
 const Top = ({ userInfo, setIsLogin }) => {
   const no = useParams();

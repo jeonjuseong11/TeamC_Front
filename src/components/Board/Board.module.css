@@ -46,7 +46,7 @@
 }
 .BoardDetail h2 {
   float: left;
-  color: white;
+  /* color: white; */
   margin-left: 10px;
 }
 .boardContent {

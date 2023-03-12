@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import BoardList from '../../components/Board/BoardList';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Top from '../../components/Top/Top';
-import { useContext } from 'react';
 import { UserDataContext } from '../../App';
 const Home = ({ menus, setIsLogin, getData, setPostList }) => {
   const userInfo = useContext(UserDataContext);

@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import Login from './pages/LoginPage/Login.js';
+import React, { useState, useEffect } from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
+
+import Login from './pages/LoginPage/Login.js';
 import Home from './pages/HomePage/Home.js';
 import Join from './pages/JoinPage/Join.js';
 import ProfilePage from './pages/ProfilePage/ProfilePage.js';
 import DetailPage from './pages/DetailPage/DetailPage.js';
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import PostPage from './pages/PostPage/PostPage.js';
+
 import axios from 'axios';
+
 export const PostsStateContext = React.createContext(); //posts 데이터 context
-export const UserDataContext = React.createContext();
+export const UserDataContext = React.createContext(); //User 데이터 context
 function App() {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(false);
@@ -41,17 +42,17 @@ function App() {
   }
   useEffect(() => {
     getData();
-    const intervalId = setInterval(getData, 5000); // 새로운 글을 알아보기 위해 5초마다 데이터 가져오기
-    return () => clearInterval(intervalId);
+    // const intervalId = setInterval(getData, 50000); // 새로운 글을 알아보기 위해 5초마다 데이터 가져오기
+    // return () => clearInterval(intervalId);
   }, []);
   useEffect(() => {
     if (isLogin === false) {
       console.log(isLogin);
       setuserInfo([]);
       navigate('/');
+    } else {
     }
-    getData();
-  }, [isLogin]);
+  }, [isLogin, postList]);
   // return
   return (
     <>
@@ -105,6 +106,7 @@ function App() {
               path="/post"
               element={
                 <PostPage
+                  getData={getData}
                   menus={menus}
                   userInfo={userInfo}
                   setIsLogin={setIsLogin}

@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Comments from '../Comment/Comments';
 import style from './Board.module.css';
-import { useContext } from 'react';
 import { PostsStateContext } from '../../App';
 import CommentsWrapper from '../Comment/CommentsWrapper';
 import Board from './Board';

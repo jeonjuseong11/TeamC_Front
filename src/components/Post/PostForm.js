@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 // import TagInput from "react-tagsinput";
 import Board from '../Board/Board';
 import style from './Post.module.css';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { useNavigate } from 'react-router-dom';
-function PostForm({ userInfo }) {
+function PostForm({ userInfo, getData }) {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
   const navigate = useNavigate();
@@ -28,6 +28,7 @@ function PostForm({ userInfo }) {
       console.log(response); //성공여부 판단
       navigate('/board1');
       alert('글작성 성공');
+      getData();
     } catch (error) {
       console.log(error);
     }

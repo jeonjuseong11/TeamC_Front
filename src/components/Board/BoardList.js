@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext, useRef } from 'react';
+import { useParams } from 'react-router-dom';
 import style from './Board.module.css';
 import BoardItem from './BoardItem';
 import Paging from '../Paging/Paging.js';
-import { useContext } from 'react';
-import { useRef } from 'react';
-import { useParams } from 'react-router-dom';
 import { PostsStateContext } from '../../App';
 import searchIcon from '../../assets/searchicon.png';
 import resetIcon from '../../assets/reseticon.png';
