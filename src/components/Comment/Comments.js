@@ -11,7 +11,7 @@ function Comments() {
   const userInfo = useContext(UserDataContext);
   async function getComments() {
     try {
-      const response = await axios.get('http://localhost:8080/api-comments', {
+      const response = await axios.get('http://localhost:8080/api-comment/list', {
         params: { board_no: no },
       });
       const initComments = response.data.map((it) => {
@@ -72,7 +72,7 @@ function Comments() {
     if (comment.user_no == userInfo[0]) {
       try {
         const response = await axios.delete(
-          `http://localhost:8080/api-comment/delete?comment_no=${comment.user_no}`,
+          `http://localhost:8080/api-comment/delete?comment_no=${comment.comment_no}`,
           { withCredentials: true },
         );
         console.log('삭제 요청');
