@@ -11,9 +11,12 @@ function Comments() {
   const userInfo = useContext(UserDataContext);
   async function getComments() {
     try {
-      const response = await axios.get('http://localhost:8080/api-comment/list', {
-        params: { board_no: no },
-      });
+      const response = await axios.get(
+        'http://localhost:8080/api-comment/list',
+        {
+          params: { board_no: no },
+        },
+      );
       const initComments = response.data.map((it) => {
         return {
           comment_no: it.comment_no,
@@ -21,6 +24,8 @@ function Comments() {
           text: it.comment_text,
           id: it.user_name,
           user_no: it.user_no,
+          create_dt: it.create_dt,
+          update_dt: it.update_dt,
         };
       });
       setComments(initComments);
@@ -31,6 +36,7 @@ function Comments() {
   useEffect(() => {
     getComments();
   }, []);
+
   //댓글추가
   const addComment = async (e) => {
     if (inputValue == '' || inputValue == null) {
@@ -72,25 +78,40 @@ function Comments() {
     if (comment.user_no == userInfo[0]) {
       try {
         const response = await axios.delete(
-          `http://localhost:8080/api-comment/delete?comment_no=${comment.comment_no}`
+          `http://localhost:8080/api-comment/delete?comment_no=${comment.comment_no}`,
         );
         console.log('삭제 요청');
         console.log(response);
       } catch (error) {
         console.log(error);
       }
+      getComments();
     } else {
       alert('권한이 없습니다');
     }
   };
-  const editComment = (targetId, newComment, newModify) => {
-    // setComments(
-    //   comments.map((it) =>
-    //     it.comment_no === targetId
-    //       ? { ...it, text: newComment, isModify: newModify }
-    //       : it,
-    //   ),
-    // );
+  const editComment = async (comment, newComment) => {
+    try {
+      const response = await axios.put(
+        'http://localhost:8080/api-comment/update',
+        null,
+        {
+          params: {
+            comment_no: comment.comment_no,
+            comment_text: newComment,
+            user_no: userInfo[0],
+            board_no: no,
+            user_name: userInfo[1],
+          },
+        },
+      );
+      console.log(response); //성공여부 판단
+      // alert('댓글작성 성공');
+      setInputValue('');
+      getComments();
+    } catch (error) {
+      console.log(error);
+    }
   };
   //수정 했는지 안했는지 저장
   const changeIsModify = (targetId, newModify) => {
