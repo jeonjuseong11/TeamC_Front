@@ -72,8 +72,7 @@ function Comments() {
     if (comment.user_no == userInfo[0]) {
       try {
         const response = await axios.delete(
-          `http://localhost:8080/api-comment/delete?comment_no=${comment.comment_no}`,
-          { withCredentials: true },
+          `http://localhost:8080/api-comment/delete?comment_no=${comment.comment_no}`
         );
         console.log('삭제 요청');
         console.log(response);
