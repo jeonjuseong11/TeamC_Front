@@ -1,7 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
-import style from "./Comment.module.css";
-import src from "../../assets/profile.png";
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import style from './Comment.module.css';
+import src from '../../assets/profile.png';
+import { UserDataContext } from '../../App';
 function Comment({ removeComment, editComment, comment }) {
+  const userInfo = useContext(UserDataContext);
   const [localIsModify, setLocalIsModify] = useState(comment.isModify);
   useEffect(() => {
     setLocalContent(comment.text);
@@ -17,7 +19,7 @@ function Comment({ removeComment, editComment, comment }) {
   const handleRemove = () => {
     console.log(comment.no);
     if (window.confirm(`댓글를 정말 삭제하시겠습니까?`)) {
-      removeComment(comment.no);
+      removeComment(comment);
     }
   };
   const handleQuitEdit = () => {
@@ -49,7 +51,7 @@ function Comment({ removeComment, editComment, comment }) {
         <span>{comment.isModify ? <p>수정됨</p> : <></>}</span>
         <p>
           {new Date(
-            comment.created_date
+            comment.created_date,
           ) /*인자이 ms를 넣어주면 ms를 기준으로 생성*/
             .toLocaleString()}
         </p>

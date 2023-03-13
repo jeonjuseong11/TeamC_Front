@@ -1,73 +1,104 @@
-import React, { useRef, useState } from "react";
-import Comment from "./Comment";
-import style from "./Comment.module.css";
-
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { UserDataContext } from '../../App';
+import Comment from './Comment';
+import style from './Comment.module.css';
 function Comments() {
-  const no = useRef(2);
-  const [comments, setComments] = useState([
-    {
-      id: "종섭",
-      text: "임시댓글입니다.1",
-      no: 1,
-      created_date: new Date().getTime(),
-      isModify: false,
-    },
-    {
-      id: "지원",
-      text: "임시댓글입니다.2",
-      no: 2,
-      created_date: new Date().getTime(),
-      isModify: false,
-    },
-  ]);
-  const [inputValue, setInputValue] = useState("");
-
+  let { no } = useParams();
+  const [comments, setComments] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const userInfo = useContext(UserDataContext);
+  async function getComments() {
+    try {
+      const response = await axios.get('http://localhost:8080/api-comments', {
+        params: { board_no: no },
+      });
+      const initComments = response.data.map((it) => {
+        return {
+          comment_no: it.comment_no,
+          no: it.comment_no,
+          text: it.comment_text,
+          id: it.user_name,
+          user_no: it.user_no,
+        };
+      });
+      setComments(initComments);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    getComments();
+  }, []);
   //댓글추가
-  function addComment(e) {
-    if (inputValue == "" || inputValue == null) {
+  const addComment = async (e) => {
+    if (inputValue == '' || inputValue == null) {
+      alert('입력란을 채워주세요');
       return;
     }
-    setComments([
-      ...comments,
-      {
-        id: "테스트아이디",
-        text: inputValue,
-        no: (no.current += 1),
-        created_date: new Date().getTime(),
-        isModify: false,
-      },
-    ]);
-    setInputValue("");
-  }
+    try {
+      const response = await axios.post(
+        'http://localhost:8080/api-comment/new',
+        null,
+        {
+          params: {
+            comment_text: inputValue,
+            user_no: userInfo[0],
+            board_no: no,
+            user_name: userInfo[1],
+          },
+        },
+      );
+      console.log(response); //성공여부 판단
+      // alert('댓글작성 성공');
+      getComments();
+      setInputValue('');
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   function inputChange(e) {
     setInputValue(e.target.value);
   }
   const handleOnKeyPress = (e) => {
-    if (e.key === "Enter") {
+    if (e.key === 'Enter') {
       addComment(); // Enter 입력이 되면 클릭 이벤트 실행
     }
   };
-  const removeComment = (no) => {
-    console.log(`${no}가 삭제되었습니다`);
-    const newCommentList = comments.filter((it) => it.no !== no);
-    setComments(newCommentList);
+  const removeComment = async (comment) => {
+    console.log(comment);
+    if (comment.user_no == userInfo[0]) {
+      try {
+        const response = await axios.delete(
+          `http://localhost:8080/api-comment/delete?comment_no=${comment.user_no}`,
+          { withCredentials: true },
+        );
+        console.log('삭제 요청');
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      alert('권한이 없습니다');
+    }
   };
   const editComment = (targetId, newComment, newModify) => {
-    setComments(
-      comments.map((it) =>
-        it.no === targetId
-          ? { ...it, text: newComment, isModify: newModify }
-          : it
-      )
-    );
+    // setComments(
+    //   comments.map((it) =>
+    //     it.comment_no === targetId
+    //       ? { ...it, text: newComment, isModify: newModify }
+    //       : it,
+    //   ),
+    // );
   };
   //수정 했는지 안했는지 저장
   const changeIsModify = (targetId, newModify) => {
     setComments(
       comments.map((it) =>
-        it.no == targetId ? { ...it, isModify: newModify } : it
-      )
+        it.comment_no == targetId ? { ...it, isModify: newModify } : it,
+      ),
     );
   };
   return (

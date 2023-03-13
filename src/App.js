@@ -26,24 +26,22 @@ function App() {
   async function getData() {
     try {
       const response = await axios.get('http://localhost:8080/api-board');
-      const initData = response.data.map((it) => {
+      const initData = response.data.map((it, idx) => {
         return {
-          no: it.board_no,
+          no: ++idx,
           title: it.board_title,
           content: it.board_text,
           userId: it.user_name,
           created_date: it.regdate,
         };
       });
-      setPostList(initData);
+      setPostList(initData.reverse());
     } catch (error) {
       console.log(error);
     }
   }
   useEffect(() => {
     getData();
-    // const intervalId = setInterval(getData, 50000); // 새로운 글을 알아보기 위해 5초마다 데이터 가져오기
-    // return () => clearInterval(intervalId);
   }, []);
   useEffect(() => {
     if (isLogin === false) {

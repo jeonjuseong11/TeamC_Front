@@ -42,7 +42,7 @@ const BoardList = ({ getData, setPostList }) => {
     e.preventDefault();
     if (search === null || search === '') {
       titleInput.current.focus();
-      alert('검색란이 비었다');
+      alert('검색어을 입력해주세요');
     } else {
       const filterData = postList.filter((it) =>
         it.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()),
