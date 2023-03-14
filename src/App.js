@@ -13,6 +13,7 @@ import axios from 'axios';
 import EditPage from './pages/EditPage/EditPage';
 
 export const PostsStateContext = React.createContext(); //posts 데이터 context
+export const GetDataContext = React.createContext(); //getData context
 export const UserDataContext = React.createContext(); //User 데이터 context
 function App() {
   const navigate = useNavigate();
@@ -34,6 +35,7 @@ function App() {
           content: it.board_text,
           userId: it.user_name,
           created_date: it.regdate,
+          board_no: it.board_no,
         };
       });
       setPostList(initData.reverse());
@@ -58,73 +60,49 @@ function App() {
     <>
       <UserDataContext.Provider value={userInfo}>
         <PostsStateContext.Provider value={postList}>
-          <Routes>
-            <Route
-              exact
-              path="/"
-              element={
-                <Login setuserInfo={setuserInfo} setIsLogin={setIsLogin} />
-              }
-            />
-            <Route exact path="/join" element={<Join />} />
-            <Route
-              exact
-              path="/:board/*"
-              element={
-                <Home
-                  getData={getData}
-                  menus={menus}
-                  setIsLogin={setIsLogin}
-                  setPostList={setPostList}
-                />
-              }
-            />
-            <Route
-              exact
-              path="/:board/:no"
-              element={
-                <DetailPage
-                  postList={postList}
-                  menus={menus}
-                  userInfo={userInfo}
-                />
-              }
-            />
-            <Route
-              exact
-              path="/profile"
-              element={
-                <ProfilePage
-                  menus={menus}
-                  userInfo={userInfo}
-                  setIsLogin={setIsLogin}
-                />
-              }
-            />
-            <Route
-              exact
-              path="/:board/post"
-              element={
-                <PostPage
-                  getData={getData}
-                  menus={menus}
-                  userInfo={userInfo}
-                  setIsLogin={setIsLogin}
-                />
-              }
-            />
-            <Route
-              exact
-              path="/:board/:no/edit"
-              element={
-                <EditPage
-                  menus={menus}
-                  setIsLogin={setIsLogin}
-                  getData={getData}
-                />
-              }
-            />
-          </Routes>
+          <GetDataContext.Provider value={getData}>
+            <Routes>
+              <Route
+                exact
+                path="/"
+                element={
+                  <Login setuserInfo={setuserInfo} setIsLogin={setIsLogin} />
+                }
+              />
+              <Route exact path="/join" element={<Join />} />
+              <Route
+                exact
+                path="/:board/*"
+                element={
+                  <Home
+                    menus={menus}
+                    setIsLogin={setIsLogin}
+                    setPostList={setPostList}
+                  />
+                }
+              />
+              <Route
+                exact
+                path="/:board/:no"
+                element={<DetailPage menus={menus} />}
+              />
+              <Route
+                exact
+                path="/profile"
+                element={<ProfilePage menus={menus} setIsLogin={setIsLogin} />}
+              />
+              <Route
+                exact
+                path="/:board/post"
+                element={<PostPage menus={menus} setIsLogin={setIsLogin} />}
+              />
+              <Route
+                exact
+                path="/:board/:no/edit"
+                element={<EditPage menus={menus} setIsLogin={setIsLogin} />}
+              />
+            </Routes>
+          </GetDataContext.Provider>
         </PostsStateContext.Provider>
       </UserDataContext.Provider>
     </>

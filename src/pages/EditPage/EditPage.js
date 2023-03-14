@@ -2,12 +2,13 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import Top from '../../components/Top/Top';
 import PostForm from '../../components/Post/PostForm';
 import { useContext, useEffect, useState } from 'react';
-import { PostsStateContext, UserDataContext } from '../../App';
+import { GetDataContext, PostsStateContext, UserDataContext } from '../../App';
 import { useNavigate, useParams } from 'react-router-dom';
 const EditPage = ({ menus, setIsLogin }) => {
   const [originData, setOriginData] = useState();
   const userInfo = useContext(UserDataContext);
   const postList = useContext(PostsStateContext);
+  const getData = useContext(GetDataContext);
   const navigate = useNavigate();
   const { no } = useParams(); //글번호
   useEffect(() => {
@@ -19,6 +20,7 @@ const EditPage = ({ menus, setIsLogin }) => {
 
       if (targetDiary) {
         setOriginData(targetDiary);
+        console.log(targetDiary);
       } else {
         navigate('/', { replace: true }); //뒤로가기를 눌러도 돌아가지 않게하기
       }
@@ -28,7 +30,9 @@ const EditPage = ({ menus, setIsLogin }) => {
     <>
       <Top userInfo={userInfo} />
       <Sidebar menus={menus} setIsLogin={setIsLogin} />
-      {originData && <PostForm isEdit={true} originData={originData} />}
+      {originData && (
+        <PostForm isEdit={true} originData={originData} getData={getData} />
+      )}
     </>
   );
 };

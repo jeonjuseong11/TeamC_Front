@@ -3,11 +3,12 @@ import { useParams } from 'react-router-dom';
 import style from './Board.module.css';
 import BoardItem from './BoardItem';
 import Paging from '../Paging/Paging.js';
-import { PostsStateContext } from '../../App';
+import { GetDataContext, PostsStateContext } from '../../App';
 import searchIcon from '../../assets/searchicon.png';
 import resetIcon from '../../assets/reseticon.png';
-const BoardList = ({ getData, setPostList }) => {
+const BoardList = ({ setPostList }) => {
   const postList = useContext(PostsStateContext);
+  const getData = useContext(GetDataContext);
   let { board } = useParams();
   // console.log(postList);데이터 확인용
   //pagination
@@ -97,12 +98,18 @@ const BoardList = ({ getData, setPostList }) => {
               <th>작성자</th>
               <th>제목</th>
               <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             {currentPosts && postList.length > 0 ? (
               currentPosts.map((it) => (
-                <BoardItem key={it.no} {...it} board={board} />
+                <BoardItem
+                  key={it.no}
+                  {...it}
+                  board={board}
+                  getData={getData}
+                />
               ))
             ) : (
               <tr>

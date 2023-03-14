@@ -2,9 +2,10 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import Top from '../../components/Top/Top';
 import PostForm from '../../components/Post/PostForm';
 import { useContext } from 'react';
-import { UserDataContext } from '../../App';
-const PostPage = ({ menus, setIsLogin, getData }) => {
+import { GetDataContext, UserDataContext } from '../../App';
+const PostPage = ({ menus, setIsLogin }) => {
   const userInfo = useContext(UserDataContext);
+  const getData = useContext(GetDataContext);
   return (
     <>
       <Top userInfo={userInfo} />

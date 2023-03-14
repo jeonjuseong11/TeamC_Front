@@ -2,9 +2,10 @@ import React, { useContext } from 'react';
 import BoardList from '../../components/Board/BoardList';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import Top from '../../components/Top/Top';
-import { UserDataContext } from '../../App';
-const Home = ({ menus, setIsLogin, getData, setPostList }) => {
+import { GetDataContext, UserDataContext } from '../../App';
+const Home = ({ menus, setIsLogin, setPostList }) => {
   const userInfo = useContext(UserDataContext);
+  const getData = useContext(GetDataContext);
 
   // const setLocalStrage = () => {
   //   localStorage.setItem("postsInLocal", JSON.stringify(postList));

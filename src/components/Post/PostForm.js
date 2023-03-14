@@ -13,11 +13,10 @@ function PostForm({ getData, isEdit, originData }) {
   const userInfo = useContext(UserDataContext);
   const { no } = useParams(); //글번호
   const navigate = useNavigate();
-
   useEffect(() => {
     if (isEdit) {
       setTitle(originData.title);
-      setBody(originData.body);
+      setBody(originData.content);
     }
   }, [isEdit, originData]);
   const handleSubmit = async (e) => {
@@ -48,14 +47,13 @@ function PostForm({ getData, isEdit, originData }) {
           console.log(error);
         }
       } else {
-        console.log(no, title, body, userInfo[0], userInfo[1]);
         try {
           const response = await axios.put(
             'http://localhost:8080/api-board/update',
-
+            null,
             {
               params: {
-                board_no: no,
+                board_no: originData.board_no,
                 board_title: title,
                 board_text: body,
                 user_no: userInfo[0],
@@ -64,8 +62,8 @@ function PostForm({ getData, isEdit, originData }) {
             },
           );
           console.log(response); //성공여부 판단
-          alert('글수정 성공');
           getData();
+          alert('글수정 성공');
         } catch (error) {
           console.log(error);
         }
