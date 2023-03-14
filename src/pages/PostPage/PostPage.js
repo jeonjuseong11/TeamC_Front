@@ -8,7 +8,7 @@ const PostPage = ({ menus, setIsLogin, getData }) => {
   return (
     <>
       <Top userInfo={userInfo} />
-      <Sidebar menus={menus} etIsLogin={setIsLogin} />
+      <Sidebar menus={menus} setIsLogin={setIsLogin} />
       <PostForm userInfo={userInfo} getData={getData} />
     </>
   );

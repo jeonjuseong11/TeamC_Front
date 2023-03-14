@@ -1,8 +1,9 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 const BoardItem = ({ userId, title, created_date, no, board }) => {
+  const navigate = useNavigate();
   return (
-    <tr style={{ borderBottom: '1px solid black' }}>
+    <tr style={{ borderBottom: '1px solid black', cursor: 'pointer' }}>
       <td style={{ textAlign: 'center' }}>{no}</td>
       <td style={{ textAlign: 'center' }}>{userId}</td>
       <td style={{ textAlign: 'left' }}>
@@ -18,7 +19,13 @@ const BoardItem = ({ userId, title, created_date, no, board }) => {
         </Link>
       </td>
       <td style={{ textAlign: 'center' }}>
-        {created_date /*인간이 알아보기 좋은 숫자로 변환*/}
+        <button
+          onClick={() => {
+            navigate(`/${board}/${no}/edit`);
+          }}
+        >
+          수정
+        </button>
       </td>
     </tr>
   );

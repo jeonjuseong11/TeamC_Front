@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { UserDataContext } from '../../App';
 import Comment from './Comment';
@@ -9,6 +9,19 @@ function Comments() {
   const [comments, setComments] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const userInfo = useContext(UserDataContext);
+
+  //댓글 작성시 새로운 댓글이 아래로 생김으로 아래로 바로 스크롤해주는 기능을 위한 것
+  const commentsList = useRef(null);
+  const scrollToBottom = () => {
+    const component = commentsList.current;
+    if (component) {
+      component.scrollTop = component.scrollHeight;
+    }
+  };
+  useEffect(() => {
+    scrollToBottom();
+  }, [comments]);
+  //댓글을을 가져오는 것
   async function getComments() {
     try {
       const response = await axios.get(
@@ -123,7 +136,7 @@ function Comments() {
   };
   return (
     <div>
-      <ul className={style.commentPostList}>
+      <ul className={style.commentPostList} ref={commentsList}>
         {comments.map((item, id) => (
           <Comment
             key={id}

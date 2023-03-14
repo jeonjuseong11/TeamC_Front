@@ -4,15 +4,14 @@ import style from '../Top/Top.module.css';
 import profileImg from '../../assets/profile.png';
 
 const Top = ({ userInfo, setIsLogin }) => {
-  const no = useParams();
+  const board = useParams();
   const location = useLocation();
   //제목 변환
-
   const titlePick = () => {
     // console.log(location); 위치 확인용
-    if (location.pathname === `/board1/${no.no}`) {
+    if (location.pathname === `/board1/${board.no}`) {
       return '자유 게시판';
-    } else if (location.pathname === `/board2/${no.no}`) {
+    } else if (location.pathname === `/board2/${board.no}`) {
       return '비밀 게시판';
     } else if (location.pathname === '/profile') {
       return 'Profile';
@@ -20,7 +19,7 @@ const Top = ({ userInfo, setIsLogin }) => {
       return '비밀 게시판';
     } else if (location.pathname === '/board1') {
       return '자유 게시판 ';
-    } else if (location.pathname === '/post') {
+    } else if (location.pathname === `/${board.board}/post`) {
       return '글 작성 ';
     }
   };

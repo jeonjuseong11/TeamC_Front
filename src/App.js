@@ -10,6 +10,7 @@ import DetailPage from './pages/DetailPage/DetailPage.js';
 import PostPage from './pages/PostPage/PostPage.js';
 
 import axios from 'axios';
+import EditPage from './pages/EditPage/EditPage';
 
 export const PostsStateContext = React.createContext(); //posts 데이터 context
 export const UserDataContext = React.createContext(); //User 데이터 context
@@ -25,7 +26,7 @@ function App() {
   const [postList, setPostList] = useState([]);
   async function getData() {
     try {
-      const response = await axios.get('http://localhost:8080/api-board');
+      const response = await axios.get('http://localhost:8080/api-board/list');
       const initData = response.data.map((it, idx) => {
         return {
           no: ++idx,
@@ -40,9 +41,7 @@ function App() {
       console.log(error);
     }
   }
-  useEffect(() => {
-    getData();
-  }, []);
+
   useEffect(() => {
     if (isLogin === false) {
       console.log(isLogin);
@@ -51,6 +50,9 @@ function App() {
     } else {
     }
   }, [isLogin, postList]);
+  useEffect(() => {
+    getData();
+  }, []);
   // return
   return (
     <>
@@ -101,13 +103,24 @@ function App() {
             />
             <Route
               exact
-              path="/post"
+              path="/:board/post"
               element={
                 <PostPage
                   getData={getData}
                   menus={menus}
                   userInfo={userInfo}
                   setIsLogin={setIsLogin}
+                />
+              }
+            />
+            <Route
+              exact
+              path="/:board/:no/edit"
+              element={
+                <EditPage
+                  menus={menus}
+                  setIsLogin={setIsLogin}
+                  getData={getData}
                 />
               }
             />

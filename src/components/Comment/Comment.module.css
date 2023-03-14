@@ -11,6 +11,7 @@
   overflow-y: auto;
   display: inline-block;
   margin: 0;
+  scroll-behavior: smooth;
 }
 
 .commentPost {
