@@ -3,188 +3,59 @@
   width: 80%;
   padding-top: 0;
   height: 95vh;
-  background: linear-gradient(to bottom, #8282ff 30%, #e3e7ff 30%);
-}
-
-.Profile .USerForm{
-  width: 80%;
-  height: 35%;
-  display: flex;
-  flex-direction: column;
-}
-
-.Profile .UserIcon{
-  display: flex;
-  background-color:white;
-  width: 100%;
-  height: 50%;
-  border-radius: 15px;
-  border: solid 1px gray;
-}
-
-.Profile .UserIcon ul{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-ul.Imformation{
-  margin-left: 30px;
-  margin-top: 82px;
-}
-
-.Profile .UserIcon .AboutMe{
-  width: 60%;
-}
-
-.AboutMe li h2{
-  color: #8282ff;
-  margin: 0 0;
-}
-
-.AboutMe li{
-  float: left;
-  width: 20%;
-  height: 250%;
-  background-color: rgba(130, 130, 255, 0.65);
-  margin-left: 20px;
-  border-radius: 15px;
-  margin-top: 30px;
-}
-
-.UserIcon ul li{
-  margin: 0 auto;
 }
 
 .Icon{
-  width: 150px;
-  height: 150px;
-  margin: 30px;
+  width: 50%;
+  height: 50%;
+  margin: 0 20%;
+  border-radius: 50%;
+  margin-top: 20px;
 }
 
-.UserImformation{
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  width: 100%;
-  height: 49%;
-  border-radius: 15px;
-  border: solid 1px gray;
+.Icon:hover{
+  border: solid 2px skyblue;
 }
-
-.UserIcon ul li{
-  display: flex;
-  width: 95%;
-  padding: 15px;
-  margin: 5px;
-  border-radius: 10px;
-}
-
 
 .ProfileIcon{
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  margin-left: 10%;
+  margin-top: 10%;
+}
+.userForm{
+  margin-top: -20px;
 }
 
-.ProfileIcon button{
-  width: 80px;
-  height: 30px;
-  background:  rgba(130, 130, 255, 0.65);
-  border: none;
-  color: black;
-  border-radius: 3px;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  transition: background 0.5s;
-}
-
-.ProfileIcon button:hover{
-  background-color:rgba(130, 130, 255, 0.25);
-  cursor: pointer;
-}
-
-.Profile .UserIcon ul.ProfileIcon li{
-  background-color: white;
-  width: auto;
-  padding: 0;
-}
-
-.UserImformationTitle{
+.userForm{
   display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-.AboutMe li.UserImformationTitle button{
-  width: 80px;
-  height: 50px;
-  background:  rgba(130, 130, 255, 0.65);
-  border: none;
-  color: black;
-  border-radius: 3px;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  transition: background 0.5s;
+.userForm ul{
+  margin-left: 10%;
 }
 
-.AboutMe li.UserImformationTitle button:hover{
-  background-color:rgba(130, 130, 255, 0.25);
-  cursor: pointer;
+.userIcon{
+  border: solid 1px rgba(197, 197, 197, 0.5);
+  border-radius: 3%;
+  margin-left: 1%;
+  box-shadow: 3px 3px 10px #c5c5c5;
+  width: 25%;
+  height: 80vh;
 }
 
-.AboutMe .UserImformationTitle{
-  background-color: white;
-  height: 50%;
-}
-
-.UserImformationTitle h2{
- color: #8282ff;
-}
-
-img.IdIcon{
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-}
-img.EmailIcon{
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-}
-
-img.GenderIcon{
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-}
-
-img.CalendarIcon{
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-}
-
-.UserIcon ul li{
-  background-color: rgba(130, 130, 255, 0.65);
-}
-
-
-ul.Sns{
-  margin: 82px auto;
+.userWrap{
   display: flex;
-  width: 20%;
-  height: 8%;
 }
 
-.UserIcon .Sns li{
-  display: flex;
-  width: 90%;
+.aboutMe{
+  border: solid 1px rgba(197, 197, 197, 0.5);
+  border-radius: 3%;
+  box-shadow: 3px 3px 10px #c5c5c5;
+  width: 70%;
+  margin-left: 2%;
 }
 
-.Sns img{
-  width: 25px;
-  height: 25px;
+.aboutMe h1{
+  margin-left: 3%;
 }
