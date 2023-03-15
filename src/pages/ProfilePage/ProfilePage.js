@@ -38,7 +38,7 @@ const Profile = ({ menus, setIsLogin }) => {
       <Sidebar menus={menus} setIsLogin={setIsLogin} />
       <Top userInfo={userInfo} />
       <div className={style.Profile}>
-        <Board>
+        {/* <Board> */}
           <div className={style.userWrap}>
             <div className={style.userIcon}>
               <ul className={style.ProfileIcon}>
@@ -82,7 +82,7 @@ const Profile = ({ menus, setIsLogin }) => {
               <h1>About Me!</h1>
             </div>
             </div>
-        </Board>
+        {/* </Board> */}
       </div>
     </div>
   );
