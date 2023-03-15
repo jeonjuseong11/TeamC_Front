@@ -7,12 +7,19 @@
   width: 20%;
   height: 100%;
   text-align: left;
-  background-color: #f8f8f8;
+  background-color: #ffffff;
 }
 
 .Logo {
+  display: flex;
   width: 100%;
-  height: auto;
+  height: 60px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.Logo Link {
+  text-decoration: none;
 }
 .Menu {
   top: 0;
@@ -21,15 +28,9 @@
   flex-direction: column;
   margin-bottom: 10px;
 }
-.active {
-  border-radius: 10px;
-  background-color: rgba(80, 62, 157, 0.5);
-}
 .Menu p {
-  text-decoration: none;
   padding-left: 10%;
   font-weight: 700;
-  color: gray;
 }
 
 .Menu a {

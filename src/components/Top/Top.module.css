@@ -1,18 +1,22 @@
 .Top {
-  padding-bottom: 10px;
+  padding-bottom: 30px;
   width: 80%;
   float: right;
   height: 5vh;
   /* background-color: #8282ff; */
   margin-top: 0;
   margin-bottom: 0;
+  background-color: #fbfbfb;
 }
+
 .Top img {
   border-radius: 100%;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
+  margin-top: 5px;
 }
 .Top ul {
+  margin-top: 50px;
   margin-right: 20px;
 }
 .Top li {
@@ -25,7 +29,7 @@
   font-size: 12px;
   margin-top: 0;
   margin-left: 5px;
-  height: 30px;
+
   line-height: 30px;
 }
 .Top button {
@@ -41,7 +45,8 @@
 }
 
 .Top h2 {
-  margin-left: 30px;
+  margin-top: 50px;
+  margin-left: 6%;
   float: left;
   /* color: white; */
 }

@@ -49,11 +49,8 @@ const Login = ({ setIsLogin, setuserInfo }) => {
   return (
     <div className="loginPage">
       <div className="loginWrap">
-        <div className="login-logo">
-          <img src={Logo} alt="logo" />
-        </div>
         <div className="login-header">
-          <h1>Sign In</h1>
+          <h1>웹 이름</h1>
           <div>서비스를 이용하려면 로그인이 필요합니다.</div>
         </div>
         <form className="login-form">
@@ -63,7 +60,7 @@ const Login = ({ setIsLogin, setuserInfo }) => {
               type="text"
               value={id}
               onChange={handleId}
-              placeholder="이메일을 입력해주세요"
+              placeholder="아이디"
               maxLength="12"
             />
           </div>
@@ -73,22 +70,21 @@ const Login = ({ setIsLogin, setuserInfo }) => {
               type="password"
               value={pw}
               onChange={handlePw}
-              placeholder="비밀번호를 입력해주세요"
+              placeholder="비밀번호"
             />
           </div>
           <div className="form-check">
             <div className="checkbox">
               <input type="checkbox" id="rememberMeCheckbox" />
-              <label htmlFor="rememberMeCheckbox">Remember me</label>
+              <label htmlFor="rememberMeCheckbox">이 계정 기억하기</label>
             </div>
-            <a href="#">I forgot my password!</a>
           </div>
           <button type="button" className="loginBtn" onClick={loginFunc}>
             로그인
           </button>
         </form>
         <div className="login-footer">
-          Don't have an account? <Link to="/join">Create a free account.</Link>
+          <a href="#">비밀번호 찾기</a>|<Link to="/join">신규회원 가입</Link>
         </div>
       </div>
     </div>

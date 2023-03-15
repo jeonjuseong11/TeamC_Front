@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import style from './Board.module.css';
 import BoardItem from './BoardItem';
 import Paging from '../Paging/Paging.js';
@@ -10,6 +10,7 @@ const BoardList = ({ setPostList }) => {
   const postList = useContext(PostsStateContext);
   const getData = useContext(GetDataContext);
   let { board } = useParams();
+  const navigate = useNavigate(); //글쓰기 버튼에 쓸 navigate
   // console.log(postList);데이터 확인용
   //pagination
   const [count, setCount] = useState(0); // 아이템 총 개수
@@ -57,34 +58,39 @@ const BoardList = ({ setPostList }) => {
 
   return (
     <div className={style.BoardList}>
-      <form className={style.searchForm}>
-        <img src={searchIcon} className={style.searchIcon} />
-        <input
-          type="text"
-          className={style.titleInput}
-          ref={titleInput}
-          placeholder="제목"
-          onChange={onChangeSearch}
-          value={search}
-        />
-        <button className={style.searchBtn} onClick={onSearch} type="submit">
-          Search
+      <div className={style.search}>
+        <div className={style.info}>
+          <p>{postList.length}개의 글이 있습니다.</p>
+        </div>
+        <form>
+          <img src={searchIcon} className={style.searchIcon} />
+          <input
+            type="text"
+            className={style.titleInput}
+            ref={titleInput}
+            placeholder="제목"
+            onChange={onChangeSearch}
+            value={search}
+          />
+          <button className={style.searchBtn} onClick={onSearch} type="submit">
+            Search
+          </button>
+          <button type="button" className={style.resetBtn} onClick={initList}>
+            <img src={resetIcon} />
+          </button>
+        </form>
+        <button
+          type="button"
+          className={style.writeBtn}
+          onClick={() => {
+            navigate(`/${board}/post`);
+          }}
+        >
+          글쓰기
         </button>
-        <button type="button" className={style.resetBtn} onClick={initList}>
-          <img src={resetIcon} />
-        </button>
-      </form>
-      <div className={style.info}>
-        <h4>{postList.length}개의 글이 있습니다.</h4>
       </div>
 
-      <div
-        style={{
-          margin: '0 auto',
-          marginLeft: '10px',
-          borderRadius: '10px',
-        }}
-      >
+      <div className={style.tableWrapper}>
         <table className={style.table}>
           <colgroup>
             <col width="10%" />
@@ -119,13 +125,13 @@ const BoardList = ({ setPostList }) => {
             )}
           </tbody>
         </table>
-        <Paging
-          page={currentPage}
-          count={count}
-          setPage={setCurrentPage}
-          totalPosts={postList.length}
-        />
       </div>
+      <Paging
+        page={currentPage}
+        count={count}
+        setPage={setCurrentPage}
+        totalPosts={postList.length}
+      />
     </div>
   );
 };
