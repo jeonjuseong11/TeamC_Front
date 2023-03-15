@@ -25,6 +25,7 @@ const Login = ({ setIsLogin, setuserInfo }) => {
   async function loginFunc() {
     try {
       setIsLogin(true);
+      // window.localStorage.setItem('login', true);
       const response = await axios.get('http://localhost:8080/api-login', {
         params: { user_id: id },
       });

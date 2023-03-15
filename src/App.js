@@ -34,7 +34,8 @@ function App() {
           title: it.board_title,
           content: it.board_text,
           userId: it.user_name,
-          created_date: it.regdate,
+          create_dt: it.create_dt,
+          update_dt: it.update_dt,
           board_no: it.board_no,
         };
       });
@@ -45,10 +46,12 @@ function App() {
   }
 
   useEffect(() => {
+    // setIsLogin(window.localStorage.getItem('login'));
+    console.log(isLogin);
     if (isLogin === false) {
       console.log(isLogin);
       setuserInfo([]);
-      navigate('/');
+      navigate('/login');
     } else {
     }
   }, [isLogin, postList]);
@@ -64,7 +67,7 @@ function App() {
             <Routes>
               <Route
                 exact
-                path="/"
+                path="/login"
                 element={
                   <Login setuserInfo={setuserInfo} setIsLogin={setIsLogin} />
                 }

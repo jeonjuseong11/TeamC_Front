@@ -16,7 +16,7 @@ const EditPage = ({ menus, setIsLogin }) => {
       const targetDiary = postList.find(
         (it) => parseInt(it.no) == parseInt(no),
       );
-      console.log(targetDiary);
+      // console.log(targetDiary);
 
       if (targetDiary) {
         setOriginData(targetDiary);

@@ -21,6 +21,8 @@ const Top = ({ userInfo, setIsLogin }) => {
       return '자유 게시판 ';
     } else if (location.pathname === `/${board.board}/post`) {
       return '글 작성 ';
+    } else if (location.pathname === `/${board.board}/${board.no}/edit`) {
+      return '글 수정';
     }
   };
 

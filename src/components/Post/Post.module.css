@@ -25,10 +25,15 @@
   background-color: none;
   transition: 0.2s;
 }
-.BoardPost form button:hover {
+.BoardPost form button:last-child:hover {
   background-color: #8282ff;
   color: white;
 }
+.BoardPost form button:nth-last-child(2):hover {
+  background-color: #fd565f;
+  color: white;
+}
+
 .BoardPost h1 {
   margin-top: 0;
 }

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { UserDataContext } from '../../App';
 import Comment from './Comment';
 import style from './Comment.module.css';
@@ -9,7 +9,7 @@ function Comments() {
   const [comments, setComments] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const userInfo = useContext(UserDataContext);
-
+  const navigate = useNavigate();
   //댓글 작성시 새로운 댓글이 아래로 생김으로 아래로 바로 스크롤해주는 기능을 위한 것
   const commentsList = useRef(null);
   const scrollToBottom = () => {
@@ -48,7 +48,7 @@ function Comments() {
   }
   useEffect(() => {
     getComments();
-  }, []);
+  }, [no]);
 
   //댓글추가
   const addComment = async (e) => {

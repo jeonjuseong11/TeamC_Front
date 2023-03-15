@@ -43,14 +43,18 @@ const BoardItem = ({ userId, title, no, board, board_no, getData }) => {
         </Link>
       </td>
       <td style={{ textAlign: 'center' }}>
-        <button
-          onClick={() => {
-            navigate(`/${board}/${no}/edit`);
-          }}
-        >
-          수정
-        </button>
-        <button onClick={removePosts}>삭제</button>
+        {userId == userInfo[1] ? (
+          <>
+            <button
+              onClick={() => {
+                navigate(`/${board}/${no}/edit`);
+              }}
+            >
+              수정
+            </button>
+            <button onClick={removePosts}>삭제</button>
+          </>
+        ) : null}
       </td>
     </tr>
   );

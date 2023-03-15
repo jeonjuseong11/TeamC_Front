@@ -98,7 +98,6 @@ const BoardList = ({ setPostList }) => {
               <th>작성자</th>
               <th>제목</th>
               <th></th>
-              <th></th>
             </tr>
           </thead>
           <tbody>

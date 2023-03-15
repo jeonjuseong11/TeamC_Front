@@ -34,6 +34,22 @@
 .table tbody tr:hover {
   background-color: rgba(130, 130, 255, 0.5);
 }
+.table tbody tr button {
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+.table tbody tr button:first-child {
+  border-right: 1px solid #c2c2c2;
+}
+.table tbody tr button:first-child:hover {
+  font-weight: bold;
+  color: white;
+}
+.table tbody tr button:last-child:hover {
+  font-weight: bold;
+  color: red;
+}
 
 .BoardDetail {
   width: 80%;

@@ -21,55 +21,61 @@ function PostForm({ getData, isEdit, originData }) {
   }, [isEdit, originData]);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (
-      window.confirm(
-        isEdit ? '일기를 수정하시겠습니까?' : '새로운 일기를 작성하시겠습니까?',
-      )
-    ) {
-      if (!isEdit) {
-        try {
-          const response = await axios.post(
-            'http://localhost:8080/api-board/new',
-            null,
-            {
-              params: {
-                board_title: title,
-                board_text: body,
-                user_no: userInfo[0],
-                user_name: userInfo[1],
+    if (title.length == 0 && body.length == 0) {
+      alert('빈칸을 채워주세요');
+    } else {
+      if (
+        window.confirm(
+          isEdit
+            ? '일기를 수정하시겠습니까?'
+            : '새로운 일기를 작성하시겠습니까?',
+        )
+      ) {
+        if (!isEdit) {
+          try {
+            const response = await axios.post(
+              'http://localhost:8080/api-board/new',
+              null,
+              {
+                params: {
+                  board_title: title,
+                  board_text: body,
+                  user_no: userInfo[0],
+                  user_name: userInfo[1],
+                },
               },
-            },
-          );
-          console.log(response); //성공여부 판단
-          getData();
-          alert('글작성 성공');
-        } catch (error) {
-          console.log(error);
-        }
-      } else {
-        try {
-          const response = await axios.put(
-            'http://localhost:8080/api-board/update',
-            null,
-            {
-              params: {
-                board_no: originData.board_no,
-                board_title: title,
-                board_text: body,
-                user_no: userInfo[0],
-                user_name: userInfo[1],
+            );
+            console.log(response); //성공여부 판단
+            getData();
+            alert('글작성 성공');
+          } catch (error) {
+            console.log(error);
+          }
+        } else {
+          try {
+            const response = await axios.put(
+              'http://localhost:8080/api-board/update',
+              null,
+              {
+                params: {
+                  board_no: originData.board_no,
+                  board_title: title,
+                  board_text: body,
+                  user_no: userInfo[0],
+                  user_name: userInfo[1],
+                },
               },
-            },
-          );
-          console.log(response); //성공여부 판단
-          getData();
-          alert('글수정 성공');
-        } catch (error) {
-          console.log(error);
+            );
+            console.log(response); //성공여부 판단
+            getData();
+            alert('글수정 성공');
+          } catch (error) {
+            console.log(error);
+          }
         }
       }
+      navigate('/board1', { replace: true });
     }
-    navigate('/board1', { replace: true });
   };
 
   return (
@@ -91,6 +97,14 @@ function PostForm({ getData, isEdit, originData }) {
             }}
           />
           <br />
+          <button
+            type="button"
+            onClick={() => {
+              navigate(-1);
+            }}
+          >
+            취소
+          </button>
           <button type="submit">글쓰기</button>
         </form>
       </Board>
