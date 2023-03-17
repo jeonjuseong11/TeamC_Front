@@ -51,10 +51,10 @@ function Comment({ removeComment, editComment, comment }) {
       <img src={src}></img>
       <div className={style.commentText}>
         <p>{comment.id}</p>
-        <span>{comment.update_dt !== null ? <p>수정됨</p> : <></>}</span>
-        <p>
+        <span>{comment.update_dt !== null ? '수정됨' : <></>}</span>
+        <span className={style.commentDate}>
           {comment.update_dt !== null ? comment.update_dt : comment.create_dt}
-        </p>
+        </span>
         <div className={style.commentContent}>
           {isEdit ? (
             <textarea
@@ -71,13 +71,13 @@ function Comment({ removeComment, editComment, comment }) {
         <div className={style.commentButton}>
           {isEdit ? (
             <>
-              <button onClick={handleQuitEdit}>취소</button>
               <button onClick={handleEdit}>완료</button>
+              <button onClick={handleQuitEdit}>취소</button>
             </>
           ) : (
             <>
-              <button onClick={handleRemove}>삭제</button>
               <button onClick={toggleIsEdit}>수정</button>
+              <button onClick={handleRemove}>삭제</button>
             </>
           )}
         </div>

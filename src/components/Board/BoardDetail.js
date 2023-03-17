@@ -2,16 +2,18 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Comments from '../Comment/Comments';
 import style from './Board.module.css';
-import { GetDataContext, PostsStateContext } from '../../App';
+import { GetDataContext, PostsStateContext, UserDataContext } from '../../App';
 import CommentsWrapper from '../Comment/CommentsWrapper';
 import Board from './Board';
+import axios from 'axios';
 
 const BoardDetail = () => {
+  const userInfo = useContext(UserDataContext);
   const post = useContext(PostsStateContext);
   const getData = useContext(GetDataContext);
+
   const navigate = useNavigate();
   const [data, setData] = useState();
-  // const posts = JSON.parse(localStorage.getItem("postsInLocal")); localstorage사용실패
   let { no, board } = useParams();
   const backToList = () => {
     navigate(`/${board}`);
@@ -19,7 +21,7 @@ const BoardDetail = () => {
   useEffect(() => {
     getData();
   }, []);
-  console.log(no);
+
   useEffect(() => {
     if (post.length >= 1) {
       const targetPost = post.find((it) => parseInt(it.no) === parseInt(no));
@@ -38,17 +40,47 @@ const BoardDetail = () => {
     return parseInt(it.no) == parseInt(data.no);
   });
   console.log(findItem);
+  //삭제 기능
+  const removePosts = async () => {
+    if (findItem.userId == userInfo[1]) {
+      try {
+        const response = await axios.delete(
+          `http://localhost:8080/api-board/delete?board_no=${findItem.board_no}`,
+        );
+        console.log(response);
+        alert(`글을 삭제합니다.`);
+        navigate(`/${board}`, { replace: true });
+      } catch (error) {
+        console.log(error);
+      }
+      getData();
+    } else {
+      alert('권한이 없습니다');
+    }
+  };
   return (
     <div className={style.BoardDetail}>
       <Board>
         <div className={style.boardContent}>
           <div className={style.boardTitle}>
             <button onClick={backToList}>&lt;</button>
-            <h1>{findItem.title}</h1>
-          </div>
-          <div className={style.boardText}>
+            <p>{findItem.title}</p>
             <span>작성자 {findItem.userId}</span>
             <span>작성 시간 {findItem.create_dt}</span>
+          </div>
+          {findItem.userId == userInfo[1] ? (
+            <div className={style.btnWrapper}>
+              <button onClick={removePosts}>삭제</button>
+              <button
+                onClick={() => {
+                  navigate(`/${board}/${no}/edit`);
+                }}
+              >
+                수정
+              </button>
+            </div>
+          ) : null}
+          <div className={style.boardText}>
             <div dangerouslySetInnerHTML={{ __html: findItem.content }} />
             {/* 스타일을 읽을 라면 이거 써야된다고 함 */}
           </div>
@@ -57,13 +89,11 @@ const BoardDetail = () => {
             이전글
           </button>
         </div>
-        <CommentsWrapper>
-          <Comments />
-        </CommentsWrapper>
       </Board>
+      <CommentsWrapper>
+        <Comments />
+      </CommentsWrapper>
     </div>
   );
-
-  return <div></div>;
 };
 export default BoardDetail;

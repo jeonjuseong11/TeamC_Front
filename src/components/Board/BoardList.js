@@ -103,18 +103,13 @@ const BoardList = ({ setPostList }) => {
               <th>번호</th>
               <th>작성자</th>
               <th>제목</th>
-              <th></th>
+              <th>작성 시간</th>
             </tr>
           </thead>
           <tbody>
             {currentPosts && postList.length > 0 ? (
               currentPosts.map((it) => (
-                <BoardItem
-                  key={it.no}
-                  {...it}
-                  board={board}
-                  getData={getData}
-                />
+                <BoardItem key={it.no} {...it} board={board} />
               ))
             ) : (
               <tr>

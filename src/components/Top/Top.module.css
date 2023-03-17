@@ -1,9 +1,8 @@
 .Top {
-  padding-bottom: 30px;
+  padding-bottom: 1.875rem;
   width: 80%;
   float: right;
-  height: 5vh;
-  /* background-color: #8282ff; */
+  height: 8vh;
   margin-top: 0;
   margin-bottom: 0;
   background-color: #fbfbfb;
@@ -16,37 +15,33 @@
   margin-top: 5px;
 }
 .Top ul {
-  margin-top: 50px;
-  margin-right: 20px;
+  margin-top: 3.125rem;
+  margin-right: 1.25rem;
 }
 .Top li {
   float: right;
   list-style-type: none;
 }
+.Top li:first-child {
+  margin-right: 3%;
+}
 .Top span {
   text-decoration: none;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 0.75rem;
   margin-top: 0;
   margin-left: 5px;
+  line-height: 1.875rem;
+}
 
-  line-height: 30px;
-}
-.Top button {
-  margin-left: 10px;
-  line-height: 25px;
-  border: 1px solid white;
-  border-radius: 5px;
-  background-color: #8282ff;
-  color: white;
-}
 .Top span:first-child {
   font-weight: 800;
 }
 
 .Top h2 {
-  margin-top: 50px;
+  margin-top: 3.125rem;
   margin-left: 6%;
   float: left;
+  font-size: 2rem;
   /* color: white; */
 }

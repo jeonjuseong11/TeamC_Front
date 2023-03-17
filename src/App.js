@@ -39,6 +39,7 @@ function App() {
           board_no: it.board_no,
         };
       });
+
       setPostList(initData.reverse());
     } catch (error) {
       console.log(error);

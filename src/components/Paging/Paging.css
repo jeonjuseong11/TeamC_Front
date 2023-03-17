@@ -11,8 +11,8 @@ ul {
 
 ul.pagination li {
   display: inline-block;
-  width: 30px;
-  height: 30px;
+  width: 1.875rem;
+  height: 1.875rem;
   border-radius: 20%;
   background-color: #fbfbfb;
   display: flex;

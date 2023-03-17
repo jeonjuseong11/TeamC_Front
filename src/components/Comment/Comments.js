@@ -135,7 +135,11 @@ function Comments() {
     );
   };
   return (
-    <div>
+    <>
+      <div className={style.commentTitle}>
+        <h4>댓글 {comments.length}</h4>
+      </div>
+
       <ul className={style.commentPostList} ref={commentsList}>
         {comments.map((item, id) => (
           <Comment
@@ -148,15 +152,18 @@ function Comments() {
         ))}
       </ul>
       <div className={style.commentInput}>
-        <input
+        <textarea
           onKeyPress={handleOnKeyPress}
           onChange={inputChange}
           value={inputValue}
           placeholder="댓글을 입력하세요"
+          wrap="hard"
         />
-        <button onClick={addComment} />
+        <div>
+          <button onClick={addComment}>완료</button>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
