@@ -88,7 +88,7 @@
 
 .boardTitle {
   height: 6.25rem;
-  width: 80%;
+  margin-bottom: 1.5rem;
 }
 
 .boardTitle p {
@@ -107,8 +107,8 @@
   font-weight: 600;
 }
 .boardTitle span {
-  padding-left: 6%;
-  padding-right: 6%;
+  padding-left: 3%;
+  padding-right: 3%;
 }
 .boardTitle button:hover {
   transition: 0.2s ease-in-out;
@@ -116,28 +116,60 @@
   color: white;
   align-items: center;
 }
-.btnWrapper {
+.titlebtnWrapper {
   position: relative;
-  top: -5rem;
+  top: -7rem;
   float: right;
-  width: 15%;
+  padding-right: 2rem;
 }
-.btnWrapper button {
-  text-align: center;
-  align-items: center;
-  justify-content: space-around;
+.titlebtnWrapper button {
+  font-size: 1rem;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  color: #c2c2c2;
+}
+.titlebtnWrapper button:first-child:hover {
+  color: #8282ff;
+}
+.titlebtnWrapper button:last-child:hover {
+  color: #ff5252;
 }
 
 .boardText div {
-  padding-left: 5%;
-  padding-right: 5%;
+  margin-left: 3%;
+  margin-right: 3%;
   overflow-wrap: break-word;
   font-size: 1rem;
   height: 50vh;
+  border-top: 1px solid #878787;
 }
 .boardText div p {
-  border-top: 1px solid #878787;
-  padding-top: 2rem;
+  margin-top: 1.5rem;
+}
+.btnWrapper {
+  border-top: 1px solid #efefef;
+  width: 100%;
+  height: 6rem;
+  position: relative;
+}
+.btnWrapper div {
+  /* margin-top: 1.5rem; */
+  position: absolute;
+  top: 35%;
+  bottom: 35%;
+}
+.btnWrapper button {
+  display: flex;
+  color: #c2c2c2;
+  cursor: pointer;
+  width: 6rem;
+  border: 1px solid white;
+  background-color: transparent;
+}
+.btnWrapper button:hover {
+  font-weight: bold;
+  color: #8282ff;
 }
 /* search */
 .info {
