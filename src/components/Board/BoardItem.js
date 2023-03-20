@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 const BoardItem = ({ userId, title, no, board, create_dt }) => {
-  console.log(board);
+  // console.log(board);
   return (
     <tr style={{ borderBottom: '1px solid black', cursor: 'pointer' }}>
       <td style={{ textAlign: 'center' }}>{no}</td>

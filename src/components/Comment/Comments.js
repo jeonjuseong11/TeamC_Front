@@ -4,8 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { UserDataContext } from '../../App';
 import Comment from './Comment';
 import style from './Comment.module.css';
-function Comments() {
-  let { no } = useParams();
+function Comments({ board_no }) {
   const [comments, setComments] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const userInfo = useContext(UserDataContext);
@@ -27,13 +26,13 @@ function Comments() {
       const response = await axios.get(
         'http://localhost:8080/api-comment/list',
         {
-          params: { board_no: no },
+          params: { board_no: board_no },
         },
       );
       const initComments = response.data.map((it) => {
         return {
           comment_no: it.comment_no,
-          no: it.comment_no,
+          no: it.board_no,
           text: it.comment_text,
           id: it.user_name,
           user_no: it.user_no,
@@ -48,7 +47,7 @@ function Comments() {
   }
   useEffect(() => {
     getComments();
-  }, [no]);
+  }, [board_no]);
 
   //댓글추가
   const addComment = async (e) => {
@@ -64,7 +63,7 @@ function Comments() {
           params: {
             comment_text: inputValue,
             user_no: userInfo[0],
-            board_no: no,
+            board_no: board_no,
             user_name: userInfo[1],
           },
         },
@@ -87,7 +86,6 @@ function Comments() {
     }
   };
   const removeComment = async (comment) => {
-    console.log(comment);
     if (comment.user_no == userInfo[0]) {
       try {
         const response = await axios.delete(
@@ -113,7 +111,7 @@ function Comments() {
             comment_no: comment.comment_no,
             comment_text: newComment,
             user_no: userInfo[0],
-            board_no: no,
+            board_no: board_no,
             user_name: userInfo[1],
           },
         },

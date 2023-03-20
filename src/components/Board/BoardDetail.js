@@ -101,7 +101,7 @@ const BoardDetail = () => {
         </div>
       </Board>
       <CommentsWrapper>
-        <Comments />
+        <Comments board_no={findItem.board_no} />
       </CommentsWrapper>
     </div>
   );

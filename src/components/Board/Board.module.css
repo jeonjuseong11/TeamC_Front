@@ -58,8 +58,8 @@
 }
 
 .BoardDetail {
-  width: 80%;
   display: flex;
+  width: 80%;
   float: right;
   background-color: #fbfbfb;
   padding-top: 0;
@@ -68,12 +68,13 @@
 .BoardDetail p {
   color: black;
 }
+
 .boardContent {
   width: 100%;
-  float: left;
+  display: inline-block;
   max-width: 200rem;
 }
-.Board {
+.BoardDetail .Board {
   box-sizing: border-box;
   margin-left: 4%;
   border: 1px solid #efefef;

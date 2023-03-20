@@ -21,7 +21,7 @@ function PostForm({ getData, isEdit, originData }) {
   }, [isEdit, originData]);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (title.length == 0 && body.length == 0) {
+    if (title == '' || body.length == '') {
       alert('빈칸을 채워주세요');
     } else {
       if (
@@ -80,34 +80,32 @@ function PostForm({ getData, isEdit, originData }) {
 
   return (
     <div className={style.BoardPost}>
-      <Board>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="제목을 입력해주세요."
-          />
-          <CKEditor
-            editor={ClassicEditor}
-            data={body}
-            onChange={(e, editor) => {
-              const data = editor.getData();
-              setBody(data);
-            }}
-          />
-          <br />
-          <button
-            type="button"
-            onClick={() => {
-              navigate(-1);
-            }}
-          >
-            취소
-          </button>
-          <button type="submit">글쓰기</button>
-        </form>
-      </Board>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="제목을 입력해주세요."
+        />
+        <CKEditor
+          editor={ClassicEditor}
+          data={body}
+          onChange={(e, editor) => {
+            const data = editor.getData();
+            setBody(data);
+          }}
+        />
+        <br />
+        <button
+          type="button"
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          취소
+        </button>
+        <button type="submit">글쓰기</button>
+      </form>
     </div>
   );
 }
