@@ -1,4 +1,10 @@
-import React, { useEffect, useState, useContext, useRef } from 'react';
+import React, {
+  useEffect,
+  useState,
+  useContext,
+  useRef,
+  useCallback,
+} from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import style from './Board.module.css';
 import BoardItem from './BoardItem';
@@ -29,10 +35,10 @@ const BoardList = ({ setPostList }) => {
   const [search, setSearch] = useState('');
   const titleInput = useRef();
   //검색창 action 코드
-  const onChangeSearch = (e) => {
+  const onChangeSearch = useCallback((e) => {
     e.preventDefault();
     setSearch(e.target.value);
-  };
+  }, []);
 
   //검색 기능 코드
   const initList = (e) => {
@@ -130,4 +136,4 @@ const BoardList = ({ setPostList }) => {
     </div>
   );
 };
-export default BoardList;
+export default React.memo(BoardList);

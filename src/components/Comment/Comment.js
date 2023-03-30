@@ -1,8 +1,14 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import style from './Comment.module.css';
 import src from '../../assets/profile.png';
 import { UserDataContext } from '../../App';
-function Comment({ removeComment, editComment, comment }) {
+const Comment = ({ removeComment, editComment, comment }) => {
   const userInfo = useContext(UserDataContext);
   const [localIsModify, setLocalIsModify] = useState();
   useEffect(() => {
@@ -16,25 +22,25 @@ function Comment({ removeComment, editComment, comment }) {
   const [localContent, setLocalContent] = useState(comment.text);
   const localContentInput = useRef();
 
-  const handleRemove = () => {
+  const handleRemove = useCallback(() => {
     console.log(comment.no);
     if (window.confirm(`댓글를 정말 삭제하시겠습니까?`)) {
       removeComment(comment);
     }
-  };
-  const handleQuitEdit = () => {
+  }, [localContent]);
+  const handleQuitEdit = useCallback(() => {
     setIsEdit(false);
     console.log(comment.text);
     setLocalContent(comment.text);
     setLocalIsModify(comment.isModify);
-  };
+  }, [localContent]);
   //수정하기를 누르고 원본 데이터를 고쳐도 다시 수정하기를 취소하구 누르면 원래대로 돌아온다
-  const handleEdit = () => {
+  const handleEdit = useCallback(() => {
     if (window.confirm(`댓글를 수정하시겠습니까?`)) {
       editComment(comment, localContent);
       toggleIsEdit();
     }
-  };
+  }, [localContent]);
   const [isEdit, setIsEdit] = useState(false);
   //수정중인 상태면 true 아니면 false인 상태 정의
   const toggleIsEdit = () => {
@@ -84,6 +90,6 @@ function Comment({ removeComment, editComment, comment }) {
       </div>
     </li>
   );
-}
+};
 
-export default Comment;
+export default React.memo(Comment);

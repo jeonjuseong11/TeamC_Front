@@ -106,4 +106,4 @@ const BoardDetail = () => {
     </div>
   );
 };
-export default BoardDetail;
+export default React.memo(BoardDetail);

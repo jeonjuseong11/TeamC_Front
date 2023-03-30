@@ -40,4 +40,4 @@ function Sidebar({ menus, setIsLogin }) {
   );
 }
 
-export default Sidebar;
+export default React.memo(Sidebar);

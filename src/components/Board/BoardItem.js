@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-
+import React from 'react';
 const BoardItem = ({ userId, title, no, board, create_dt }) => {
   // console.log(board);
   return (
@@ -22,4 +22,4 @@ const BoardItem = ({ userId, title, no, board, create_dt }) => {
     </tr>
   );
 };
-export default BoardItem;
+export default React.memo(BoardItem);

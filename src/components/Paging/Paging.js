@@ -1,7 +1,6 @@
 import React from 'react';
 import Pagination from 'react-js-pagination';
 import './Paging.css';
-
 const Paging = ({ page, count, setPage }) => {
   return (
     <div>
@@ -18,4 +17,4 @@ const Paging = ({ page, count, setPage }) => {
   );
 };
 
-export default Paging;
+export default React.memo(Paging);
