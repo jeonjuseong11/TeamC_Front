@@ -1,6 +1,7 @@
 .Join {
   min-height: 100vh;
   display: flex;
+  background-color: #FBFBFB;
   justify-content: center;
   align-items: center;
 }
@@ -8,51 +9,73 @@
 .container {
   display: flex;
   flex-direction: column;
-  height: 60%;
+  width: 40%;
+
   /* margin: -70px 610px; */
-  background: rgba(255, 255, 255, 0.5);
+  background-color: #FFFFFF;
   box-sizing: border-box;
   border-radius: 15px;
-  width: 30%;
 }
-
-.container input {
-  box-sizing: border-box;
-  border: 1px solid #efefef;
-  outline: none;
-  background: #efefef;
-  padding: 1.2rem 1.5rem;
-  padding-left: calc(1rem * 3.5);
-  border-radius: 10px;
+form{
   width: 100%;
-  transition: 0.2;
-  margin-bottom: 1rem;
+}
+.container input {
+  width: 55%;
+  height: 30px;
+  margin: 0 auto;
+  margin-left: 15%;
+  margin-top: 3%;
+  outline: none;
+  background: #c2c2c2;
+  border-radius: 10px;
+  padding: 0.5rem 1.5rem;
+  padding-left: calc(1rem * 3.5);
+  transition: background 0.5s;
+  border: solid 1px rgba(0, 0, 0, 0);
 }
 
-.container .create-btn {
-  width: 120px;
-  height: 50px;
-  margin: 10px;
+.container input:focus{
+  background-color: #FFFFFF;
+  border: solid 1px rgba(130, 130, 255, 0.85);
+}
+
+.container label {
+  display: flex;
+  margin-top: 2%;
+  margin-left: 15%;
+  font-weight: bold;
+  color: black;
+}
+h2{
+  margin: 5% 15%;
+}
+
+.container .createBtn {
+  width: 20%;
+  margin-right: 5%;
   padding: 1rem;
-  background: #8282ff;
-  color: white;
+  background: #FFFFFF;
+  color: #8282FF;
+  border: solid 1px #8282FF;
   border-radius: 3px;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 2px;
   transition: background 0.5s;
 }
-.container .create-btn:hover {
+.container .createBtn:hover {
   background-color: rgba(130, 130, 255, 0.85);
+  color: #FFFFFF;
   cursor: pointer;
 }
 
-.container .back-btn {
-  width: 120px;
-  height: 50px;
-  background: black;
-  color: white;
+.container .backBtn {
+  width: 20%;
+  margin-right: 5%;
   padding: 1rem;
+  background: #FFFFFF;
+  color: #8282FF;
+  border: solid 1px #8282FF;
   border-radius: 3px;
   text-align: center;
   text-transform: uppercase;
@@ -60,12 +83,13 @@
   transition: background 0.5s;
 }
 
-.container .back-btn:hover {
-  background-color: rgba(0, 0, 0, 0.85);
+.container .backBtn:hover {
+  background-color: rgba(130, 130, 255, 0.85);
+  color: #FFFFFF;
   cursor: pointer;
 }
 
-.radio-btn {
+.radioBtnWrapper {
   width: 100px;
   margin: 0 auto;
   display: flex;
@@ -73,10 +97,63 @@
   align-items: center;
 }
 
-.form-btn {
+.container .radioBtnWrapper input {
+  width: 30px;
+  margin-left: 30px;
+}
+
+.container .radioBtnWrapper label {
+  width: 50px;
+  margin-top: 15px;
+  margin-left: 10px;
+}
+
+.formBtnWrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   margin: 15px 0;
+}
+
+.lastWrap{
+  display: flex;
+  width: 100%;
+  margin: 5% 25%;
+}
+
+#age{
+  width: 74%;
+}
+
+.age{
+  display: flex;
+  flex-direction: column;
+  margin-left: 8%;
+}
+
+.sexWrapper{
+  display: flex;
+  flex-direction: column;
+  margin-left: -5%;
+}
+
+.sexWrapper label {
+  margin-left: -40%;
+}
+
+.maleRadio {
+  display: flex;
+}
+
+.femaleRadio {
+  display: flex;
+}
+
+.femaleRadio label{
+  transform: translateY(-25%);
+}
+
+.maleRadio label{
+  transform: translateY(-25%);
 }
