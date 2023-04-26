@@ -247,7 +247,7 @@ const Join = () => {
             </label>
           </div>
         </div>
-        <p>생년월일</p>
+        <label>생년월일</label>
         <input
           id="age"
           name="age"
