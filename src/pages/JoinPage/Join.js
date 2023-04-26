@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Join.css';
 import axios from 'axios';
+import useHandler from '../../hooks/useHandler';
 
 const Join = () => {
   // 계정 배열 초기값
@@ -14,7 +15,6 @@ const Join = () => {
     sex: '',
     age: 0,
   });
-
   // 유효성 검사를 위한 상태
   const [idValid, setIdValid] = useState(false);
   const [pwValid, setPwValid] = useState(false);
@@ -139,7 +139,8 @@ const Join = () => {
   return (
     <div className="Join">
       <div className="container">
-        <p>아이디</p>
+        <h1>회원가입</h1>
+        <label>아이디</label>
         <input
           id="id"
           name="id"
@@ -155,7 +156,7 @@ const Join = () => {
           //     : { border: "solid 1px red" }
           // }
         />
-        <p>패스워드</p>
+        <label>패스워드</label>
         <input
           id="pw"
           name="pw"
@@ -172,7 +173,7 @@ const Join = () => {
           //     : { border: "solid 1px red" }
           // }
         />
-        <p>패스워드 재확인</p>
+        <label>패스워드 재확인</label>
         <input
           id="pwRewind"
           name="pwRewind"
@@ -188,7 +189,7 @@ const Join = () => {
           //     : { border: "solid 1px red" }
           // }
         />
-        <p>이름</p>
+        <label>이름</label>
         <input
           id="userName"
           name="userName"
@@ -205,7 +206,7 @@ const Join = () => {
           //     : { border: "solid 1px red" }
           // }
         />
-        <p>이메일</p>
+        <label>이메일</label>
         <input
           id="email"
           name="email"
@@ -221,10 +222,10 @@ const Join = () => {
           //     : { border: "solid 1px red" }
           // }
         />
-        <p>성별</p>
         <div>
+          <label>성별</label>
           <div className="radio-btn">
-            <div className="female-radio">
+            <label className="female-radio">
               <input
                 type="radio"
                 name="sex"
@@ -232,9 +233,9 @@ const Join = () => {
                 value="female"
                 onClick={onSexClick}
               />
-              <label>여성</label>
-            </div>
-            <div className="male-radio">
+              여성
+            </label>
+            <label className="male-radio">
               <input
                 type="radio"
                 name="sex"
@@ -242,8 +243,8 @@ const Join = () => {
                 value="male"
                 onClick={onSexClick}
               />
-              <label>남성</label>
-            </div>
+              남성
+            </label>
           </div>
         </div>
         <p>생년월일</p>
