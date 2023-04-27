@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
+import { legacy_createStore as createStore } from 'redux';
 import './App.css';
 
 import Login from './pages/LoginPage/Login.js';
@@ -15,6 +16,25 @@ import EditPage from './pages/EditPage/EditPage';
 export const PostsStateContext = React.createContext(); //posts 데이터 context
 export const GetDataContext = React.createContext(); //getData context
 export const UserDataContext = React.createContext(); //User 데이터 context
+
+const reducer = (state, action) => {  
+  var newState;
+  switch(action.type){
+      case 'Login' : {
+        console.log(action.data)
+        return newState;
+      }
+      case 'Create' : {
+        return
+      }
+      default:
+        return state
+    }
+    return newState
+  };
+
+  var store = createStore(reducer);
+
 function App() {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(false);
@@ -46,6 +66,14 @@ function App() {
     }
   }
 
+  const onSubmitLogin = (e, id, pw) =>{
+    e.preventDefault();
+    var _id = id;
+    var _pw = pw;
+    var action = {type:'Login', id:_id, pw:_pw};
+    store.dispatch(action);
+  }
+
   useEffect(() => {
     // setIsLogin(window.localStorage.getItem('login'));
     console.log(isLogin);
@@ -70,7 +98,7 @@ function App() {
                 exact
                 path="/login"
                 element={
-                  <Login setuserInfo={setuserInfo} setIsLogin={setIsLogin} />
+                  <Login setuserInfo={setuserInfo} setIsLogin={setIsLogin} onSubmitLogin = {onSubmitLogin}/>
                 }
               />
               <Route exact path="/join" element={<Join />} />

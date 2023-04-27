@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import './Join.css';
 import axios from 'axios';
 
-
 const Join = () => {
   // 계정 배열 초기값
   const [account, setAccount] = useState({
@@ -218,7 +217,7 @@ const Join = () => {
 
             </div>
             <div className="age">
-              <label>생년월일</label>
+              <label>나이</label>
               <input
                 id="age"
                 name="age"

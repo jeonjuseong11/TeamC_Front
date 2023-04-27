@@ -6,7 +6,7 @@ import passwordImg from '../../assets/password.png';
 import Logo from '../../assets/Logo.png';
 import axios from 'axios';
 
-const Login = ({ setIsLogin, setuserInfo }) => {
+const Login = ({ setIsLogin, setuserInfo, onSubmitLogin }) => {
   const navigate = useNavigate();
   const toHome = () => {
     navigate('/board1');
@@ -53,7 +53,10 @@ const Login = ({ setIsLogin, setuserInfo }) => {
           <h1>웹 이름</h1>
           <div>서비스를 이용하려면 로그인이 필요합니다.</div>
         </div>
-        <form className="login-form">
+        <form
+          className="login-form"
+          onSubmit= {onSubmitLogin}
+        >
           <div className="form-id">
             <img className="form-icon" src={emailImg} />
             <input
@@ -79,7 +82,7 @@ const Login = ({ setIsLogin, setuserInfo }) => {
               <label htmlFor="rememberMeCheckbox">이 계정 기억하기</label>
             </div>
           </div>
-          <button type="button" className="loginBtn" onClick={loginFunc}>
+          <button type="submit" className="loginBtn">
             로그인
           </button>
         </form>
