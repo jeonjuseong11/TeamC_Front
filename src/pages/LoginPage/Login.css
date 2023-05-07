@@ -1,18 +1,18 @@
 .loginPage {
   min-height: 100vh;
-  background: linear-gradient(#8282ff, #ffffff);
+  background: #fbfbfb;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.login-logo {
+/* .login-logo {
   margin-bottom: 2rem;
 }
 
 .login-logo img {
   width: 60%;
-}
-.login-logo,
+} */
+/* .login-logo, */
 .login-header,
 .login-footer {
   text-align: center;
@@ -25,6 +25,7 @@
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
+  margin-top: 3rem;
 }
 
 .login-header h1 + div {
@@ -32,16 +33,17 @@
   opacity: 0.8;
 }
 .loginWrap {
-  width: 450px;
+  width: 28.125rem;
   background: rgba(255, 255, 255, 0.5);
-  padding: 4rem;
-  border-radius: 10px;
+  padding: 5rem;
+  border-radius: 20px;
   position: relative;
+  border: 1px solid #efefef;
 }
 
 .loginWrap a {
   text-decoration: none;
-  color: #35339a;
+  color: #878787;
 }
 
 .loginWrap a:hover {
@@ -58,10 +60,10 @@
   position: relative;
 }
 .form-icon {
-  width: 25px;
+  width: 1.563rem;
   height: auto;
   position: absolute;
-  top: 0.82rem;
+  top: 1.1rem;
   left: 1.4rem;
   font-size: 1.3rem;
   opacity: 0.4;
@@ -80,46 +82,65 @@
 }
 
 .login-footer {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
   margin-top: 1.5rem;
   font-size: calc(1rem * 0.8);
 }
+.login-footer a {
+  font-size: 15px;
+  font-weight: 600;
+}
+
 /* Login Card Form Elements */
-.loginWrap input[type="text"],
-.loginWrap input[type="password"],
-.loginWrap input[type="email"] {
-  border: none;
+.loginWrap input[type='text'],
+.loginWrap input[type='password'],
+.loginWrap input[type='email'] {
+  box-sizing: border-box;
+  border: 1px solid #efefef;
   outline: none;
-  background: rgba(255, 255, 255, 0.3);
-  padding: 1rem 1.5rem;
+  background: #efefef;
+  padding: 1.2rem 1.5rem;
   padding-left: calc(1rem * 3.5);
-  border-radius: 3px;
-  width: 80%;
-  transition: background 0.5s;
+  border-radius: 10px;
+  width: 100%;
+  transition: 0.2;
 }
 
 .loginWrap input:focus {
   background: white;
+  border: 1px solid #8282ff;
 }
 
-.loginWrap input[type="checkbox"] {
+.loginWrap input[type='checkbox'] {
   width: 16px;
   height: 16px;
+  border: 1px solid #c2c2c2;
   accent-color: black;
 }
-
+.loginWrap .checkbox {
+  color: #c2c2c2;
+}
 .loginWrap button {
-  background: black;
+  font-weight: bold;
+  border: 1px solid #8282ff;
+  outline: none;
+  background: #8282ff;
   color: white;
   padding: 1rem;
-  border-radius: 3px;
+  border-radius: 10px;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 2px;
-  transition: background 0.5s;
+  transition: background 0.2s;
 }
 
 .loginWrap button:hover {
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: #d4d4ff;
+  border: 1px solid #8282ff;
+  color: #8282ff;
   cursor: pointer;
 }
+
 /* ---------- */

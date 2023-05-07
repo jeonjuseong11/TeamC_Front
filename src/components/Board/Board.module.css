@@ -2,20 +2,25 @@
   float: right;
   width: 80%;
   padding-top: 0;
-  height: 95vh;
-  background: linear-gradient(to bottom, #8282ff 30%, #e3e7ff 30%);
-}
-.info {
-  color: white;
-}
+  height: 90vh;
+  background-color: #fbfbfb;
 
+  /* background: linear-gradient(to bottom, #8282ff 30%, #e3e7ff 30%); */
+}
+.tableWrapper {
+  box-sizing: border-box;
+  width: 90%;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border: 1px solid #efefef;
+  border-radius: 10px;
+  height: 70vh;
+}
 .table {
   margin: 0 auto;
-  background-color: white;
-  width: 90%;
+  width: 100%;
   border-spacing: 0;
-  padding: 0px;
-  border-radius: 5px;
+  padding: 1.25rem;
 }
 
 .table td {
@@ -23,58 +28,72 @@
   border-top: 1px solid #c4c4c4;
 }
 .table thead {
-  height: 50px;
+  height: 3.125rem;
 }
-.table thead tr {
-  border-top: 3px solid #c2c2c2;
-}
+
 .table tbody tr {
-  height: 50px;
+  border-top: 3px solid #c2c2c2;
+  height: 6vh;
+  border-radius: 10px;
   transition: 0.1s ease-in-out;
 }
 .table tbody tr:hover {
-  background-color: rgba(130, 130, 255, 0.5);
+  background-color: #f7f7f7;
+}
+.table tbody tr button {
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+.table tbody tr button:first-child {
+  border-right: 1px solid #c2c2c2;
+}
+.table tbody tr button:first-child:hover {
+  font-weight: bold;
+  color: white;
+}
+.table tbody tr button:last-child:hover {
+  font-weight: bold;
+  color: red;
 }
 
 .BoardDetail {
+  display: flex;
   width: 80%;
   float: right;
-  width: 80%;
+  background-color: #fbfbfb;
   padding-top: 0;
-  height: 95vh;
-  background: linear-gradient(to bottom, #8282ff 30%, #e3e7ff 30%);
+  height: 90vh;
 }
-.BoardDetail h2 {
-  float: left;
-  color: white;
-  margin-left: 10px;
+.BoardDetail p {
+  color: black;
 }
+
 .boardContent {
-  width: 75%;
-  float: left;
+  width: 100%;
+  display: inline-block;
+  max-width: 200rem;
 }
-.Board {
-  margin: 0 auto;
-  margin-top: 30px;
+.BoardDetail .Board {
+  box-sizing: border-box;
+  margin-left: 4%;
+  border: 1px solid #efefef;
+  margin-top: 1.875rem;
   background-color: white;
-  width: 90%;
+  width: 100%;
   border-spacing: 0;
-  padding: 10px;
+  padding: 1rem;
   border-radius: 5px;
   height: 80vh;
 }
 
 .boardTitle {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  height: 100px;
+  height: 6.25rem;
+  margin-bottom: 1.5rem;
 }
-.boardTitle h1 {
-  font-size: 1.5rem;
-}
+
 .boardTitle p {
-  text-align: left;
-  padding: 10px;
+  font-size: 2rem;
 }
 .boardTitle button {
   float: left;
@@ -83,85 +102,185 @@
   border: none;
   background-color: white;
   border-radius: 100%;
-  margin-top: 10px;
   margin-left: 20px;
   margin-right: 20px;
   font-size: 20px;
   font-weight: 600;
 }
-
+.boardTitle span {
+  padding-left: 3%;
+  padding-right: 3%;
+}
 .boardTitle button:hover {
   transition: 0.2s ease-in-out;
   background-color: #8282ff;
   color: white;
+  align-items: center;
 }
-.boardText {
-  margin: 0 auto;
-  text-align: left;
+.titlebtnWrapper {
+  position: relative;
+  top: -7rem;
+  float: right;
+  padding-right: 2rem;
 }
-.boardText span,
-p {
-  padding-left: 5%;
-  padding-right: 5%;
+.titlebtnWrapper button {
+  font-size: 1rem;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  color: #c2c2c2;
+}
+.titlebtnWrapper button:first-child:hover {
+  color: #8282ff;
+}
+.titlebtnWrapper button:last-child:hover {
+  color: #ff5252;
 }
 
-/* search */
-.searchForm {
-  margin: 10px;
+.boardText div {
+  margin-left: 3%;
+  margin-right: 3%;
+  overflow-wrap: break-word;
+  font-size: 1rem;
+  height: 50vh;
+  border-top: 1px solid #878787;
+}
+.boardText div p {
+  margin-top: 1.5rem;
+}
+.btnWrapper {
+  border-top: 1px solid #efefef;
+  width: 100%;
+  height: 6rem;
   position: relative;
 }
+.btnWrapper div {
+  /* margin-top: 1.5rem; */
+  position: absolute;
+  top: 35%;
+  bottom: 35%;
+}
+.btnWrapper button {
+  display: flex;
+  color: #c2c2c2;
+  cursor: pointer;
+  width: 6rem;
+  border: 1px solid white;
+  background-color: transparent;
+}
+.btnWrapper button:hover {
+  font-weight: bold;
+  color: #8282ff;
+}
+/* search */
+.info {
+  display: flex;
+  text-align: center;
+  line-height: 20px;
+  margin-left: 6%;
+  width: 20%;
+  font-size: 12px;
+}
+
+.search {
+  margin-top: 2rem;
+  position: relative;
+  display: flex;
+  margin-bottom: 15px;
+}
+.info p {
+  color: black;
+}
 .searchIcon {
-  margin-left: 1%;
+  margin-left: 5%;
   width: 20px;
   height: auto;
   position: absolute;
-  top: 0.8rem;
+  top: 0.9rem;
   font-size: 1.3rem;
   opacity: 0.4;
+  filter: invert(69%) sepia(0%) saturate(7377%) hue-rotate(56deg)
+    brightness(111%) contrast(99%);
 }
-.searchForm input {
-  display: float;
-  border: none;
+.search form {
+  align-items: center;
+  width: 90%;
+  display: flex;
+}
+.search input {
+  margin-left: 5%;
+  height: 0.938rem;
+  display: inline-block;
+
+  border: 1px solid #efefef;
   outline: none;
-  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  background-color: #efefef;
   padding: 1rem 1.5rem;
   padding-left: calc(1rem * 3.5);
-  border-radius: 3px;
-  width: 50%;
-  transition: background 0.5s;
-}
-.searchForm input:focus {
-  background: white;
+  border-radius: 10px;
+  width: 70%;
+  transition: 0.2s;
 }
 
+.search:focus-within input {
+  background: white;
+  border: 1px solid rgba(130, 130, 255, 1);
+}
+.search:focus-within .resetBtn {
+  background: white;
+  border-left: 1px solid rgba(130, 130, 255, 1);
+}
+
+.search:focus-within .searchIcon {
+  filter: invert(48%) sepia(66%) saturate(731%) hue-rotate(205deg)
+    brightness(101%) contrast(101%);
+}
 .searchBtn {
   display: none;
 }
 
 .resetBtn {
-  position: absolute;
-  width: 48px;
-  height: 48px;
+  display: inline-block;
+  margin-left: -3.125rem;
+  right: 20%;
+  width: 3rem;
+  height: 2.375rem;
+
   padding: 0;
   color: #fff;
-  border-radius: 5px;
+
   transition: all 0.2s;
-  margin-left: 10px;
-  background: none;
-  border: 1.5px solid white;
-}
-.resetBtn img {
-  width: 25px;
-  filter: brightness(0) invert(1);
-  position: absolute;
-  top: 0.5rem;
-  left: 0.6rem;
-}
-.resetBtn:hover {
-  background-color: white;
-  border: 1.5 solid black;
+  background-color: #efefef;
+  border: none;
 }
 .resetBtn:hover img {
   filter: invert(52%) sepia(29%) saturate(1249%) hue-rotate(202deg)
     brightness(100%) contrast(109%);
+}
+.resetBtn img {
+  position: relative;
+  width: 1.563rem;
+  filter: invert(80%) sepia(93%) saturate(1%) hue-rotate(348deg) brightness(95%)
+    contrast(97%);
+}
+
+.writeBtn {
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 7.5rem;
+  height: 3rem;
+  margin-left: -1.25rem;
+  margin-right: 5%;
+  border: none;
+  background-color: #8282ff;
+  color: white;
+  font-weight: bold;
+  transition: 0.15s;
+}
+.writeBtn:hover {
+  background-color: #d4d4ff;
+  border: 1px solid #8282ff;
+  color: #8282ff;
+  cursor: pointer;
 }

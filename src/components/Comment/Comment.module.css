@@ -1,81 +1,153 @@
 .CommentsWrapper {
-  display: inline-block;
-  width: 24%;
-  border-left: 1px solid #c2c2c2;
-  height: 100%;
+  box-sizing: border-box;
+  float: right;
+  width: 30%;
+  height: 80vh;
+  margin-top: 1.875rem;
+  margin-right: 5%;
+  margin-left: 2%;
+  margin-right: 4%;
+  max-width: 20rem;
 }
 .commentPostList {
-  height: 73vh;
+  box-sizing: border-box;
+  padding-left: 1.875rem;
+  padding-right: 1.875rem;
+  background-color: white;
+  border-radius: 0 0 10px 10px;
+  height: 60vh;
   width: 100%;
-  padding-left: 10px;
   overflow-y: auto;
   display: inline-block;
   margin: 0;
+  scroll-behavior: smooth;
+  border: 1px solid #efefef;
+  border-top: none;
 }
 
+.commentTitle {
+  box-sizing: border-box;
+  background-color: white;
+  height: 5rem;
+  border-radius: 10px 10px 0 0;
+  border: 1px solid #efefef;
+  border-bottom: none;
+  padding-top: 2.5rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+.commentTitle h4 {
+  margin: 0;
+  padding-bottom: 1rem;
+  width: 100%;
+  border-bottom: 1px solid #c2c2c2;
+}
 .commentPost {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  padding-top: 1.5rem;
   text-align: left;
 }
 
 .commentPost div {
   font-size: 12px;
-  line-height: 20px;
+  line-height: 1.25rem;
 }
 .commentPost p {
   height: 15px;
   line-height: 15px;
   margin: 0;
-  font-weight: 500;
   font-size: 10px;
+}
+.commentDate {
+  float: right;
+  color: #c2c2c2;
+  margin-top: -1rem;
 }
 .commentPost img {
   float: left;
   margin-right: 3%;
-  height: 30px;
-  width: 30px;
-  border: 1px solid #c2c2c2;
+  height: 1.5rem;
+  width: 1.5rem;
+  border: 1px solid #efefef;
   border-radius: 100%;
 }
-.commentText {
-  margin-left: 10%;
-}
+
 .commentContent {
-  font-weight: 600;
-  margin-top: 10px;
-  width: 80%;
-  margin-left: 5%;
+  margin-top: 1.25rem;
+  width: 100%;
+  overflow-wrap: break-word;
 }
 .commentContent textarea {
-  width: 90%;
   height: 10%;
   resize: none;
+  width: 100%;
 }
+
 .commentButton {
-  float: right;
-  margin-right: 10%;
+  width: 100%;
+  text-align: right;
   color: #c5c5c5;
+  border-bottom: 1px solid #efefef;
+  padding-bottom: 1rem;
 }
 .commentButton button {
   border: none;
   background-color: white;
   color: #c5c5c5;
   cursor: pointer;
+  font-size: 0.75rem;
 }
 .commentButton button:hover {
-  color: black;
+  font-weight: bold;
 }
+.commentButton button:first-child:hover {
+  color: #8282ff;
+}
+.commentButton button:last-child:hover {
+  color: #ff5252;
+}
+
 .commentInput {
-  display: block;
+  margin-top: 0.5rem;
   width: 100%;
-  margin-bottom: 5%;
+  background-color: #efefef;
+  height: 6rem;
+  border: 1px solid #efefef;
+  border-radius: 10px;
 }
-.commentInput input {
-  margin-left: 5%;
-  width: 95%;
-  height: 40px;
+
+.commentInput:focus-within {
+  background: white;
+  border: 1px solid rgba(130, 130, 255, 1);
+}
+.commentInput:focus-within textarea {
+  background: white;
+}
+.commentInput:focus-within button {
+  color: rgba(130, 130, 255, 1);
+}
+.commentInput textarea {
+  margin: 1rem;
+  box-sizing: border-box;
+  outline: 0;
+  border: none;
+  background-color: #efefef;
+  width: 91%;
+  height: 3rem;
+  resize: none;
+}
+textarea::placeholder {
+  color: #c2c2c2;
+}
+.commentInput div {
+  float: right;
+  margin-top: -1.5rem;
 }
 .commentInput button {
-  display: none;
+  width: 3rem;
+  font-weight: bold;
+  height: 1rem;
+  color: #c2c2c2;
+  position: relative;
+  border: none;
+  background-color: transparent;
 }

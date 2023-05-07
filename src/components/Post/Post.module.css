@@ -1,0 +1,59 @@
+.BoardPost {
+  float: right;
+  width: 80%;
+  padding-top: 0;
+  height: 95vh;
+  background-color: #fbfbfb;
+}
+.BoardPost p {
+  color: black;
+}
+.BoardPost li {
+  text-decoration: none;
+  list-style-type: disc;
+}
+.BoardPost form {
+  margin: 0 auto;
+  margin-top: 1rem;
+  width: 90%;
+}
+.BoardPost form input[type='text'] {
+  box-sizing: border-box;
+  border: 1px solid #e2e2e2;
+  border-bottom: 1px solid #e2e2e2;
+  width: 100%;
+  padding: 1rem 1rem;
+  margin-bottom: 3%;
+  font-size: 1.2rem;
+  border-radius: 10px;
+}
+.BoardPost input[type='text']:focus {
+  border: 1px solid #8282ff;
+  outline: 0;
+}
+.BoardPost form button {
+  float: right;
+  width: 50%;
+  height: 3rem;
+  border: 0;
+  background-color: none;
+  transition: 0.2s;
+}
+.BoardPost form button:last-child:hover {
+  background-color: #8282ff;
+  color: white;
+}
+.BoardPost form button:nth-last-child(2):hover {
+  background-color: #fd565f;
+  color: white;
+}
+
+.BoardPost h1 {
+  margin-top: 0;
+}
+.BoardPost p {
+  margin: 0;
+}
+.BoardPost li {
+  clear: both;
+}

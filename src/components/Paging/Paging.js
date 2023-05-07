@@ -1,7 +1,6 @@
-import React from "react";
-import Pagination from "react-js-pagination";
-import "./Paging.css";
-
+import React from 'react';
+import Pagination from 'react-js-pagination';
+import './Paging.css';
 const Paging = ({ page, count, setPage }) => {
   return (
     <div>
@@ -10,12 +9,12 @@ const Paging = ({ page, count, setPage }) => {
         itemsCountPerPage={5}
         totalItemsCount={count / 2}
         pageRangeDisplayed={5}
-        prevPageText={"<"}
-        nextPageText={">"}
+        prevPageText={'<'}
+        nextPageText={'>'}
         onChange={setPage}
       />
     </div>
   );
 };
 
-export default Paging;
+export default React.memo(Paging);

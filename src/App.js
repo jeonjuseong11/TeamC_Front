@@ -1,111 +1,142 @@
-import React, { useState } from "react";
-import { Route, Routes } from "react-router-dom";
-import Login from "./pages/LoginPage/Login.js";
-import "./App.css";
-import Home from "./pages/HomePage/Home.js";
-import Join from "./pages/JoinPage/Join.js";
-import ProfilePage from "./pages/ProfilePage/ProfilePage.js";
-import BoardDetail from "./components/Board/BoardDetail.js";
-import DetailPage from "./pages/DetailPage/DetailPage.js";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import { legacy_createStore as createStore } from 'redux';
+import './App.css';
+
+import Login from './pages/LoginPage/Login.js';
+import Home from './pages/HomePage/Home.js';
+import Join from './pages/JoinPage/Join.js';
+import ProfilePage from './pages/ProfilePage/ProfilePage.js';
+import DetailPage from './pages/DetailPage/DetailPage.js';
+import PostPage from './pages/PostPage/PostPage.js';
+
+import axios from 'axios';
+import EditPage from './pages/EditPage/EditPage';
+
 export const PostsStateContext = React.createContext(); //posts 데이터 context
+export const GetDataContext = React.createContext(); //getData context
+export const UserDataContext = React.createContext(); //User 데이터 context
+
+const reducer = (state, action) => {  
+  var newState;
+  switch(action.type){
+      case 'Login' : {
+        console.log(action.data)
+        return newState;
+      }
+      case 'Create' : {
+        return
+      }
+      default:
+        return state
+    }
+    return newState
+  };
+
+  var store = createStore(reducer);
 
 function App() {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(false);
   const [userInfo, setuserInfo] = useState([]);
-  // const User = {
-  //   userId: 1,
-  //   id: "1@gmail.com",
-  //   pw: "A!11111111",
-  //   name: "홍길동",
-  //   email: "1@gmail.com",
-  //   sex: "male",
-  //   age: "2000-01-01",
-  // };
+
   const menus = [
-    { name: "자유게시판", path: "/board1" },
-    { name: "비밀게시판", path: "/board2" },
+    { name: '자유게시판', path: '/board1' },
+    { name: '비밀게시판', path: '/board2' },
   ];
   const [postList, setPostList] = useState([]);
+  async function getData() {
+    try {
+      const response = await axios.get('http://localhost:8080/api-board/list');
+      const initData = response.data.map((it, idx) => {
+        return {
+          no: ++idx,
+          title: it.board_title,
+          content: it.board_text,
+          userId: it.user_name,
+          create_dt: it.create_dt,
+          update_dt: it.update_dt,
+          board_no: it.board_no,
+        };
+      });
 
-  const getData = async () => {
-    const res = await fetch("https://jsonplaceholder.typicode.com/posts").then(
-      (res) => res.json()
-    );
-    const initData = res.slice(0, 100).map((it) => {
-      return {
-        userId: it.userId,
-        title: it.title,
-        content: it.body,
-        created_date: new Date().getTime(),
-        no: it.id,
-      };
-    });
-    setPostList(initData);
-    // setLocalStrage();
-  };
+      setPostList(initData.reverse());
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const onSubmitLogin = (e, id, pw) =>{
+    e.preventDefault();
+    var _id = id;
+    var _pw = pw;
+    var action = {type:'Login', id:_id, pw:_pw};
+    store.dispatch(action);
+  }
+
   useEffect(() => {
-    getData();
-  }, []);
-  useEffect(() => {
+    // setIsLogin(window.localStorage.getItem('login'));
+    console.log(isLogin);
     if (isLogin === false) {
       console.log(isLogin);
       setuserInfo([]);
-      navigate("/");
+      navigate('/login');
+    } else {
     }
-  }, [isLogin]);
+  }, [isLogin, postList]);
+  useEffect(() => {
+    getData();
+  }, []);
   // return
   return (
     <>
-      <PostsStateContext.Provider value={postList}>
-        <Routes>
-          <Route
-            exact
-            path="/"
-            element={
-              <Login setuserInfo={setuserInfo} setIsLogin={setIsLogin} />
-            }
-          />
-          <Route exact path="/join" element={<Join />} />
-          <Route
-            exact
-            path="/:board/*"
-            element={
-              <Home
-                getData={getData}
-                userInfo={userInfo}
-                menus={menus}
-                setIsLogin={setIsLogin}
-                setPostList={setPostList}
+      <UserDataContext.Provider value={userInfo}>
+        <PostsStateContext.Provider value={postList}>
+          <GetDataContext.Provider value={getData}>
+            <Routes>
+              <Route
+                exact
+                path="/login"
+                element={
+                  <Login setuserInfo={setuserInfo} setIsLogin={setIsLogin} onSubmitLogin = {onSubmitLogin}/>
+                }
               />
-            }
-          />
-          <Route
-            exact
-            path="/:board/:no"
-            element={
-              <DetailPage
-                postList={postList}
-                menus={menus}
-                userInfo={userInfo}
+              <Route exact path="/join" element={<Join />} />
+              <Route
+                exact
+                path="/:board/*"
+                element={
+                  <Home
+                    menus={menus}
+                    setIsLogin={setIsLogin}
+                    setPostList={setPostList}
+                  />
+                }
               />
-            }
-          />
-          <Route
-            exact
-            path="/profile"
-            element={
-              <ProfilePage
-                menus={menus}
-                userInfo={userInfo}
-                setIsLogin={setIsLogin}
+              <Route
+                exact
+                path="/:board/:no"
+                element={<DetailPage menus={menus} />}
               />
-            }
-          />
-        </Routes>
-      </PostsStateContext.Provider>
+              <Route
+                exact
+                path="/profile"
+                element={<ProfilePage menus={menus} setIsLogin={setIsLogin} />}
+              />
+              <Route
+                exact
+                path="/:board/post"
+                element={<PostPage menus={menus} setIsLogin={setIsLogin} />}
+              />
+              <Route
+                exact
+                path="/:board/:no/edit"
+                element={<EditPage menus={menus} setIsLogin={setIsLogin} />}
+              />
+            </Routes>
+          </GetDataContext.Provider>
+        </PostsStateContext.Provider>
+      </UserDataContext.Provider>
     </>
   );
 }

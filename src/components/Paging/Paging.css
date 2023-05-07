@@ -11,28 +11,24 @@ ul {
 
 ul.pagination li {
   display: inline-block;
-  width: 30px;
-  height: 30px;
+  width: 1.875rem;
+  height: 1.875rem;
   border-radius: 20%;
-  background-color: white;
+  background-color: #fbfbfb;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1rem;
   margin-left: 5px;
 }
-ul.pagination li:nth-child(1),
-ul.pagination li:nth-child(2),
-ul.pagination li:nth-last-child(2),
-ul.pagination li:nth-last-child(1) {
-  background-color: #e3e7ff;
-  border-style: none;
-}
+
 ul.pagination li:nth-child(2),
 ul.pagination li:nth-last-child(2) {
   font-weight: 700;
 }
-
+ul.pagination li:hover a {
+  color: blue;
+}
 ul.pagination li a {
   text-decoration: none;
   color: #8282ff;
@@ -47,14 +43,15 @@ ul.pagination li.active {
   background-color: #8282ff;
 }
 
-ul.pagination li a:hover,
-ul.pagination li a.active {
-  color: blue;
-}
-
 .page-selection {
   width: 48px;
   height: 30px;
   color: #8282ff;
   border-radius: 100%;
+}
+.Paging button {
+  clear: both;
+  position: absolute;
+  right: 10px;
+  float: right;
 }
